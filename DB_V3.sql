@@ -2,6 +2,14 @@
 #        Script MySQL.
 #------------------------------------------------------------
 
+#------------------------------------------------------------
+#        Create DATABASE
+#------------------------------------------------------------
+
+CREATE DATABASE db_FSI DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+CREATE USER 'FSI'@'localhost' IDENTIFIED BY 'isen39';
+grant ALL PRIVILEGES ON db_FSI.* TO 'FSI'@'localhost';
+USE db_FSI;
 
 #------------------------------------------------------------
 # Table: Ville_Bretonne
@@ -33,7 +41,7 @@ CREATE TABLE Joueur(
         prenom           Varchar (30) NOT NULL ,
         nom              Varchar (30) NOT NULL ,
         naissance        Date NOT NULL ,
-        mdp              Varchar (30) NOT NULL ,
+        mdp              Varchar (100) NOT NULL ,
         photo            Varchar (50) NOT NULL ,
         nombre_de_matchs Int NOT NULL ,
         code_insee_ville Int NOT NULL ,
@@ -66,10 +74,10 @@ CREATE TABLE Matchs(
         duree            Time NOT NULL ,
         description      Varchar (280) NOT NULL ,
         participant_min  Int NOT NULL ,
-        participan_max   Int NOT NULL ,
+        participant_max   Int NOT NULL ,
         prix             Float NOT NULL ,
         termine          Bool NOT NULL ,
-        addresse         Varchar (100) NOT NULL ,
+        adresse         Varchar (100) NOT NULL ,
         score_home       Int ,
         score_away       Int ,
         code_insee_ville Int NOT NULL ,
