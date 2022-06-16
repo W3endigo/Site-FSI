@@ -4,7 +4,7 @@
     
   require_once('database.php');
 
-  function dbCreateUser($db, $email, $mdp, $prenom, $nom, $date_naissance, $photo, $code_insee_ville, $frequence){
+  function dbCreateJoueur($db, $email, $mdp, $prenom, $nom, $date_naissance, $photo, $code_insee_ville, $frequence){
 
     if (!dbCheckMail($db, $email)){
 

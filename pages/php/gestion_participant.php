@@ -34,7 +34,7 @@
 
         try{
 
-            $request = 'UPDATE participants SET status=1 WHERE id_match=:id_match AND email=:email';
+            $request = 'UPDATE participe SET status=1 WHERE id_match=:id_match AND email=:email';
             $statement = $db->prepare($request);
             $statement->bindParam (':id_match', $id_match, PDO::PARAM_STR, 50);
             $statement->bindParam (':email', $email, PDO::PARAM_STR, 50);
@@ -55,7 +55,7 @@
 
         try{
 
-            $request = 'UPDATE participants SET status=2 WHERE id_match=:id_match AND email=:email';
+            $request = 'UPDATE participe SET status=2 WHERE id_match=:id_match AND email=:email';
             $statement = $db->prepare($request);
             $statement->bindParam (':id_match', $id_match, PDO::PARAM_STR, 50);
             $statement->bindParam (':email', $email, PDO::PARAM_STR, 50);

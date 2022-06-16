@@ -9,8 +9,10 @@
 
         try{
     
-            $request = 'INSERT INTO matchs (titre, horaire, duree, description, participant_min, participant_max, prix, termine, adresse, score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur)
-                                                VALUES (:titre, :horaire, :duree, :description, :participant_min, :participant_max, :prix, false, :adresse, NULL, NULL, :code_insee_ville, :nom_sport, :email_organisateur, test.inconnu@gmail.com)';
+            $request = 'INSERT INTO matchs (titre, horaire, duree, description, participant_min, participant_max, prix, termine, adresse, 
+                                            score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur)
+                        VALUES (:titre, :horaire, :duree, :description, :participant_min, :participant_max, :prix, false, :adresse,
+                                            NULL, NULL, :code_insee_ville, :nom_sport, :email_organisateur, test.inconnu@gmail.com)';
             $statement = $db->prepare($request);
             $statement->bindParam (':titre', $titre, PDO::PARAM_STR, 50);
             $statement->bindParam (':horaire', $horaire, PDO::PARAM_STR, 50);
