@@ -4,7 +4,6 @@ body{
     background-repeat: no-repeat;
     /* background-size: cover; */
     background-position: initial;
-    height : 100%;
 }
 
 header{
@@ -23,6 +22,7 @@ header{
     font : #FFFFFF;
     background-color : #423E3B;
     flex-direction: column;
+    display:none;
 }
 
 
@@ -32,11 +32,8 @@ header{
 }
 
 img{
-    max-width: 100%;
     height : auto;
-}
-
-#logo{
+    width : 100%;
 }
 
 #user_image{
