@@ -1,0 +1,44 @@
+
+body{
+    background-image : url("https://cdn.glitch.global/f5c8462d-a81d-4056-ad29-06d6128d7963/background.png?v=1655286971372");
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    background-position: initial;
+    height : 100%;
+}
+
+header{
+    flex-direction: column;
+}
+
+
+#up_head{
+    font : #FFFFFF;
+    background-color : #423E3B;
+    flex-direction: column;
+}
+
+
+#connection_head{
+    font : #FFFFFF;
+    background-color : #423E3B;
+    flex-direction: column;
+}
+
+
+#sticky_head{
+    font : #FFFFFF;
+    background-color : #353535; 
+}
+
+img{
+    max-width: 100%;
+    height : auto;
+}
+
+#logo{
+}
+
+#user_image{
+    float:right;
+}
