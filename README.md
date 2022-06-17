@@ -24,5 +24,4 @@ Type retour selon la requête :
 
 PUT -> modifier (update)
 POST -> ajouter (INSERT)
-
 postman.com

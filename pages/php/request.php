@@ -111,6 +111,7 @@
           }
           break;
       }
+
       break;
 
     case 'PUT':
@@ -182,7 +183,7 @@
           break;
 
       }
-      
+
       break;
 
     case 'DELETE':
@@ -194,48 +195,8 @@
       }
       break;
 
-
-
-
-
-      
-
-      
   }
   
-
-  // if ($requestRessource == 'tweets')
-  // {
-  //   if (isset($_GET['login']))
-  //     $data = dbRequestTweets($db, $_GET['login']);
-  //   else
-  //     $data = dbRequestTweets($db);
-  // }
-  // else{
-  //     header('HTTP/1.1 400 Bad Request');
-  // }
-
-
-  // if($requestMethod == 'POST'){
-
-  //   $data = NULL;
-  //   dbAddTweet($db, $_POST['login'], strip_tags($_POST['text']));
-
-  // }
-
-  // if($requestMethod == 'PUT'){
-
-  //   parse_str(file_get_contents('php://input'), $_PUT);
-
-  //   $data = NULL;
-  //   dbModifyTweet($db,$id, $_PUT['login'], strip_tags($_PUT['text']));
-  // }
-
-  // if($requestMethod == 'DELETE'){
-  //   $data = NULL;
-  //   dbDeleteTweet($db,$id, $_GET['login']);
-  // }
-
   // * Envoie des données au client.
   header('Content-Type: application/json; charset=utf-8');
   header('Cache-control: no-store, no-cache, must-revalidate');
