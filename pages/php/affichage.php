@@ -13,10 +13,11 @@
 
     require_once('database.php');
 
+    //* Cette fonction permet de récupérer les informations des matchs pour la home page (trié par date de début)
     function dbGetMatchHome($db){
 
         try{
-            $request = 'SELECT * FROM match ORDER BY horaire DESC';
+            $request = 'SELECT * FROM matchs ORDER BY horaire ASC';
             $statement = $db->prepare($request);
             $statement->execute();
             $result = $statement->fetchAll();
@@ -30,7 +31,7 @@
     }
 
 
-
+    //* Cette fonction permet de récupérer les informations d'un match.
     function dbGetMatchById($db, $id_match){
 
         try{
@@ -54,13 +55,14 @@
 
     }
 
+    //* Cette fonction permet de récupérer les informations d'un joueur.
     function dbGetJoueur($db, $email){
 
         try{
 
-            $request = 'SELECT mdp, prenom, nom, date_naissance, photo, code_insee_ville, frequence FROM joueur WHERE email=:email';
+            $request = 'SELECT prenom, nom, naissance, photo, code_insee_ville, frequence_sport FROM joueur WHERE email=:email';
             $statement = $db->prepare($request);
-            $statement->bindParam (':id_match', $email, PDO::PARAM_STR, 50);
+            $statement->bindParam (':email', $email, PDO::PARAM_STR, 50);
             $statement->execute();
             $result = $statement->fetch();
 
@@ -75,6 +77,7 @@
 
     }
 
+    //* Cette fonction permet de récupérer les informations des participants à un match.
     function dbGetParticipants($db, $id_match){
 
         try{
@@ -96,13 +99,14 @@
 
     }
 
+    //* Cette fonction permet de récupérer les participations à un match d'un joueur.
     function dbGetParticipations($db, $email){
 
         try{
 
             $request = 'SELECT id_match, status FROM participe WHERE email=:email';
             $statement = $db->prepare($request);
-            $statement->bindParam (':id_match', $email, PDO::PARAM_STR, 50);
+            $statement->bindParam (':email', $email, PDO::PARAM_STR, 50);
             $statement->execute();
             $result = $statement->fetchAll();
 
@@ -117,6 +121,7 @@
 
     }
 
+    //* Cette fonction permet de récupérer les matchs organisé par un joueur.
     function dbGetMatchOrganise($db, $email){
 
         try{
@@ -138,6 +143,7 @@
 
     }
 
+    //* Cette fonction permet de récupérer les sports disponibles.
     function dbGetSports($db){
 
         try{
@@ -158,11 +164,12 @@
 
     }
 
+    //* Cette fonction permet de récupérer les villes disponibles.
     function dbGetVilles($db){
 
         try{
 
-            $request = 'SELECT * FROM ville';
+            $request = 'SELECT * FROM Ville_Bretonne';
             $statement = $db->prepare($request);
             $statement->execute();
             $result = $statement->fetchAll();
@@ -178,11 +185,12 @@
 
     }
 
+    //* Cette fonction permet de récupérer les fréquences de pratique de sport disponibles.
     function dbGetFrequences($db){
 
         try{
 
-            $request = 'SELECT * FROM frequence';
+            $request = 'SELECT * FROM condition_physique';
             $statement = $db->prepare($request);
             $statement->execute();
             $result = $statement->fetchAll();

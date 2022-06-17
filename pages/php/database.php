@@ -29,7 +29,6 @@ function dbConnect(){
   // * \param login l'email à vérifier.
   // * \param password le mot de passe à vérifier.
   // * \return True si les informations sont correcte, false sinon.
-
   function dbCheckUser($db, $email, $mdp){
 
     try{
@@ -62,7 +61,6 @@ function dbConnect(){
   // * \param login l'email à vérifier.
   // * \param password le mot de passe à vérifier.
   // * \return True si les informations sont correcte, false sinon.
-  
   function dbCheckMail($db, $email){
 
     try{
