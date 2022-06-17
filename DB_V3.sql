@@ -2,6 +2,14 @@
 #        Script MySQL.
 #------------------------------------------------------------
 
+#------------------------------------------------------------
+#        Create DATABASE
+#------------------------------------------------------------
+
+CREATE DATABASE db_fsi DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+CREATE USER 'fsi'@'localhost' IDENTIFIED BY 'isen39';
+GRANT ALL PRIVILEGES ON db_fsi.* TO 'fsi'@'localhost';
+USE db_fsi;
 
 #------------------------------------------------------------
 # Table: Ville_Bretonne
@@ -33,7 +41,7 @@ CREATE TABLE Joueur(
         prenom           Varchar (30) NOT NULL ,
         nom              Varchar (30) NOT NULL ,
         naissance        Date NOT NULL ,
-        mdp              Varchar (30) NOT NULL ,
+        mdp              Varchar (100) NOT NULL ,
         photo            Varchar (50) NOT NULL ,
         nombre_de_matchs Int NOT NULL ,
         code_insee_ville Int NOT NULL ,
@@ -66,10 +74,10 @@ CREATE TABLE Matchs(
         duree            Time NOT NULL ,
         description      Varchar (280) NOT NULL ,
         participant_min  Int NOT NULL ,
-        participan_max   Int NOT NULL ,
+        participant_max   Int NOT NULL ,
         prix             Float NOT NULL ,
         termine          Bool NOT NULL ,
-        addresse         Varchar (100) NOT NULL ,
+        adresse         Varchar (100) NOT NULL ,
         score_home       Int ,
         score_away       Int ,
         code_insee_ville Int NOT NULL ,
@@ -138,11 +146,11 @@ INSERT INTO Joueur VALUES ('patoche.sebastrick@gmail.com','Patoche','Sebastrick'
 INSERT INTO Joueur VALUES ('pierre.giraud@gmail.com','Pierre','Giraud','1977-06-15','f20f4a366300a09e5f983292963203a8f49a78e249995b77062ce5952bff7721','/img/FSI/homme.png',0,22070,'Une fois par an');
 INSERT INTO Joueur VALUES ('silvie.livie@gmail.com','Silvie','Livie','1984-06-15','b47ae3d2231d86ec722219547453e87d8cf5b6379d9275f0e05a5bdc7e8db76d','/img/FSI/femme.png',1,22050,'Je ne pratique pas');
 
-INSERT INTO Matchs(titre, horaire, duree, description, participant_min, participan_max, prix, termine, addresse, score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur) VALUES ('Match de Football Test 1', '2022-06-20 15:30:00', '03:00:00', 'Description du match de Football', 2, 6, 0, 0, 'Rue de la paix', NULL, NULL, 35093, 'Football', 'test.inconnu@gmail.com', 'test.inconnu@gmail.com');
-INSERT INTO Matchs(titre, horaire, duree, description, participant_min, participan_max, prix, termine, addresse, score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur) VALUES ('Match de Basket Test 1', '2022-06-21 19:30:00', '02:00:00', 'Description du match de Basket', 2, 10, 10, 0, 'Rue de la paix', NULL, NULL, 35238, 'Basketball', 'test.inconnu@gmail.com', 'test.inconnu@gmail.com');
-INSERT INTO Matchs(titre, horaire, duree, description, participant_min, participan_max, prix, termine, addresse, score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur) VALUES ('Match de Rugby Test 1', '2022-06-22 14:00:00', '03:00:00', 'Description du match de Rugby', 5, 14, 0, 0, 'Rue de la paix', NULL, NULL, 29019, 'Rugby', 'test.inconnu@gmail.com', 'test.inconnu@gmail.com');
-INSERT INTO Matchs(titre, horaire, duree, description, participant_min, participan_max, prix, termine, addresse, score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur) VALUES ('Match de Quidditch Test 1', '2022-06-23 15:00:00', '01:00:00', 'Description du match de Quidditch', 3, 15, 5.5, 0, 'Rue de la paix', NULL, NULL, 29232, 'Quidditch', 'test.inconnu@gmail.com', 'test.inconnu@gmail.com');
-INSERT INTO Matchs(titre, horaire, duree, description, participant_min, participan_max, prix, termine, addresse, score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur) VALUES ('Match de Baseball Test 1', '2022-06-24 11:00:00', '03:00:00', 'Description du match de Baseball', 4, 18, 1, 0, 'Rue de la paix', NULL, NULL, 56247, 'Baseball', 'test.inconnu@gmail.com', 'test.inconnu@gmail.com');
+INSERT INTO Matchs(titre, horaire, duree, description, participant_min, participant_max, prix, termine, adresse, score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur) VALUES ('Match de Football Test 1', '2022-06-20 15:30:00', '03:00:00', 'Description du match de Football', 2, 6, 0, 0, 'Rue de la paix', NULL, NULL, 35093, 'Football', 'test.inconnu@gmail.com', 'test.inconnu@gmail.com');
+INSERT INTO Matchs(titre, horaire, duree, description, participant_min, participant_max, prix, termine, adresse, score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur) VALUES ('Match de Basket Test 1', '2022-06-21 19:30:00', '02:00:00', 'Description du match de Basket', 2, 10, 10, 0, 'Rue de la paix', NULL, NULL, 35238, 'Basketball', 'test.inconnu@gmail.com', 'test.inconnu@gmail.com');
+INSERT INTO Matchs(titre, horaire, duree, description, participant_min, participant_max, prix, termine, adresse, score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur) VALUES ('Match de Rugby Test 1', '2022-06-22 14:00:00', '03:00:00', 'Description du match de Rugby', 5, 14, 0, 0, 'Rue de la paix', NULL, NULL, 29019, 'Rugby', 'test.inconnu@gmail.com', 'test.inconnu@gmail.com');
+INSERT INTO Matchs(titre, horaire, duree, description, participant_min, participant_max, prix, termine, adresse, score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur) VALUES ('Match de Quidditch Test 1', '2022-06-23 15:00:00', '01:00:00', 'Description du match de Quidditch', 3, 15, 5.5, 0, 'Rue de la paix', NULL, NULL, 29232, 'Quidditch', 'test.inconnu@gmail.com', 'test.inconnu@gmail.com');
+INSERT INTO Matchs(titre, horaire, duree, description, participant_min, participant_max, prix, termine, adresse, score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur) VALUES ('Match de Baseball Test 1', '2022-06-24 11:00:00', '03:00:00', 'Description du match de Baseball', 4, 18, 1, 0, 'Rue de la paix', NULL, NULL, 56247, 'Baseball', 'test.inconnu@gmail.com', 'test.inconnu@gmail.com');
 
 INSERT INTO participe(id_match, email, status) VALUES (1, 'lydie.hoarau@gmail.com', 1);
 INSERT INTO participe(id_match, email, status) VALUES (1, 'brigitte.boutin@gmail.com', 1);
@@ -166,7 +174,7 @@ INSERT INTO participe(id_match, email, status) VALUES (5, 'gilberte.chevallier@g
 INSERT INTO participe(id_match, email, status) VALUES (5, 'florian.dumont@gmail.com', 0);
 INSERT INTO participe(id_match, email, status) VALUES (5, 'patoche.sebastrick@gmail.com', 0);
 INSERT INTO participe(id_match, email, status) VALUES (5, 'silvie.livie@gmail.com', 0);
-
+ 
 
 
 
