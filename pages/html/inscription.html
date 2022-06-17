@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8"/>
+    <!--Pour rendre le code responsif -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Liaison à Bootstrap et JQuery -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <title>FFI</title>
+
+    <!--Liaison avec le fichier style-->
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+
+    <!--Liaison avec le fichier script-->
+    <script type="text/javascript" src="../js/script.js"></script>
+
+  </head>
+  <header>
+    </header>
+  
+  <body>
+      
+    <div id="sticky_head">
+        <div id="apparait">    
+            <a href="../../index.html">
+            <img src="../../ressources/maison.png" id="home">         
+            </a>
+            <img src="../../ressources/petit_logo.png" id="petit_logo">
+            <img src="../../ressources/deconnecte.png" id="user_image">
+        </div>
+    </div>
+      
+    <center>  
+    <div id="formulaire" class="container">  
+ <form action = "" name = "Form" onsubmit = "return(validation());">
+     
+  <div id="formPicture" class="form-group">
+      <div class="container_fluid">
+        <label for="inputPrenom">Prenom</label>
+        <input class="form-control" name="inputPrenom" placeholder="Prenom" required>
+          
+        <label for="inputNom">Nom</label>
+        <input class="form-control" name="inputNom" placeholder="Nom" required>
+      </div>      
+      <img src="../../ressources/femme.png">
+  </div>
+     
+  <div class="form-group">
+      <label for="exampleInputEmail1">Email</label>
+      <input type="email" id="exampleInputEmail1" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" required>
+      <small id="emailHelp" class="form-text">De préférence votre adresse ISEN.</small>
+      
+      <label for="inputAddress">Date de naissance</label>
+      <input type="date" class="form-control" name="inputAddress" placeholder="1234 Main St" required>
+      
+      <label for="inputAddress">Ville</label>
+      <select name="inputState" class="form-control" required>
+            <option style="display:none" value="">Choisir une ville</option>
+            <option>Brest</option>
+            <option>Rennes</option>
+            <option>Vannes</option>
+            <option>Caen</option>
+            <option>Nantes</option>
+      </select>
+      
+  <div class="form-group">
+    <label for="inputAddress2">Conditions sportives</label>
+    <select name="inputState" class="form-control" required>
+        <option style="display:none" value="">Choisir une forme sportive</option>
+        <option>Très le fort</option>
+        <option>fort</option>
+        <option>un peu moins fort que fort mais pas pas fort</option>
+        <option>pas fort</option>
+        <option>aiguille/20</option>
+    </select>
+  </div>
+      
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="motDePasse">Mot de passe</label>
+      <input type="password" class="form-control" name="motDePasse" placeholder='Pas "12345" ou "azertyuiop"' required>       
+    </div>
+      
+    <div class="form-group col-md-6">
+      <label for="confirmMotDePasse">Confirmer mot de passe</label>
+      <input type="password" class="form-control" name="motDePasse2" required>
+      <small id="mauvaisMdp" class="form-text" style="display:none">
+          Les mots de passe ne correspondent pas.
+      </small>
+        
+    </div>
+  </div>
+      
+  <div class="form-group col-md-6">
+    <label onclick="toggle_mdp()" id="voir">
+        VOIR
+    </label>
+  </div>
+<div class="form-row">
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck" required>
+      <label  class="form-check-label" for="gridCheck">
+        J'ai lu et j'accepte les CGU
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">S'inscrire</button>
+  </div>
+     </div>      
+      
+ </form>
+</div>      
+</center> 
+      
+  </body>
+    
+  <footer>
+    
+      <h1>Nous rejoindre :</h1>
+      
+      <div id="reseaux">
+        <a href="https://instagram.com/onnea_bde?igshid=YmMyMTA2M2Y="><img src=../../ressources/instagram.png></a>
+        <a href="https://fr-fr.facebook.com/Groupe.ISEN"><img src=../../ressources/facebook.png></a>
+        <a href="https://www.youtube.com/c/ISENOuest"><img src=../../ressources/youtube.png></a>
+        <a href="https://www.isen.fr/"><img src=../../ressources/Google-G-Logo.png></a>  
+      
+      
+      </div>
+    
+  </footer>    
+</html>
+
+
