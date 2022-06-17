@@ -1,0 +1,812 @@
+{
+	"info": {
+		"_postman_id": "6b822045-a9dd-45ba-9def-6c7f3ac07a84",
+		"name": "site-fsi",
+		"description": "Ensemble des requêtes permettant d'interagir avec DB du site de la FSI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21499664"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "checkUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/checkuser?email=test.inconnu@gmail.com&mdp=9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"checkuser"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "test.inconnu@gmail.com"
+								},
+								{
+									"key": "mdp",
+									"value": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"
+								}
+							]
+						},
+						"description": "renvoi 'true' si l'utilisateur existe"
+					},
+					"response": []
+				},
+				{
+					"name": "checkMail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/checkmail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"checkmail"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "test.inconnu@gmail.com",
+									"disabled": true
+								}
+							]
+						},
+						"description": "renvoie 'true' si le mail est déjà dans la db"
+					},
+					"response": []
+				},
+				{
+					"name": "getMatchs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/matchs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"matchs"
+							]
+						},
+						"description": "renvoie les match dans la db"
+					},
+					"response": []
+				},
+				{
+					"name": "getMatchById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/matchbyid?id_match=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"matchbyid"
+							],
+							"query": [
+								{
+									"key": "id_match",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Permet de récupérer les informations d'un match en connaissant son id"
+					},
+					"response": []
+				},
+				{
+					"name": "getJoueur",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/joueur?email=test.inconnu@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"joueur"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "test.inconnu@gmail.com"
+								}
+							]
+						},
+						"description": "Permet de récupérer les information d'un joueur en connaissant son email"
+					},
+					"response": []
+				},
+				{
+					"name": "getParticipants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/participants?id_match=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"participants"
+							],
+							"query": [
+								{
+									"key": "id_match",
+									"value": "3"
+								}
+							]
+						},
+						"description": "Permet de récupérer les participants à un match et leur status"
+					},
+					"response": []
+				},
+				{
+					"name": "getParticipations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/participations?email=lydie.hoarau@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"participations"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "lydie.hoarau@gmail.com"
+								}
+							]
+						},
+						"description": "Permet de récupérer l'états des participations d'un joueur aux match où il est inscrit"
+					},
+					"response": []
+				},
+				{
+					"name": "getOrganise",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/organise?email=test.inconnu@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"organise"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "test.inconnu@gmail.com"
+								}
+							]
+						},
+						"description": "Permet de récupérer les id des match qu'organise un joueur"
+					},
+					"response": []
+				},
+				{
+					"name": "getSport",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/sport",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"sport"
+							]
+						},
+						"description": "Permet de récupérer les sports disponible dans la db"
+					},
+					"response": []
+				},
+				{
+					"name": "getVille",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/ville",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"ville"
+							]
+						},
+						"description": "Permet de récupérer toutes les villes disponibles dans la db"
+					},
+					"response": []
+				},
+				{
+					"name": "getFrequence",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/frequence",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"frequence"
+							]
+						},
+						"description": "Permet de récupérer les fréquences/conditions physiques disponible dans la DB"
+					},
+					"response": []
+				}
+			],
+			"description": "Dossier des requêtes GET"
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "postJoueur",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/joueur?email=tomtom.nana@gmail.com&mdp=test&prenom=Tomtom&nom=Nana&date_naissance=2000-01-01&photo=/img/FSI/homme.png&code_insee_ville=22070&frequence=Une fois par an",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"joueur"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "tomtom.nana@gmail.com"
+								},
+								{
+									"key": "mdp",
+									"value": "test"
+								},
+								{
+									"key": "prenom",
+									"value": "Tomtom"
+								},
+								{
+									"key": "nom",
+									"value": "Nana"
+								},
+								{
+									"key": "date_naissance",
+									"value": "2000-01-01"
+								},
+								{
+									"key": "photo",
+									"value": "/img/FSI/homme.png"
+								},
+								{
+									"key": "code_insee_ville",
+									"value": "22070"
+								},
+								{
+									"key": "frequence",
+									"value": "Une fois par an"
+								}
+							]
+						},
+						"description": "Permet de créer un joueur dans la DB"
+					},
+					"response": []
+				},
+				{
+					"name": "postParticipant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/participant?id_match=2&email=patatra@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"participant"
+							],
+							"query": [
+								{
+									"key": "id_match",
+									"value": "2"
+								},
+								{
+									"key": "email",
+									"value": "patatra@gmail.com"
+								}
+							]
+						},
+						"description": "Permet de rajouter un participant à un match"
+					},
+					"response": []
+				},
+				{
+					"name": "putMatch",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/match?titre=Match de Test&horaire=2022-07-01 15:00:00&duree=02:00:00&description=test de l'insertion&participant_min=2&participant_max=10&prix=2&adresse=1 rue du Paradis&code_insee_ville=56247&nom_sport=Baseball&email_organisateur=patatra@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"match"
+							],
+							"query": [
+								{
+									"key": "titre",
+									"value": "Match de Test"
+								},
+								{
+									"key": "horaire",
+									"value": "2022-07-01 15:00:00"
+								},
+								{
+									"key": "duree",
+									"value": "02:00:00"
+								},
+								{
+									"key": "description",
+									"value": "test de l'insertion"
+								},
+								{
+									"key": "participant_min",
+									"value": "2"
+								},
+								{
+									"key": "participant_max",
+									"value": "10"
+								},
+								{
+									"key": "prix",
+									"value": "2"
+								},
+								{
+									"key": "adresse",
+									"value": "1 rue du Paradis"
+								},
+								{
+									"key": "code_insee_ville",
+									"value": "56247"
+								},
+								{
+									"key": "nom_sport",
+									"value": "Baseball"
+								},
+								{
+									"key": "email_organisateur",
+									"value": "patatra@gmail.com"
+								}
+							]
+						},
+						"description": "Permet de créer un match"
+					},
+					"response": []
+				}
+			],
+			"description": "Dossier des requêtes POST"
+		},
+		{
+			"name": "PUT",
+			"item": [
+				{
+					"name": "putEmail",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/email?email=blob@gmail.com&new_email=patatra@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"email"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "blob@gmail.com"
+								},
+								{
+									"key": "new_email",
+									"value": "patatra@gmail.com"
+								}
+							]
+						},
+						"description": "Permet de modifier l'email d'un joueur"
+					},
+					"response": []
+				},
+				{
+					"name": "putMdp",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/mdp?email=patatra@gmail.com&new_mdp=ola",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"mdp"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "patatra@gmail.com"
+								},
+								{
+									"key": "new_mdp",
+									"value": "ola"
+								}
+							]
+						},
+						"description": "Permet de modifier un mot de passe de joueur"
+					},
+					"response": []
+				},
+				{
+					"name": "putPrenom",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/prenom?email=patatra@gmail.com&new_prenom=pata",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"prenom"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "patatra@gmail.com"
+								},
+								{
+									"key": "new_prenom",
+									"value": "pata"
+								}
+							]
+						},
+						"description": "Permet de modifier un prénom de joueur"
+					},
+					"response": []
+				},
+				{
+					"name": "putNom",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/nom?email=patatra@gmail.com&new_nom=tra",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"nom"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "patatra@gmail.com"
+								},
+								{
+									"key": "new_nom",
+									"value": "tra"
+								}
+							]
+						},
+						"description": "Permet de modifier un nom de joueur"
+					},
+					"response": []
+				},
+				{
+					"name": "putNaissance",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/date_naissance?email=patatra@gmail.com&new_date_naissance=2001-01-01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"date_naissance"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "patatra@gmail.com"
+								},
+								{
+									"key": "new_date_naissance",
+									"value": "2001-01-01"
+								}
+							]
+						},
+						"description": "Permet de modifier la date de naissance d'un joueur"
+					},
+					"response": []
+				},
+				{
+					"name": "putPhoto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/photo?email=patatra@gmail.com&new_photo=homme.png",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"photo"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "patatra@gmail.com"
+								},
+								{
+									"key": "new_photo",
+									"value": "homme.png"
+								}
+							]
+						},
+						"description": "Permet de modifier une photo de joueur"
+					},
+					"response": []
+				},
+				{
+					"name": "putCodeInsee",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/code_insee_ville?email=patatra@gmail.com&new_code_insee_ville=29232",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"code_insee_ville"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "patatra@gmail.com"
+								},
+								{
+									"key": "new_code_insee_ville",
+									"value": "29232"
+								}
+							]
+						},
+						"description": "Permet de modifier le code insee d'un joueur"
+					},
+					"response": []
+				},
+				{
+					"name": "putFrequence",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/frequence?email=patatra@gmail.com&new_frequence=Je ne pratique pas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"frequence"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "patatra@gmail.com"
+								},
+								{
+									"key": "new_frequence",
+									"value": "Je ne pratique pas"
+								}
+							]
+						},
+						"description": "Permet de modifier la condition physique d'un joueur"
+					},
+					"response": []
+				},
+				{
+					"name": "putMatch",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/match?id_match=1&score_home=2&score_away=1&email_joueur=patatra@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"match"
+							],
+							"query": [
+								{
+									"key": "id_match",
+									"value": "1"
+								},
+								{
+									"key": "score_home",
+									"value": "2"
+								},
+								{
+									"key": "score_away",
+									"value": "1"
+								},
+								{
+									"key": "email_joueur",
+									"value": "patatra@gmail.com"
+								}
+							]
+						},
+						"description": "Permet de terminer un match, de mettre à jour le score et d'indiquer le mail du meilleur joueur"
+					},
+					"response": []
+				}
+			],
+			"description": "Dossier des requêtes PUT"
+		},
+		{
+			"name": "DELETE",
+			"item": [
+				{
+					"name": "deleteMatch",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/site-FSI/php/request.php/match",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"site-FSI",
+								"php",
+								"request.php",
+								"match"
+							],
+							"query": [
+								{
+									"key": "id_match",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Permet de delete un match et les participant à ce match de la DB"
+					},
+					"response": []
+				}
+			],
+			"description": "Dossier des requêtes DELETE"
+		}
+	]
+}
