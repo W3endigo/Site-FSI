@@ -58,4 +58,29 @@
         return true;
 
     }
+
+    //modifier score et meilleur joueur
+    function dbUpdateMatchs($db, $id_match, $score_home, $score_away, $email_joueur){
+
+        try{
+    
+            $request = 'UPDATE matchs SET score_home=:score_home, score_away=:score_away, email_Joueur=:email_joueur WHERE id_match=:id_match';
+            $statement = $db->prepare($request);
+            $statement->bindParam (':id_match', $id_match, PDO::PARAM_STR, 50);
+            $statement->bindParam (':score_home', $score_home, PDO::PARAM_STR, 50);
+            $statement->bindParam (':score_away', $score_away, PDO::PARAM_STR, 50);
+            $statement->bindParam (':email_joueur', $email_joueur, PDO::PARAM_STR, 50);
+            $statement->execute();
+
+        }catch (PDOException $exception){
+    
+            error_log('Erreur lors de la modification du match : '.$exception->getMessage());
+            return false;
+    
+        }
+
+        return true;
+
+    }
+
 ?>

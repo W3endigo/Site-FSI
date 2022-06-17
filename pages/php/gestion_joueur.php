@@ -42,7 +42,7 @@
   }
 
   // * Cette fonction permet de modifier le mail d'un joueur dans la DB.
-  function dbModifyMail($db, $email, $new_email){
+  function dbUpdateEmail($db, $email, $new_email){
 
     if (dbCheckMail($db, $email)){
 
@@ -70,7 +70,7 @@
     }
   }
   // * Cette fonction permet de modifier le mot de passe d'un joueur dans la DB.
-  function dbModifyPassword($db, $email, $new_mdp){
+  function dbUpdateMdp($db, $email, $new_mdp){
 
     if (dbCheckMail($db, $email)){
 
@@ -98,7 +98,7 @@
     }
   }
   // * Cette fonction permet de modifier le prénom d'un joueur dans la DB.
-  function dbModifyPrenom($db, $email, $new_prenom){
+  function dbUpdatePrenom($db, $email, $new_prenom){
 
     if (dbCheckMail($db, $email)){
 
@@ -126,7 +126,7 @@
     }
   }
   // * Cette fonction permet de modifier le nom d'un joueur dans la DB.
-  function dbModifyNom($db, $email, $new_nom){
+  function dbUpdateNom($db, $email, $new_nom){
 
     if (dbCheckMail($db, $email)){
 
@@ -154,7 +154,7 @@
     }
   }
   // * Cette fonction permet de modifier la date d'un naissance de joueur dans la DB.
-  function dbModifyDateNaissance($db, $email, $new_date_naissance){
+  function dbUpdateDateNaissance($db, $email, $new_date_naissance){
 
     if (dbCheckMail($db, $email)){
 
@@ -182,7 +182,7 @@
     }
   }
   // * Cette fonction permet de modifier la photo d'un joueur dans la DB.
-  function dbModifyPhoto($db, $email, $new_photo){
+  function dbUpdatePhoto($db, $email, $new_photo){
 
     if (dbCheckMail($db, $email)){
 
@@ -210,7 +210,7 @@
     }
   }
   // * Cette fonction permet de modifier le code insee d'un joueur dans la DB.
-  function dbModifyCodeInseeVille($db, $email, $new_code_insee_ville){
+  function dbUpdateCodeInseeVille($db, $email, $new_code_insee_ville){
 
     if (dbCheckMail($db, $email)){
 
@@ -238,7 +238,7 @@
     }
   }
   // * Cette fonction permet de modifier la fréquence de sport d'un joueur dans la DB.
-  function dbModifyFrequence($db, $email, $new_frequence){
+  function dbUpdateFrequence($db, $email, $new_frequence){
 
     if (dbCheckMail($db, $email)){
 

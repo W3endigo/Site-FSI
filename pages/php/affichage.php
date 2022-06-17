@@ -1,15 +1,37 @@
 <?php
 
     //* Ce fichier permet :
+    //* - de récupérer les informations d'un match pour la home page (trié par date de début)
     //* - de récupérer les informations d'un match.
     //* - de récupérer les informations d'un joueur.
     //* - de récupérer les informations des participants à un match.
     //* - de récupérer les participations à un match.
     //* - de récupérer les match organisé par un joueurs
+    //* - de récupérer les sports disponibles.
+    //* - de récupérer les villes disponibles.
+    //* - de récupérer les fréquences disponibles.
 
     require_once('database.php');
 
-    function dbGetMatch($db, $id_match){
+    function dbGetMatchHome($db){
+
+        try{
+            $request = 'SELECT * FROM match ORDER BY horaire DESC';
+            $statement = $db->prepare($request);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+        }catch (PDOException $exception){
+            error_log('Erreur lors de la récupération des matchs : '.$exception->getMessage());
+            return false;
+        }
+
+        return $result;
+    }
+
+
+
+    function dbGetMatchById($db, $id_match){
 
         try{
 
@@ -116,4 +138,63 @@
 
     }
 
+    function dbGetSports($db){
+
+        try{
+
+            $request = 'SELECT * FROM sport';
+            $statement = $db->prepare($request);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+        }catch (PDOException $exception){
+
+            error_log('Erreur lors de la récupération des sports : '.$exception->getMessage());
+            return false;
+
+        }
+
+        return $result;
+
+    }
+
+    function dbGetVilles($db){
+
+        try{
+
+            $request = 'SELECT * FROM ville';
+            $statement = $db->prepare($request);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+        }catch (PDOException $exception){
+
+            error_log('Erreur lors de la récupération des villes : '.$exception->getMessage());
+            return false;
+
+        }
+
+        return $result;
+
+    }
+
+    function dbGetFrequences($db){
+
+        try{
+
+            $request = 'SELECT * FROM frequence';
+            $statement = $db->prepare($request);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+        }catch (PDOException $exception){
+
+            error_log('Erreur lors de la récupération des fréquences : '.$exception->getMessage());
+            return false;
+
+        }
+
+        return $result;
+
+    }
 ?>

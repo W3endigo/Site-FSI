@@ -26,8 +26,12 @@
       switch ($requestRessource){
 
         case 'match':
+            $data = dbGetMatchHome($db);
+            break;
+
+        case 'matchbyid':
           if(isset($_GET['id_match'])){
-            $data = dbGetMatch($db, $_GET['id_match']);
+            $data = dbGetMatchById($db, $_GET['id_match']);
           }else{
             header('HTTP/1.1 400 Bad Request');
           }
@@ -63,6 +67,18 @@
           }else{
             header('HTTP/1.1 400 Bad Request');
           }
+          break;
+
+        case 'sport':
+          $data = dbGetSports($db);
+          break;
+
+        case 'ville':
+          $data = dbGetVilles($db);
+          break;
+
+        case 'frequence':
+          $data = dbGetFrequences($db);
           break;
           
       }
@@ -101,7 +117,72 @@
 
       switch ($requestRessource){
 
+        case 'email':
+          if(isset($_PUT['email']) && isset($_PUT['new_email'])){
+            $data = dbUpdateEmail($db, $_PUT['email'], $_PUT['new_email']);
+          }else{
+            header('HTTP/1.1 400 Bad Request');
+          }
+          break;
+
+        case 'mdp':
+          if(isset($_PUT['email']) && isset($_PUT['new_mdp'])){
+            $data = dbUpdateMdp($db, $_PUT['email'], $_PUT['new_mdp']);
+          }else{
+            header('HTTP/1.1 400 Bad Request');
+          }
+          break;
+
+        case 'prenom':
+          if(isset($_PUT['email']) && isset($_PUT['new_prenom'])){
+            $data = dbUpdatePrenom($db, $_PUT['email'], $_PUT['new_prenom']);
+          }else{
+            header('HTTP/1.1 400 Bad Request');
+          }
+          break;
+
+        case 'nom':
+          if(isset($_PUT['email']) && isset($_PUT['new_nom'])){
+            $data = dbUpdateNom($db, $_PUT['email'], $_PUT['new_nom']);
+          }else{
+            header('HTTP/1.1 400 Bad Request');
+          }
+          break;
+
+        case 'date_naissance':
+          if(isset($_PUT['email']) && isset($_PUT['new_date_naissance'])){
+            $data = dbUpdateDateNaissance($db, $_PUT['email'], $_PUT['new_date_naissance']);
+          }else{
+            header('HTTP/1.1 400 Bad Request');
+          }
+          break;
+
+        case 'photo':
+          if(isset($_PUT['email']) && isset($_PUT['new_photo'])){
+            $data = dbUpdatePhoto($db, $_PUT['email'], $_PUT['new_photo']);
+          }else{
+            header('HTTP/1.1 400 Bad Request');
+          }
+          break;
+        
+        case 'code_insee_ville':
+          if(isset($_PUT['email']) && isset($_PUT['new_code_insee_ville'])){
+            $data = dbUpdateCodeInseeVille($db, $_PUT['email'], $_PUT['new_code_insee_ville']);
+          }else{
+            header('HTTP/1.1 400 Bad Request');
+          }
+          break;
+
+        case 'frequence':
+          if(isset($_PUT['email']) && isset($_PUT['new_frequence'])){
+            $data = dbUpdateFrequence($db, $_PUT['email'], $_PUT['new_frequence']);
+          }else{
+            header('HTTP/1.1 400 Bad Request');
+          }
+          break;
+
       }
+      
       break;
 
     case 'DELETE':

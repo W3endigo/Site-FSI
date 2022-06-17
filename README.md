@@ -22,4 +22,7 @@ Type retour selon la requête :
         400 = requete mal formulee (manque argument dans l'URL)
 
 
+PUT -> modifier (update)
+POST -> ajouter (INSERT)
+
 postman.com
