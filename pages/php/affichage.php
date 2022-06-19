@@ -10,6 +10,10 @@
     //* - de récupérer les sports disponibles.
     //* - de récupérer les villes disponibles.
     //* - de récupérer les fréquences disponibles.
+    //* - de récupérer les match en filtrant par ville.
+    //* - de récupérer les match en filtrant par sport.
+    //* - de récupérer les match en filtrant par période (+7j, +15j, +30j).
+    //* - de récupérer les match en filtrant par match complet/incomplet.
 
     require_once('database.php');
 
@@ -47,6 +51,94 @@
         }catch (PDOException $exception){
 
             error_log('Erreur lors de la récupération des infos du match : '.$exception->getMessage());
+            return false;
+
+        }
+
+        return $result;
+
+    }
+
+    //* Cette fonction permet de récupérer les match en filtrant par ville.
+    function dbGetMatchByVille($db, $code_insee_ville){
+
+        try{
+
+            $request = 'SELECT * FROM matchs WHERE code_insee_ville=:code_insee_ville';
+            $statement = $db->prepare($request);
+            $statement->bindParam (':code_insee_ville', $code_insee_ville, PDO::PARAM_STR, 50);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+        }catch (PDOException $exception){
+
+            error_log('Erreur lors de la récupération des matchs par ville : '.$exception->getMessage());
+            return false;
+
+        }
+
+        return $result;
+
+    }
+
+    //* Cette fonction permet de récupérer les match en filtrant par sport.
+    function dbGetMatchBySport($db, $nom_sport){
+
+        try{
+
+            $request = 'SELECT * FROM matchs WHERE nom_sport=:nom_sport';
+            $statement = $db->prepare($request);
+            $statement->bindParam (':nom_sport', $nom_sport, PDO::PARAM_STR, 50);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+        }catch (PDOException $exception){
+
+            error_log('Erreur lors de la récupération des matchs par sport : '.$exception->getMessage());
+            return false;
+
+        }
+
+        return $result;
+
+    }
+
+    //* Cette fonction permet de récupérer les match en filtrant par période (+7j, +15j, +30j).
+    function dbGetMatchByPeriode($db, $periode){
+
+        try{
+
+            $request = 'SELECT * FROM matchs WHERE horaire >= NOW() AND horaire <= DATE_ADD(NOW(), INTERVAL :periode DAY)';
+            $statement = $db->prepare($request);
+            $statement->bindParam (':periode', $periode, PDO::PARAM_STR, 50);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+        }catch (PDOException $exception){
+
+            error_log('Erreur lors de la récupération des matchs par période : '.$exception->getMessage());
+            return false;
+
+        }
+
+        return $result;
+
+    }
+
+    //* Cette fonction permet de récupérer les match en filtrant par match complet/incomplet.
+    function dbGetMatchByTermine($db, $termine){
+
+        try{
+
+            $request = 'SELECT * FROM matchs WHERE termine=:termine';
+            $statement = $db->prepare($request);
+            $statement->bindParam (':termine', $termine, PDO::PARAM_STR, 50);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+        }catch (PDOException $exception){
+
+            error_log('Erreur lors de la récupération des matchs par match complet/incomplet : '.$exception->getMessage());
             return false;
 
         }
