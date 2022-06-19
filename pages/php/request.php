@@ -77,8 +77,6 @@
           }
           break;
 
-        // TODO tester les API pour les sports.
-        // TODO tester les API pour les périodes.
         // TODO tester les API pour les complet/incomplet.
         // TODO se mettre d'accord sur la structure du site pour maj les API.
         
@@ -106,8 +104,8 @@
 
         // * Si l'on a besoin de récupérer les matchs filtrés par complet/incomplet.
         case 'matchbycomplet':
-          if(isset($_GET['termine'])){
-            $data = dbGetMatchByTermine($db, $_GET['termine']);
+          if(isset($_GET['complet'])){
+            $data = dbGetMatchByComplet($db, $_GET['complet']);
           }else{
             header('HTTP/1.1 400 Bad Request');
             echo json_encode('complet manquant');
