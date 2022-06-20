@@ -1,13 +1,13 @@
-//Afficher mot de passe
+// * Afficher mot de passe
 
 function toggle_mdp() {
     
-    if(document.Form.motDePasse.type == "password"){
-        document.Form.motDePasse.type="text";
+    if(document.getElementById("motDePasse").type == "password"){
+        document.getElementById("motDePasse").type="text";
         document.getElementById("voir").style.color = "#2196F3";
     }
     else{
-        document.Form.motDePasse.type="password";
+        document.getElementById("motDePasse").type="password";
         document.getElementById("voir").style.color = "#000000";
     }
     

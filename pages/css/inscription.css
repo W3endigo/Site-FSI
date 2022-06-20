@@ -223,7 +223,7 @@ input{
 }
 
 #formPicture img{
-    height: 25% ;
+    height: auto;
     max-width:25%;
 }
 
