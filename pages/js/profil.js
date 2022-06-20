@@ -1,7 +1,10 @@
+// * Gérer les modifications de profil.
+$('#textbox').on( 'input', function() {
+    // Do something here
+});
 
-//Permettre de modifier les informations dans le profil
 
-
+// * Permettre de modifier les informations dans le profil.
 function modifier_profil(){
     
     var elements = document.getElementsByClassName("info_profil");
@@ -43,8 +46,6 @@ function getVille(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var villes = JSON.parse(xhr.responseText);
             var select = document.getElementById("ville");
-            console.log(select);
-            console.log(villes);
             for(var i = 0; i < villes.length; i++){
                 var option = document.createElement("option");
                 option.value = villes[i].code_insee_ville;
@@ -76,4 +77,28 @@ function getFrequence(){
         }
     }
     xhr.send();
+}
+
+function getJoueur(){
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+queryString.get('email'));
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            var joueur = JSON.parse(xhr.responseText);
+            console.log(joueur);
+            msec = Date(joueur.date_naissance);
+            document.getElementById("image_selected").value = joueur.photo;
+            document.getElementById("prenom").value = joueur.prenom;
+            document.getElementById("nom").value = joueur.nom;
+            document.getElementById("email").value = queryString.get('email');
+            document.getElementById("anniversaire").value = joueur.naissance;
+            document.getElementById("ville").value = joueur.code_insee_ville;
+            document.getElementById("frequence").value = joueur.frequence_sport;  
+        }
+    }
+    xhr.send();
+
 }
