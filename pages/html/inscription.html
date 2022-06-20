@@ -15,13 +15,13 @@
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
 
     <!--Liaison avec le fichier script-->
-    <script type="text/javascript" src="../js/script.js"></script>
+    <script type="text/javascript" src="../js/commun.js"></script>
 
   </head>
   <header>
     </header>
   
-  <body>
+  <body onload ="getVille(); getFrequence()">
       
     <div id="sticky_head">
         <div id="apparait">    
@@ -35,7 +35,7 @@
       
     <center>  
     <div id="formulaire" class="container">  
- <form action = "" name = "Form" onsubmit = "return(validation())">
+ <form name = "Form" onsubmit = "return(validation())">
      
   <div id="formPicture" class="form-group">
       <div class="container_fluid">
@@ -59,22 +59,12 @@
       <label for="adresse">Ville</label>
       <select name="adresse" class="form-control" required>
             <option style="display:none" value="">Choisir une ville</option>
-            <option>Brest</option>
-            <option>Rennes</option>
-            <option>Vannes</option>
-            <option>Caen</option>
-            <option>Nantes</option>
       </select>
       
   <div class="form-group">
     <label for="conditions">Conditions sportives</label>
     <select name="conditions" class="form-control" required>
         <option style="display:none" value="">Choisir une forme sportive</option>
-        <option>Très le fort</option>
-        <option>fort</option>
-        <option>un peu moins fort que fort mais pas pas fort</option>
-        <option>pas fort</option>
-        <option>aiguille/20</option>
     </select>
   </div>
       
@@ -108,7 +98,7 @@
       </label>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">S'inscrire</button>
+  <button class="btn btn-primary">S'inscrire</button>
   </div>
      </div>      
       

@@ -10,6 +10,10 @@
     //* - de récupérer les sports disponibles.
     //* - de récupérer les villes disponibles.
     //* - de récupérer les fréquences disponibles.
+    //* - de récupérer les match en filtrant par ville.
+    //* - de récupérer les match en filtrant par sport.
+    //* - de récupérer les match en filtrant par période (+7j, +15j, +30j).
+    //* - de récupérer les match en filtrant par match complet/incomplet.
 
     require_once('database.php');
 
@@ -52,6 +56,125 @@
         }
 
         return $result;
+
+    }
+
+    //* Cette fonction permet de récupérer les match en filtrant par ville.
+    function dbGetMatchByVille($db, $code_insee_ville){
+
+        try{
+
+            $request = 'SELECT * FROM matchs WHERE code_insee_ville=:code_insee_ville';
+            $statement = $db->prepare($request);
+            $statement->bindParam (':code_insee_ville', $code_insee_ville, PDO::PARAM_STR, 50);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+        }catch (PDOException $exception){
+
+            error_log('Erreur lors de la récupération des matchs par ville : '.$exception->getMessage());
+            return false;
+
+        }
+
+        return $result;
+
+    }
+
+    //* Cette fonction permet de récupérer les match en filtrant par sport.
+    function dbGetMatchBySport($db, $nom_sport){
+
+        try{
+
+            $request = 'SELECT * FROM matchs WHERE nom_sport=:nom_sport';
+            $statement = $db->prepare($request);
+            $statement->bindParam (':nom_sport', $nom_sport, PDO::PARAM_STR, 50);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+        }catch (PDOException $exception){
+
+            error_log('Erreur lors de la récupération des matchs par sport : '.$exception->getMessage());
+            return false;
+
+        }
+
+        return $result;
+
+    }
+
+    //* Cette fonction permet de récupérer les match en filtrant par période (+7j, +15j, +30j).
+    function dbGetMatchByPeriode($db, $periode){
+
+        try{
+
+            $request = 'SELECT * FROM matchs WHERE horaire >= NOW() AND horaire <= DATE_ADD(NOW(), INTERVAL :periode DAY)';
+            $statement = $db->prepare($request);
+            $statement->bindParam (':periode', $periode, PDO::PARAM_STR, 50);
+            $statement->execute();
+            $result = $statement->fetchAll();
+
+        }catch (PDOException $exception){
+
+            error_log('Erreur lors de la récupération des matchs par période : '.$exception->getMessage());
+            return false;
+
+        }
+
+        return $result;
+
+    }
+
+    //* Cette fonction permet de récupérer les match en filtrant par match complet/incomplet.
+    function dbGetMatchByComplet($db, $complet){
+
+        $result_match = array();
+        
+        try{
+    
+            $request = 'SELECT COUNT(email) FROM participe WHERE status=1 GROUP BY id_match ORDER BY id_match';
+            $statement = $db->prepare($request);
+            $statement->bindParam (':complet', $complet, PDO::PARAM_STR, 50);
+            $statement->execute();
+            $result_participant = $statement->fetchAll();
+
+        }catch (PDOException $exception){
+
+            error_log('Erreur lors de la récupération des participants par matchs : '.$exception->getMessage());
+            return false;
+
+        }
+
+        try{
+    
+            $request = 'SELECT participant_max, id_match FROM matchs';
+            $statement = $db->prepare($request);
+            $statement->bindParam (':complet', $complet, PDO::PARAM_STR, 50);
+            $statement->execute();
+            $result_participant_max = $statement->fetchAll();
+
+        }catch (PDOException $exception){
+
+            error_log('Erreur lors de la récupération des id de matchs : '.$exception->getMessage());
+            return false;
+
+        }
+
+
+        for($i = 0; $i < count($result_participant); $i++){
+            if($complet == 1){
+                if($result_participant[$i][0] == $result_participant_max[$i][0]){
+                    array_push($result_match, dbGetMatchById($db, $result_participant_max[$i][1]));
+                }
+            }else{
+                if($result_participant[$i][0] != $result_participant_max[$i][0]){
+                    array_push($result_match, dbGetMatchById($db, $result_participant_max[$i][1]));
+                } 
+            }
+
+        }
+
+        return $result_match;
 
     }
 

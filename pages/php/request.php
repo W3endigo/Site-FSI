@@ -65,6 +65,53 @@
             exit;
           }
           break;
+
+        // * Si l'on a besoin de récupérer les matchs filtrés par ville.
+        case 'matchbyville':
+          if(isset($_GET['code_insee_ville'])){
+            $data = dbGetMatchByVille($db, $_GET['code_insee_ville']);
+          }else{
+            header('HTTP/1.1 400 Bad Request');
+            echo json_encode('code_insee_ville manquant');
+            exit;
+          }
+          break;
+
+        // TODO tester les API pour les complet/incomplet.
+        // TODO se mettre d'accord sur la structure du site pour maj les API.
+        
+        // * Si l'on a besoin de récupérer les matchs filtrés par sport.
+        case 'matchbysport':
+          if(isset($_GET['nom_sport'])){
+            $data = dbGetMatchBySport($db, $_GET['nom_sport']);
+          }else{
+            header('HTTP/1.1 400 Bad Request');
+            echo json_encode('nom_sport manquant');
+            exit;
+          }
+          break;
+        
+        // * Si l'on a besoin de récupérer les matchs filtrés par période.
+        case 'matchbyperiode':
+          if(isset($_GET['periode'])){
+            $data = dbGetMatchByPeriode($db, $_GET['periode']);
+          }else{
+            header('HTTP/1.1 400 Bad Request');
+            echo json_encode('periode manquant');
+            exit;
+          }
+          break;
+
+        // * Si l'on a besoin de récupérer les matchs filtrés par complet/incomplet.
+        case 'matchbycomplet':
+          if(isset($_GET['complet'])){
+            $data = dbGetMatchByComplet($db, $_GET['complet']);
+          }else{
+            header('HTTP/1.1 400 Bad Request');
+            echo json_encode('complet manquant');
+            exit;
+          }
+          break;
         
         // * Si l'on a besoin de récupérer un joueur.
         case 'joueur':
