@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
     <!--Pour rendre le code responsif -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <metaid="viewport" content="width=device-width, initial-scale=1">
     <!-- Liaison à Bootstrap et JQuery -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -35,35 +35,35 @@
       
     <center>  
     <div id="formulaire" class="container">  
- <form name = "Form" onsubmit = "return(validation())">
+ <form id = "Form" onsubmit = "return(validation())">
      
   <div id="formPicture" class="form-group">
       <div class="container_fluid">
         <label for="prenom">Prenom</label>
-        <input class="form-control" name="prenom" placeholder="Prenom" required>
+        <input class="form-control" id="prenom" placeholder="Prenom" required>
           
         <label for="nom">Nom</label>
-        <input class="form-control" name="nom" placeholder="Nom" required>
+        <input class="form-control" id="nom" placeholder="Nom" required>
       </div>      
       <img src="../../ressources/femme.png">
   </div>
      
   <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" id="Email" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" required>
+      <input type="email" id="Email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" required>
       <small id="emailHelp" class="form-text">De préférence votre adresse ISEN.</small>
       
       <label for="anniversaire">Date de naissance</label>
-      <input type="date" class="form-control" name="anniversaire" placeholder="0/00/00" required>
+      <input type="date" class="form-control" id="anniversaire" placeholder="0/00/00" required>
       
       <label for="adresse">Ville</label>
-      <select name="adresse" class="form-control" required>
+      <select id="adresse" class="form-control" required>
             <option style="display:none" value="">Choisir une ville</option>
       </select>
       
   <div class="form-group">
     <label for="conditions">Conditions sportives</label>
-    <select name="conditions" class="form-control" required>
+    <select id="conditions" class="form-control" required>
         <option style="display:none" value="">Choisir une forme sportive</option>
     </select>
   </div>
@@ -71,12 +71,12 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="motDePasse">Mot de passe</label>
-      <input type="password" class="form-control" name="motDePasse" placeholder='Pas "12345" ou "azertyuiop"' required>       
+      <input type="password" class="form-control" id="motDePasse" placeholder='Pas "12345" ou "azertyuiop"' required>       
     </div>
       
     <div class="form-group col-md-6">
       <label for="confirmMotDePasse">Confirmer mot de passe</label>
-      <input type="password" class="form-control" name="motDePasse2" required>
+      <input type="password" class="form-control" id="motDePasse2" required>
       <small id="mauvaisMdp" class="form-text" style="display:none">
           Les mots de passe ne correspondent pas.
       </small>
