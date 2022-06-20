@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Liaison à Bootstrap et JQuery -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -21,7 +22,7 @@
   <header>
     </header>
   
-  <body>
+  <body onload ="getVille(); getFrequence()">
       
     <div id="sticky_head">
         <div id="apparait">    
@@ -33,27 +34,36 @@
         </div>
     </div>   
     <form id="profil" class="container">
+        <div class="text-center">
+          <img id="form_image" class="text-center" src="../../ressources/homme.png">
+          <input id="image_selected" class="form-control" type="hidden" value="../../ressources/homme.png" >
+          <div id="changer" onclick="toggle_image()"><i class="bi bi-arrow-clockwise"></i></div>
+        </div>
         
-        <input class="info_profil" type="file" src="../../ressources/homme.png"  disabled required>
         
         <div class="d-flex flex-row">
-            <input class="info_profil" type="text" value="Prenom"  disabled required>
+            <input class="info_profil" id="prenom" value="Prenom"  disabled required>
 
-            <input class="info_profil" value="Nom" disabled required>
+            <input class="info_profil" id="nom" value="Nom" disabled required>
         
         </div>
         
-        <input class="info_profil" value="LeMouel"  disabled required>
+        <input class="info_profil" type="email" aria-describedby="emailHelp" id="Email" value="titoua@n.j"  disabled required>
         
-        <input class="info_profil" value="LeMouel"  disabled required>
+        <input class="info_profil" type="date" id="anniversaire" value="2002-06-23"  disabled required>
         
-        <input class="info_profil" value="LeMouel"  disabled required>
-        
-        <input class="info_profil" value="LeMouel"  disabled required>
-
+        <select class="info_profil" id="ville" disabled required>
+          <option value="">Metre celle de l user</option>
+        </select>
+        <div class="text-center">
+          <small>Condition physique :</small>
+        </div>  
+        <select class="info_profil" id="frequence" disabled required>
+          <option value="">Metre celle de l user</option>
+        </select>
         <div class="text-center">
         <img id="modifieur" src="../../ressources/pen.png" onclick="modifier_profil()">
-        <button class="info_profil" type="submit"> Modifier</button>
+        <button class="info_profil" type="submit" disabled> Modifier</button>
         </div>    
     </form>      
     </center>

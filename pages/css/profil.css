@@ -15,7 +15,7 @@ html {
 }
 
 body{
-    background-image : url("https://cdn.glitch.global/f5c8462d-a81d-4056-ad29-06d6128d7963/background.png?v=1655286971372");
+    background-image : url("../../ressources/background.jpeg");
     background-repeat: no-repeat;
     background-position: initial;
     background-attachment: fixed;
@@ -208,6 +208,32 @@ img{
     margin-bottom:5%;
 }
 
+#profil select{
+    background-color :#FFFFFF00;
+    border:none;
+    text-align: center;
+    max-width: 20%;
+    display:flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:5%;
+}
+
 #profil button{
     margin :2%;
 }
+
+#profil img{
+    max-width:20%;
+}
+
+#file_profil{
+    display: none;
+    color:aqua;
+}
+
+#changer{
+    margin-bottom: 5%;
+    display:none;
+}
+

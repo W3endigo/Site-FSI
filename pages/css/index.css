@@ -15,7 +15,7 @@ html {
 }
 
 body{
-    background-image : url("https://cdn.glitch.global/f5c8462d-a81d-4056-ad29-06d6128d7963/background.png?v=1655286971372");
+    background-image : url("../../ressources/background.jpeg");
     background-repeat: no-repeat;
     background-position: initial;
     background-attachment: fixed;
