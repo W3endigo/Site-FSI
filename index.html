@@ -21,23 +21,28 @@
   <header id="header">
 
    <div id="up_head" class="container_fluid">
-       <center><img id="logo" src="ressources/logo.png">
-       <img id="user_image" src="ressources/deconnecte.png"  onclick="toggle_header()"></center>  
+       <center>
+           <img id="logo" src="ressources/logo.png">
+           <div  onclick="toggle_header()">
+               <img id="user_image" src="ressources/deconnecte.png">
+               <p id="username">Nom de l'utilisateur</p>
+           </div>
+        </center>       
     </div>
 
     <div id="connection_head" class="container_fluid">   
      <center>    
-      <a><button type="button" class="btn btn-primary btn-lg">Connexion</button></a>  
-      <a href="pages/html/inscription.html"><button type="button" class="btn btn-primary btn-lg">Inscription</button></a>  
+      <a id="a2" href="pages/html/connexion.html"><button id="button2" type="button" class="btn btn-primary btn-lg">Connexion</button></a>  
+      <a id="a1" href="pages/html/inscription.html"><button id="button1"type="button" class="btn btn-primary btn-lg">Inscription</button></a>  
      </center>
     </div>
       
     </header>
   
-  <body onscroll="toggle_icons()">
+  <body onscroll="toggle_icons()" onload="verif_connexion()">
     <div id="sticky_head" class="container_fluid sticky">
-        <div id="apparait">    
-            <img src="ressources/maison.png" id="home">         
+        <div id="apparait_index">    
+            <a href="#up_head"><img src="ressources/maison.png" id="home"></a>         
             <img src="ressources/petit_logo.png" id="petit_logo">
             <img src="ressources/deconnecte.png" id="user_image">
         </div>
@@ -48,8 +53,7 @@
         <div id="recherche">
             Filtres
             <input placeholder="Bonjour">
-        </div>
-          
+        </div>  
         <div class="match">
           <div class="date">
               <h4>
@@ -75,8 +79,7 @@
                                         
                 </div>
                 
-        </div>
-          
+        </div>  
           
         <div class="match">
           <div class="date">

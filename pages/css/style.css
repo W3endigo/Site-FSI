@@ -80,34 +80,19 @@ img{
 }
 
 #apparait{
-    display:none;
+    display:flex;
     justify-content:space-between;
 }
 
-
-
-
-
-/*---------Index---------*/
-
-
-#up_head{
-    font : #FFFFFF;
-    background-color : #423E3B;
-    flex-direction: column;
-}
-
-
-#connection_head{
-    font : #FFFFFF;
-    background-color : #423E3B;
-    flex-direction: column;
-    justify-content: space-between;
-    display:none;
-}
-
-#connection_head button{
-    margin:5%;
+#voir{
+    background-color:#AAAAAA;
+    border-radius: 50px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
 
@@ -119,7 +104,6 @@ img{
     border-radius: 10px;
     width : 100%;
     margin-top:5%;
-    margin-bottom: 5%;
     padding-left: 1%;
     padding-right: 1%;
     
@@ -131,19 +115,26 @@ img{
     width:95%;      
 }
 
-.match:nth-child(odd){
-    background-color:#D7D6D7;
-}
-
 .match{
     background-color: #FFFFFF;
     margin-right: 10%;
     margin-left: 10%;
     margin-bottom: 10%;
+    margin-top: 10%;
     display:flex;    
     justify-content:space-between;
     box-shadow: 3px 5px 20px #00000080;
     font-size:auto;
+    transition: all 0.5s; 
+}
+
+
+.match:hover{    
+    transform: scale(1.1)
+}
+
+.match:nth-child(odd){
+    background-color:#D7D6D7;
 }
 
 .date{
@@ -195,7 +186,66 @@ img{
     align-items: center;
 }
 
+
+
+
+/*---------Index---------*/
+
+#logo{
+    max-width:50%;  
+}
+
+#up_head{
+    font : #FFFFFF;
+    background-color : #423E3B;
+    display:flex;
+    flex-direction: column;
+    overflow:visible;
+}
+
+#up_head div{
+    position :absolute;
+    cursor: pointer;
+    top : 2%; 
+    right:2%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#up_head p{
+    display:none;
+    color :#FFFFFF;
+}
+
+
+#connection_head{
+    font : #FFFFFF;
+    background-color : #423E3B;
+    flex-direction: column;
+    justify-content: space-between;
+    display:none;
+}
+
+#connection_head button{
+    margin:5%;
+}
+
+
+#apparait_index{
+    display:none;
+    justify-content:space-between;
+}
+
+
+#button1{
+    background-color : #FFFFFF;
+    border-width: 3px;
+    color : #2196F3;
+}
+
+
 .button{
+    border-radius: 100px;
     height : auto;
     max-width:90%;
 }
@@ -216,16 +266,6 @@ input{
     margin-bottom: 0%;
 }
 
-#voir{
-    background-color:#AAAAAA;
-    border-radius: 50px;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-}
 
 #formulaire{
     margin:10%;
@@ -269,3 +309,59 @@ input{
     display : flex;
     flex-direction: row;
 }
+
+
+
+/*---------Connexion---------*/
+
+#connexion{
+    background-color : #FFFFFF80;
+    margin-top:15%;
+    margin-bottom : 15%;
+    margin-left:20%;
+    margin-right:20%;
+    padding:2%;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    border-radius :10px;
+}
+
+#connexion div{
+    width:50%;
+}
+
+#connexion_boutons{
+    display:flex;
+    flex-direction: column;
+}
+#connexion_boutons label{
+    margin:10%;
+}
+
+
+
+/*---------Profil---------*/
+
+#profil{
+    color:aqua;
+}
+#profil input{
+    background-color :#FFFFFF00;
+    border:none;
+    text-align: center;
+}
+
+#profil div{
+    display:flex;
+    color:aqua;
+    flex-direction: row;
+    justify-content: center;
+    margin-right:2%;
+}
+
+#profil img{
+    height: 1%
+}
+
+

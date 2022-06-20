@@ -17,11 +17,35 @@ function toggle_icons(){
     
         var rect = document.getElementById("header").getBoundingClientRect();
             if(rect.bottom < 0)
-                document.getElementById("apparait").style.display="flex";
+                document.getElementById("apparait_index").style.display="flex";
             else
-                document.getElementById("apparait").style.display="none";
+                document.getElementById("apparait_index").style.display="none";
 
 }
+
+//Change l'apparence du site si le joueur est connecté
+
+function verif_connexion(){
+    
+    var connexion = 1;
+    
+    if(connexion == 1){
+        document.getElementById("button1").style.backgroundColor="#337AB7";
+        document.getElementById("button1").style.color="#FFFFFF";
+        document.getElementById("button1").style.borderWidth="0px";
+        document.getElementById("button1").innerHTML="Mes matchs";
+        document.getElementById("button2").innerHTML="Mon profil";
+        document.getElementById("username").style.display="flex";
+        document.getElementById("user_image").style.maxWidth="10%";
+        document.getElementById("user_image").src="ressources/femme.png"
+        
+        document.getElementById("a2").href="pages/html/profil.html";
+        document.getElementById("a1").href="pages/html/mesmatchs.html";
+    }
+    
+    
+}
+
 
 
 //Vérification du mot de passe 
@@ -46,13 +70,34 @@ function toggle_mdp() {
     
     if(document.Form.motDePasse.type == "password"){
         document.Form.motDePasse.type="text";
-        document.Form.motDePasse2.type="text";
         document.getElementById("voir").style.color = "#2196F3";
+        if(document.Form.motDePasse2)
+            document.Form.motDePasse2.type="text";
     }
     else{
         document.Form.motDePasse.type="password";
-        document.Form.motDePasse2.type="password";
         document.getElementById("voir").style.color = "#000000";
+        if(document.Form.motDePasse2)
+            document.Form.motDePasse2.type="password";
     }
     
 }
+
+
+
+
+//Permettre de modifier les informations dans le profil
+
+
+function modifier_profil(){
+    
+    var elements = document.getElementsByClassName("info_profil");
+    
+    for(var x =0; x < elements.length; x++){
+        elements[x].disabled=false;
+    }
+    
+    
+    
+}
+
