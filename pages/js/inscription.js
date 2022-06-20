@@ -32,9 +32,22 @@ $("#formulaire").submit((event) => {
         document.getElementById("mauvaisMdp").style.color="#E30613";
         document.getElementById("mauvaisMdp").style.display="flex";
     }
-
-    xhr.send();
 });
+//Changement d'image
+
+
+function toggle_image() {   
+    
+    if(document.getElementById("image_selected").value == "../../ressources/homme.png"){
+        document.getElementById("form_image").src = "../../ressources/femme.png";
+        document.getElementById("image_selected").value = "../../ressources/femme.png";
+    }
+    else{
+        document.getElementById("form_image").src = "../../ressources/homme.png";
+        document.getElementById("image_selected").value = "../../ressources/homme.png";
+    }
+}
+
 
 //Afficher mot de passe
 function toggle_mdp() {
