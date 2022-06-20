@@ -17,7 +17,7 @@ $("#formulaire").submit((event) => {
 
             }else{
                 
-                console.log("probleme avec la requête.");
+                console.log("probleme avec la requête : " + validite);
                 document.getElementById("email").borderColor="#E30613";
                 document.getElementById("mauvaisEmail").style.marginBottom = "0px";
                 document.getElementById("mauvaisEmail").style.color="#E30613";

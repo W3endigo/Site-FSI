@@ -5,13 +5,14 @@
   //* Cette fonction permet de créer un joueur.
   function dbCreateJoueur($db, $email, $mdp, $prenom, $nom, $date_naissance, $photo, $code_insee_ville, $frequence){
 
+      $hashed_mpd = password_hash($mdp, PASSWORD_BCRYPT);
       try{
 
         $request = 'INSERT INTO joueur (email, mdp, prenom, nom, naissance, photo, nombre_de_matchs, code_insee_ville, frequence_sport) 
                                           VALUES (:email, :mdp, :prenom, :nom, :naissance, :photo, 0, :code_insee_ville, :condition_physique)';
         $statement = $db->prepare($request);
         $statement->bindParam (':email', $email, PDO::PARAM_STR, 50);
-        $statement->bindParam (':mdp', $mdp, PDO::PARAM_STR, 100);
+        $statement->bindParam (':mdp', $hashed_mpd, PDO::PARAM_STR, 100);
         $statement->bindParam (':prenom', $prenom, PDO::PARAM_STR, 30);
         $statement->bindParam (':nom', $nom, PDO::PARAM_STR, 30);
         $statement->bindParam (':naissance', $date_naissance, PDO::PARAM_STR, 50);
@@ -62,11 +63,13 @@
   // * Cette fonction permet de modifier le mot de passe d'un joueur dans la DB.
   function dbUpdateMdp($db, $email, $new_mdp){
 
+      $hashed_mpd = password_hash($new_mdp, PASSWORD_BCRYPT);
+
       try{
 
         $request = 'UPDATE joueur SET mdp=:new_mdp WHERE email=:email';
         $statement = $db->prepare($request);
-        $statement->bindParam (':new_mdp', $new_mdp, PDO::PARAM_STR, 100);
+        $statement->bindParam (':new_mdp', $hashed_mpd, PDO::PARAM_STR, 100);
         $statement->bindParam (':email', $email, PDO::PARAM_STR, 50);
         $statement->execute();
   
