@@ -3,7 +3,7 @@ $("#formulaire").submit((event) => {
     event.preventDefault();
     if($("#motDePasse").val() == $("#motDePasse2").val()){
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+$('#email').val()+"&mdp="+$('#motDePasse').val()+"&prenom="+$('#prenom').val()+"&nom="+$('#nom').val()+"&date_naissance="+$('#anniversaire').val()+"&photo=/img/homme.png&code_insee_ville="+$('#ville').val()+"&frequence="+$('#frequence').val());
+        xhr.open("POST", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+$('#email').val()+"&mdp="+$('#motDePasse').val()+"&prenom="+$('#prenom').val()+"&nom="+$('#nom').val()+"&date_naissance="+$('#anniversaire').val()+"&photo="+$('#image_selected').val()+"&code_insee_ville="+$('#ville').val()+"&frequence="+$('#frequence').val());
         xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
         xhr.onreadystatechange = function(){
             if(xhr.readyState == 4 && xhr.status == 200){
@@ -32,6 +32,7 @@ $("#formulaire").submit((event) => {
         document.getElementById("mauvaisMdp").style.color="#E30613";
         document.getElementById("mauvaisMdp").style.display="flex";
     }
+    xhr.send();
 });
 //Changement d'image
 
