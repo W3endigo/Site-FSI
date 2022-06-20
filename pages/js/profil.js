@@ -6,16 +6,16 @@ function modifier_profil(){
     
     var elements = document.getElementsByClassName("info_profil");
     
-    if(elements[1].disabled == true){
+    if(elements[0].disabled == true){
         document.getElementById("changer").style.display = "block";
         document.getElementById("modifieur").src="../../ressources/greypen.png";
-        for(var x =1; x < elements.length; x++)
+        for(var x =0; x < elements.length; x++)
             elements[x].disabled=false;
     }
     else {
         document.getElementById("changer").style.display = "none";
         document.getElementById("modifieur").src="../../ressources/pen.png";
-        for(var x =1; x < elements.length; x++)
+        for(var x =0; x < elements.length; x++)
             elements[x].disabled=true;
     }
 }
