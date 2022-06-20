@@ -56,3 +56,22 @@ function toggle_mdp() {
     }
     
 }
+
+// * Cette fonction permet de récupérer le nom des villes via requête AJAX et de les afficher dans un select.
+function getVille(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost/Site-FSI/pages/php/request.php/ville");
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            var villes = JSON.parse(xhr.responseText);
+            var select = document.getElementById("ville");
+            for(var i = 0; i < villes.length; i++){
+                var option = document.createElement("option");
+                option.value = villes[i].code_insee_ville;
+                option.text = villes[i].nom_ville;
+                select.appendChild(option);
+            }
+        }
+    }
+    xhr.send();
+}
