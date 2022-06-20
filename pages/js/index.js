@@ -26,7 +26,7 @@ function toggle_icons(){
 
 function verif_connexion(){
     
-    var connexion = 0;
+    var connexion = 1;
     
     if(connexion == 1){
         document.getElementById("button1").style.backgroundColor="#337AB7";

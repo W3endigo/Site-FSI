@@ -187,30 +187,33 @@ img{
 }
 
 
-/*---------Profil---------*/
+/*---------Connexion---------*/
 
-#profil{
+#connexion{
+    background-color : #FFFFFF80;
     margin-top:15%;
-    margin-bottom: 15%;
-    color:#000000;
-    background-color :#FFFFFFAA;
+    margin-bottom : 15%;
+    margin-left:20%;
+    margin-right:20%;
+    padding:2%;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    border-radius :10px;
 }
 
-#profil input{
-    background-color :#FFFFFF00;
-    border:none;
-    text-align: center;
-    max-width: 20%;
-        display:flex;
+#connexion div{
+    width:50%;
+}
+
+#connexion_boutons{
+    display:flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+}
+#connexion_boutons label{
+    margin:10%;
 }
 
-#profil div{
 
-}
 
-#profil button{
-    margin :2%;
-}
+
