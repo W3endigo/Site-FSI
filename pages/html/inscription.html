@@ -21,7 +21,7 @@
   <header>
     </header>
   
-  <body onload ="getVille()">
+  <body onload ="getVille(); getFrequence()">
       
     <div id="sticky_head">
         <div id="apparait">    
@@ -59,22 +59,12 @@
       <label for="inputAddress">Ville</label>
       <select name="inputState" class="form-control" id="ville" required>
             <option style="display:none" value="">Choisir une ville</option>
-            <!-- <option>Brest</option>
-            <option>Rennes</option>
-            <option>Vannes</option>
-            <option>Caen</option>
-            <option>Nantes</option> -->
       </select>
       
   <div class="form-group">
     <label for="inputAddress2">Conditions sportives</label>
-    <select name="inputState" class="form-control" required>
+    <select name="inputState" class="form-control" id="frequence" required>
         <option style="display:none" value="">Choisir une forme sportive</option>
-        <option>Très le fort</option>
-        <option>fort</option>
-        <option>un peu moins fort que fort mais pas pas fort</option>
-        <option>pas fort</option>
-        <option>aiguille/20</option>
     </select>
   </div>
       

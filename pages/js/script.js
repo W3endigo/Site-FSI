@@ -60,7 +60,8 @@ function toggle_mdp() {
 // * Cette fonction permet de récupérer le nom des villes via requête AJAX et de les afficher dans un select.
 function getVille(){
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost/Site-FSI/pages/php/request.php/ville");
+    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/ville");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var villes = JSON.parse(xhr.responseText);
@@ -75,3 +76,24 @@ function getVille(){
     }
     xhr.send();
 }
+
+// * Cette fonction permet de récupérer les fréquences via requête AJAX et de les afficher dans un select.
+function getFrequence(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/frequence");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            var frequence = JSON.parse(xhr.responseText);
+            var select = document.getElementById("frequence");
+            for(var i = 0; i < frequence.length; i++){
+                var option = document.createElement("option");
+                option.value = frequence[i].frequence_sport;
+                option.text = frequence[i].frequence_sport;
+                select.appendChild(option);
+            }
+        }
+    }
+    xhr.send();
+}
+
