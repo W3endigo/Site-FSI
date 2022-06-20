@@ -31,12 +31,13 @@ function dbConnect(){
   // * \return True si les informations sont correcte, false sinon.
   function dbCheckUser($db, $email, $mdp){
 
+    $hashed_mdp = password_hash($mdp, PASSWORD_BCRYPT);
     try{
 
       $request = 'SELECT email FROM joueur WHERE email=:email AND mdp=:mdp';
       $statement = $db->prepare($request);
       $statement->bindParam (':email', $email, PDO::PARAM_STR, 50);
-      $statement->bindParam (':mdp', $mdp, PDO::PARAM_STR, 100);
+      $statement->bindParam (':mdp', $hashed_mdp, PDO::PARAM_STR, 100);
       $statement->execute();
       $result = $statement->fetch();
 

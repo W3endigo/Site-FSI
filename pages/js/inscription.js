@@ -1,3 +1,39 @@
+// Inscription
+$("#formulaire").submit((event) => {
+    event.preventDefault();
+    if($("#motDePasse").val() == $("#motDePasse2").val()){
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+$('#email').val()+"&mdp="+$('#motDePasse').val()+"&prenom="+$('#prenom').val()+"&nom="+$('#nom').val()+"&date_naissance="+$('#anniversaire').val()+"&photo="+$('#image_selected').val()+"&code_insee_ville="+$('#ville').val()+"&frequence="+$('#frequence').val());
+        xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+               
+                var validite = xhr.responseText;
+                
+            }
+            if(validite == "true"){
+
+                window.location.href = "http://127.0.0.1/site-FSI/pages/html/profil.html?email=" + $("#email").val();
+
+            }else{
+                
+                console.log("probleme avec la requête : " + validite);
+                document.getElementById("email").borderColor="#E30613";
+                document.getElementById("mauvaisEmail").style.marginBottom = "0px";
+                document.getElementById("mauvaisEmail").style.color="#E30613";
+                document.getElementById("mauvaisEmail").style.display="flex";
+
+            }
+        }
+    }else{
+        console.log("Mots de passe différents");
+        document.getElementById("motDePasse2").borderColor="#E30613";
+        document.getElementById("mauvaisMdp").style.marginBottom = "0px";
+        document.getElementById("mauvaisMdp").style.color="#E30613";
+        document.getElementById("mauvaisMdp").style.display="flex";
+    }
+    xhr.send();
+});
 //Changement d'image
 
 
@@ -14,30 +50,7 @@ function toggle_image() {
 }
 
 
-
-
-//Vérification du mot de passe 
-
-function validation(){
-    if( document.getElementById("motDePasse").value == document.getElementById("motDePasse2").value){
-        return(true);
-    }
-    else{
-        document.getElementById("motDePasse2").borderColor="#E30613";
-        document.getElementById("mauvaisMdp").style.marginBottom = "0px";
-        document.getElementById("mauvaisMdp").style.color="#E30613";
-        document.getElementById("mauvaisMdp").style.display="flex";
-        return(false);
-    }
-}
-
-//Envoie les données
-function envoi(){}
-
-
-
 //Afficher mot de passe
-
 function toggle_mdp() {
     
     if(document.getElementById("motDePasse").type == "password"){
@@ -53,8 +66,6 @@ function toggle_mdp() {
     
 }
 
-
-
 // * Cette fonction permet de récupérer le nom des villes via requête AJAX et de les afficher dans un select.
 function getVille(){
     var xhr = new XMLHttpRequest();
@@ -64,8 +75,6 @@ function getVille(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var villes = JSON.parse(xhr.responseText);
             var select = document.getElementById("ville");
-            console.log(select);
-            console.log(villes);
             for(var i = 0; i < villes.length; i++){
                 var option = document.createElement("option");
                 option.value = villes[i].code_insee_ville;
@@ -76,8 +85,6 @@ function getVille(){
     }
     xhr.send();
 }
-
-
 
 // * Cette fonction permet de récupérer les fréquences via requête AJAX et de les afficher dans un select.
 function getFrequence(){
