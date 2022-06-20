@@ -132,7 +132,7 @@
         
         try{
     
-            $request = 'SELECT COUNT(email) FROM participe GROUP BY id_match ORDER BY id_match';
+            $request = 'SELECT COUNT(email) FROM participe WHERE status=1 GROUP BY id_match ORDER BY id_match';
             $statement = $db->prepare($request);
             $statement->bindParam (':complet', $complet, PDO::PARAM_STR, 50);
             $statement->execute();
@@ -147,7 +147,7 @@
 
         try{
     
-            $request = 'SELECT participant_max FROM matchs';
+            $request = 'SELECT participant_max, id_match FROM matchs';
             $statement = $db->prepare($request);
             $statement->bindParam (':complet', $complet, PDO::PARAM_STR, 50);
             $statement->execute();
@@ -160,42 +160,16 @@
 
         }
 
+
         for($i = 0; $i < count($result_participant); $i++){
-            if($complet){
+            if($complet == 1){
                 if($result_participant[$i][0] == $result_participant_max[$i][0]){
-                    try{
-    
-                        $request = 'SELECT * FROM matchs WHERE id_match=:id_match';
-                        $statement = $db->prepare($request);
-                        $statement->bindParam (':id_match', $i, PDO::PARAM_STR, 50);
-                        $statement->execute();
-                        //$result_match->append($statement->fetchAll());
-            
-                    }catch (PDOException $exception){
-            
-                        error_log('Erreur lors de la récupération des matchs complets : '.$exception->getMessage());
-                        return false;
-            
-                    }
+                    array_push($result_match, dbGetMatchById($db, $result_participant_max[$i][1]));
                 }
             }else{
                 if($result_participant[$i][0] != $result_participant_max[$i][0]){
-                    try{
-    
-                        $request = 'SELECT * FROM matchs WHERE id_match=:id_match';
-                        $statement = $db->prepare($request);
-                        $statement->bindParam (':id_match', $i, PDO::PARAM_STR, 50);
-                        $statement->execute();
-                        $result_match = $result_match +1;//$statement->fetchAll();
-            
-                    }catch (PDOException $exception){
-            
-                        error_log('Erreur lors de la récupération des matchs incomplets : '.$exception->getMessage());
-                        return false;
-            
-                    }
-                }
-
+                    array_push($result_match, dbGetMatchById($db, $result_participant_max[$i][1]));
+                } 
             }
 
         }
