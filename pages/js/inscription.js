@@ -1,7 +1,7 @@
 //Vérification du mot de passe 
 
 function validation(){
-    if( document.getElementById("motDePasse").value == document.Form.motDePasse2.value){
+    if( document.getElementById("motDePasse").value == document.getElementById("motDePasse2").value){
         return(true);
     }
     else{
