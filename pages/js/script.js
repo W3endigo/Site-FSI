@@ -36,7 +36,7 @@ function verif_connexion(){
         document.getElementById("button1").innerHTML="Mes matchs";
         document.getElementById("button2").innerHTML="Mon profil";
         document.getElementById("username").style.display="flex";
-        document.getElementById("user_image").style.maxWidth="10%";
+        document.getElementById("user_image").style.maxWidth="80%";
         document.getElementById("user_image").src="ressources/femme.png"
         
         document.getElementById("a2").href="pages/html/profil.html";
@@ -62,6 +62,10 @@ function validation(){
         return(false);
     }
 }
+
+//Envoie les données
+function envoi(){}
+
 
 
 //Afficher mot de passe
@@ -93,11 +97,16 @@ function modifier_profil(){
     
     var elements = document.getElementsByClassName("info_profil");
     
-    for(var x =0; x < elements.length; x++){
-        elements[x].disabled=false;
+    if(elements[0].disabled == true){
+        document.getElementById("modifieur").src="../../ressources/greypen.png";
+        for(var x =0; x < elements.length; x++)
+            elements[x].disabled=false;
     }
-    
-    
-    
+    else {
+        document.getElementById("modifieur").src="../../ressources/pen.png";
+        for(var x =0; x < elements.length; x++)
+            elements[x].disabled=true;
+        
+    }
 }
 
