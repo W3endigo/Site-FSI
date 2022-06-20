@@ -31,14 +31,12 @@
             <img src="../../ressources/petit_logo.png" id="petit_logo">
             <img src="../../ressources/deconnecte.png" id="user_image">
         </div>
-    </div>
-      
-    <center>  
+    </div>   
     <form id="profil" class="container">
         
-        <input class="info_profil" type="image" src="../../ressources/homme.png"  disabled required>
+        <input class="info_profil" type="file" src="../../ressources/homme.png"  disabled required>
         
-        <div>
+        <div class="d-flex flex-row">
             <input class="info_profil" type="text" value="Prenom"  disabled required>
 
             <input class="info_profil" value="Nom" disabled required>
@@ -53,12 +51,12 @@
         
         <input class="info_profil" value="LeMouel"  disabled required>
 
-        <div>
+        <div class="text-center">
         <img id="modifieur" src="../../ressources/pen.png" onclick="modifier_profil()">
         <button class="info_profil" type="submit"> Modifier</button>
         </div>    
     </form>      
-    </center> 
+    </center>
       
   </body>
     

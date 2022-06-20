@@ -1,3 +1,21 @@
+//Changement d'image
+
+
+function toggle_image() {   
+    
+    if(document.getElementById("image_selected").value == "../../ressources/homme.png"){
+        document.getElementById("form_image").src = "../../ressources/femme.png";
+        document.getElementById("image_selected").value = "../../ressources/femme.png";
+    }
+    else{
+        document.getElementById("form_image").src = "../../ressources/homme.png";
+        document.getElementById("image_selected").value = "../../ressources/homme.png";
+    }
+}
+
+
+
+
 //Vérification du mot de passe 
 
 function validation(){

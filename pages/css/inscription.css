@@ -186,17 +186,13 @@ img{
     align-items: center;
 }
 
-
-
-
-
 /*---------Inscription---------*/
 
 input{
     margin-bottom: 5%;
 }
 
-#exampleInputEmail1{
+#Email{
     margin-bottom: 0%;
 }
 
@@ -214,6 +210,7 @@ input{
 #formPicture{
     display:inline-flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 
@@ -223,12 +220,15 @@ input{
     display:flex;
     flex-direction: column;
     width:70%;
-    align-content: 
 }
 
 #formPicture img{
     height: 25% ;
     max-width:25%;
+}
+
+#image_selected{
+    display:none;
 }
 
 .form-group{
