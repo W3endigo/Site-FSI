@@ -187,7 +187,7 @@
             $data = dbCreateJoueur($db, $_GET['email'], $_GET['mdp'], $_GET['prenom'], $_GET['nom'], $_GET['date_naissance'], $_GET['photo'], $_GET['code_insee_ville'], $_GET['frequence']);
           }else{
             header('HTTP/1.1 400 Bad Request');
-            echo json_encode($_GET);
+            echo json_encode('tout les champs ne sont pas remplis');
             exit;
           }
           break;
