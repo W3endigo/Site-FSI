@@ -1,11 +1,11 @@
 //Vérification du mot de passe 
 
 function validation(){
-    if( document.Form.motDePasse.value == document.Form.motDePasse2.value){
+    if( document.getElementById("motDePasse").value == document.Form.motDePasse2.value){
         return(true);
     }
     else{
-        document.Form.motDePasse2.style.borderColor="#E30613";
+        document.getElementById("motDePasse2").borderColor="#E30613";
         document.getElementById("mauvaisMdp").style.marginBottom = "0px";
         document.getElementById("mauvaisMdp").style.color="#E30613";
         document.getElementById("mauvaisMdp").style.display="flex";
@@ -22,15 +22,15 @@ function envoi(){}
 
 function toggle_mdp() {
     
-    if(document.Form.motDePasse.type == "password"){
-        document.Form.motDePasse.type="text";
+    if(document.getElementById("motDePasse").type == "password"){
+        document.getElementById("motDePasse").type="text";
         document.getElementById("voir").style.color = "#2196F3";
-        document.Form.motDePasse2.type="text";
+        document.getElementById("motDePasse2").type="text";
     }
     else{
-        document.Form.motDePasse.type="password";
+        document.getElementById("motDePasse").type="password";
         document.getElementById("voir").style.color = "#000000";
-        document.Form.motDePasse2.type="password";
+        document.getElementById("motDePasse2").type="password";
     }
     
 }
