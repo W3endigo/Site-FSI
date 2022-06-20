@@ -46,6 +46,8 @@ function getVille(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var villes = JSON.parse(xhr.responseText);
             var select = document.getElementById("ville");
+            console.log(select);
+            console.log(villes);
             for(var i = 0; i < villes.length; i++){
                 var option = document.createElement("option");
                 option.value = villes[i].code_insee_ville;

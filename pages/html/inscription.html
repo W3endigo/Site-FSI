@@ -15,7 +15,7 @@
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
 
     <!--Liaison avec le fichier script-->
-    <script type="text/javascript" src="../js/inscription.js"></script>
+    <script src="../js/inscription.js" defer></script>
 
   </head>
   <header>
@@ -57,14 +57,14 @@
       <input type="date" class="form-control" id="anniversaire" placeholder="0/00/00" required>
       
       <label for="adresse">Ville</label>
-      <select id="adresse" class="form-control" required>
-            <option style="display:none" value="" id="ville">Choisir une ville</option>
+      <select id="ville" class="form-control" required>
+            <option style="display:none" value="">Choisir une ville</option>
       </select>
       
   <div class="form-group">
     <label for="conditions">Conditions sportives</label>
-    <select id="conditions" class="form-control" required>
-        <option style="display:none" value="" id="frequence">Choisir une forme sportive</option>
+    <select id="frequence" class="form-control" required>
+        <option style="display:none" value="">Choisir une forme sportive</option>
     </select>
   </div>
       
