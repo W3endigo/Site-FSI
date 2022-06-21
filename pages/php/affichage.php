@@ -183,7 +183,7 @@
 
         try{
 
-            $request = 'SELECT prenom, nom, naissance, photo, code_insee_ville, frequence_sport FROM joueur WHERE email=:email';
+            $request = 'SELECT * FROM joueur WHERE email=:email';
             $statement = $db->prepare($request);
             $statement->bindParam (':email', $email, PDO::PARAM_STR, 50);
             $statement->execute();

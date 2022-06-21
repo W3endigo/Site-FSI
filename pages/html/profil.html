@@ -22,11 +22,11 @@
   <header>
     </header>
   
-  <body onload ="getVille(); getFrequence(); getJoueur();">
+  <body onload ="isConnected(); getVille(); getFrequence(); getJoueur();">
       
     <div id="sticky_head">
-        <div id="apparait">    
-            <a href="../../index.html">
+        <div id="apparait" onclick="goHome()">    
+            <!-- <a href="../../index.html"> -->
             <img src="../../ressources/maison.png" id="home">         
             </a>
             <img src="../../ressources/petit_logo.png" id="petit_logo">
@@ -36,7 +36,7 @@
     <form id="profil" class="container">
         <div class="text-center">
           <img id="form_image" class="text-center" src="../../ressources/homme.png">
-          <input id="image_selected" class="form-control" type="hidden" value="../../ressources/homme.png" >
+          <input id="image_selected" class="form-control" type="hidden" value="" >
           <div id="changer" onclick="toggle_image()"><i class="bi bi-arrow-clockwise"></i></div>
         </div>
         
@@ -65,14 +65,14 @@
         </div>
         <div class="text-center">
             <label for="motDePasse">Mot de passe</label>
-            <input type="password" class="info_profil" id="motDePasse" value="Bonjour" disabled required>
+            <input type="password" class="info_profil" id="motDePasse" value="" placeholder="Nouveau mot de passe" disabled>
             <label onclick="toggle_mdp()" id="voir">
               VOIR
             </label>
           </div>
         <div class="text-center">
           <img id="modifieur" src="../../ressources/pen.png" onclick="modifier_profil()">
-          <button class="info_profil" type="submit" disabled> Modifier</button>
+          <button class="info_profil" type="submit" id="btn-profil" disabled> Modifier</button>
         </div>    
     </form>      
     </center>
