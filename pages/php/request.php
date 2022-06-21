@@ -76,9 +76,6 @@
             exit;
           }
           break;
-
-        // TODO tester les API pour les complet/incomplet.
-        // TODO se mettre d'accord sur la structure du site pour maj les API.
         
         // * Si l'on a besoin de récupérer les matchs filtrés par sport.
         case 'matchbysport':

@@ -75,11 +75,14 @@ $("#profil").submit((event) =>{
             //     xhr3.send();
             // }
             if($("#motDePasse").val() != ""){
+                console.log($("#motDePasse").val());
                 var xhr4 = new XMLHttpRequest();
-                xhr4.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/mdp?email="+$('#email').val()+"&new_mdp="+$('#password').val());
+                xhr4.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/mdp?email="+$('#email').val()+"&new_mdp="+$('#motDePasse').val());
                 xhr4.onreadystatechange = function(){
                     if(xhr4.readyState == 4 && xhr4.status == 200){
                     
+                        console.log(xhr4.responseText);
+
                         if(xhr4.responseText == "true"){
                             console.log("Mot de passe modifié avec succès !");
                             document.getElementById("motDePasse").value = '';
