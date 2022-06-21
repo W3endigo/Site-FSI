@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
     <!--Pour rendre le code responsif -->
-    <metaid="viewport" content="width=device-width, initial-scale=1">
+    <meta id="viewport" content="width=device-width, initial-scale=1">
     <!-- Liaison à Bootstrap et JQuery -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
@@ -33,8 +33,122 @@
             <img src="../../ressources/deconnecte.png" id="user_image">
         </div>
     </div>
+
+
+<!--Affichage du match en question!-->
+
+    <div class="match" onclick="ouvrir_match()">
+      <div class="date">
+          <h4>
+              20/01/22
+          </h4>
+          <h5>
+            18:22
+          </h5>
+            
+      </div>
+      <div class="titre_match">
+          <h1>Foot entre Fous</h1>
+          <h3>Stade Jean Coquelin</h3>
+      </div>
+          <div class="nb_joueurs">
+              <img src="../../ressources/utilisateur.png">
+              <div>
+                  <small>Football</small>
+                  <h4>14/25</h4>
+              </div>                         
+          </div>
+  </div>
       
 
+<!--Description de base du match!-->
+
+<div id="description" class="d-flex text-center align-items-start flex-column">
+  <div class="mb-auto p-2"><h3 id="date">25/05/2025</h3></div>
+  <div class="p-2"><h4 id="temps">18h30 à 19h45</h4></div>
+  <div class="p-2"><h5 id="adresse"></h5>25 rue de la haie, stade Jean Coquelin</div>
+  <div class="p-2 mb-2"><h3 id="sport">FOOTBALL</h3></div>
+  <img id="createur" src="../../ressources/homme.png">
+    <div class="p-2"><h5 id="createur_nom">Jean-David Lopez</h5></div>
+</div>
+      
+<!--Présentation des participants!-->
+      
+<div id="participants" class="d-flex text-center align-items-start flex-column">
+  <div class="d-flex flex-row">
+      <img src="../../ressources/homme.png">
+      <h5>Jean-David Lopez</h5>
+  </div>
+  <div class="d-flex flex-row">
+      <img src="../../ressources/femme.png">
+      <h5>Jeanne-Davida Lopez</h5>
+  </div>
+  <article>
+         
+    <button type="button" class="btn btn-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"></path>
+                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"></path>
+                </svg>
+        Accepter
+    </button>
+    <button type="button" class="btn btn-outline-danger">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
+                </svg>
+        Refuser
+    </button>
+  </article>    
+</div>      
+      
+<!--Bouton et informations d'inscription!-->
+      
+<div id="inscription" class="text-center">
+    <button id="button2" type="button" class="btn btn-primary btn-lg">Inscription</button>
+    <p>Une participation de 5€ pourra-t-être demandée sur place.</p>      
+</div>
+      
+      <!--Formulaire de conclusion d'un match, visible uniquement par le créateur!-->
+      
+      <div id="cloture" class="text-center">
+          
+          <form id="cloture_form">
+              
+            <h3>Score</h3> 
+              
+            <div>
+              <h5>Locaux</h5>
+              <h5>Visiteurs</h5>
+            </div>
+            <div>
+              <input type="number" id="score_home"  required>
+                à
+              <input type="number" id="score_away" required>
+            </div>
+              
+              <h4>Meilleur joueur</h4>
+              <input id="meilleur_joueur" placeholder="Nom et Prénom du meilleur joueur">
+            <br>
+            <br>
+            <button id="bouton_cloturer" type="button" class="btn btn-primary btn-lg">Cloturer le match</button>
+          </form>
+          
+      </div>
+
+      
+   <!--S'il le veut, le créateur peut annuler le match!-->
+      
+      
+      <form id="annuler">
+        <div>
+            <label>Cochez pour annuler</label>
+            <input type=checkbox id="checkbox_annuler" onclick="activer_annuler()">
+        </div>
+        
+        <button id="bouton_annuler" type="button" class="btn btn-primary btn-lg" disabled>Annuler</button>
+      
+      </form>
+      
   </body>
     
   <footer>

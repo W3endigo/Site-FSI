@@ -12,10 +12,10 @@
     <title>FSI</title>
 
     <!--Liaison avec le fichier style-->
-    <link href="../css/mesmatchs.css" rel="stylesheet" type="text/css" />
+    <link href="../css/creation.css" rel="stylesheet" type="text/css" />
 
     <!--Liaison avec le fichier script-->
-    <script type="text/javascript" src="../js/mesmatchs.js"></script>
+    <script type="text/javascript" src="../js/creation.js"></script>
 
   </head>
   <header>
@@ -33,31 +33,53 @@
         </div>
     </div>  
 
-
-
-    <div class="match" onclick="ouvrir_match()">
-        <div class="date">
-            <h4>
-                20/01/22
-            </h4>
-            <h5>
-              18:22
-            </h5>
-              
+      
+      
+    <form id="formulaire" class="text-center">
+      
+        <div>
+            <label>Nom de  l'évènement</label>
+            <label>Sport</label>
         </div>
-        <div class="titre_match">
-            <h1>Foot entre Fous</h1>
-            <h3>Stade Jean Coquelin</h3>
+        <div>
+            <input id="nom" placeholder="Entrer un nom">
+            <input id="nom" placeholder="Entrer un nom">
         </div>
-            <div class="nb_joueurs">
-                <img src="../../ressources/utilisateur.png">
-                <div>
-                    <small>Football</small>
-                    <h4>14/25</h4>
-                </div>                         
-            </div>
-    </div>
+        <div>
+            <label>Adresse</label>
+            <label>Ville</label>
+        </div>
+        <div>
+            <input id="adresse" placeholder="Entrer une adresse">
+            <select id="ville">
+            <option value="Troughinec" >Troughinec</option></select>
+        </div>
+        <div>
+            <label>Date/Heure</label>
+            <label>Durée</label>
+        </div>
+        <div>
+            <input id="date" placeholder="Entrer une date" type="datetime">
+            <input id="durée" type="time">
+        </div>
+        <div>
+            <label>Participants min-max</label>
+            <label>Prix (éventuel)</label>
+        </div>
+        <div>
+            <article>
+                <input id="min" type="number">
+                à
+                <input id="max" type="number">
+            </article>
+            <input id="prix" type="number">
+        </div>
+        <textarea id="description" type="text">
+            <textarea
+    </form>  
     
+
+
       
   </body>
     

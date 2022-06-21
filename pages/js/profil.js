@@ -210,6 +210,23 @@ function getFrequence(){
     xhr.send();
 }
 
+
+
+//Afficher mot de passe
+function toggle_mdp() {
+    
+    if(document.getElementById("motDePasse").type == "password"){
+        document.getElementById("motDePasse").type="text";
+        document.getElementById("voir").style.color = "#2196F3";
+        document.getElementById("motDePasse2").type="text";
+    }
+    else{
+        document.getElementById("motDePasse").type="password";
+        document.getElementById("voir").style.color = "#000000";
+        document.getElementById("motDePasse2").type="password";
+    }
+    
+}
 function getJoueur(mode = 'use'){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
