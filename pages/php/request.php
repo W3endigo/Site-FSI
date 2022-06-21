@@ -171,6 +171,16 @@
         case 'frequence':
           $data = dbGetFrequences($db);
           break;
+
+        case 'chiffrage':
+          if(isset($_GET['mdp'])){
+            $data = dbGetChiffrage($db, $_GET['mdp']);
+          }else{
+            header('HTTP/1.1 400 Bad Request');
+            echo json_encode('mdp manquant');
+            exit;
+          }
+          break;
           
       }
 

@@ -17,7 +17,7 @@ function toggle_mdp() {
 $("#connexion").submit((event) => {
     event.preventDefault();
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/checkmail?email="+$('#email').val());
+    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/checkuser?email="+$('#email').val()+"&mdp="+$('#password').val());
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
                
@@ -30,7 +30,7 @@ $("#connexion").submit((event) => {
 
             }else{
                 
-                console.log("mail nom présent dans la DB: " + validite);
+                console.log("Identifiants incorrects" + validite);
                 document.getElementById("email").borderColor="#E30613";
                 document.getElementById("mauvaisEmail").style.marginBottom = "0px";
                 document.getElementById("mauvaisEmail").style.color="#E30613";

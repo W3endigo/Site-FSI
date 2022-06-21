@@ -88,4 +88,9 @@ function dbConnect(){
     return true;
   }
 
+function dbGetChiffrage($db, $mdp){
+  
+  return password_hash($mdp, PASSWORD_BCRYPT);
+}
+
 ?>
