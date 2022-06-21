@@ -1,4 +1,4 @@
-// Création du match
+// Création du match regarde si le min est inférieur au maximum
 $("#formulaire").submit((event) => {
     console.log("submit");
     event.preventDefault();
