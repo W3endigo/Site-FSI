@@ -26,9 +26,10 @@ function toggle_icons(){
 
 function verif_connexion(){
     
-    var connexion = 0;
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
     
-    if(connexion == 1){
+    if(queryString.get('email') != null){
         document.getElementById("button1").style.backgroundColor="#337AB7";
         document.getElementById("button1").style.color="#FFFFFF";
         document.getElementById("button1").style.borderWidth="0px";
