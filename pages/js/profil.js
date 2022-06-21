@@ -1,142 +1,142 @@
 // * Gérer les modifications de profil.
-$("#profil").submit((event) => {
+$("#profil").submit((event) =>{
     event.preventDefault();
 
-    let paramString = window.location.href.split('?')[1];
-    let queryString = new URLSearchParams(paramString);
+    // let paramString = window.location.href.split('?')[1];
+    // let queryString = new URLSearchParams(paramString);
 
-    var joueur_default = getJoueur('send');
-    console.log(joueur_default);
+    // var joueur_default = getJoueur('send');
+    // console.log(joueur_default);
 
-    if($("#image_selected").val() != joueur_default.photo){
-        var xhr = new XMLHttpRequest();
-        xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/photo?email="+$('#email').val()+"&new_photo="+$('#image_selected').val());
-        xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.php");
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
+    // if($("#image_selected").val() != joueur_default.photo){
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/photo?email="+$('#email').val()+"&new_photo="+$('#image_selected').val());
+    //     xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.php");
+    //     xhr.onreadystatechange = function(){
+    //         if(xhr.readyState == 4 && xhr.status == 200){
                
-                if(xhr.responseText == "true"){
-                    console.log("Photo modifiée avec succès !");
-                }else{
-                    console.log("Erreur lors de la modification de la photo !");
-                }
-            }
-        }
-        xhr.send();
-    }
+    //             if(xhr.responseText == "true"){
+    //                 console.log("Photo modifiée avec succès !");
+    //             }else{
+    //                 console.log("Erreur lors de la modification de la photo !");
+    //             }
+    //         }
+    //     }
+    //     xhr.send();
+    // }
 
-    if($("#prenom").val() != joueur_default.prenom){
-        var xhr = new XMLHttpRequest();
-        xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/prenom?email="+$('#email').val()+"&new_prenom="+$('#prenom').val());
-        xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.php");
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
+    // if($("#prenom").val() != joueur_default.prenom){
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/prenom?email="+$('#email').val()+"&new_prenom="+$('#prenom').val());
+    //     xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.php");
+    //     xhr.onreadystatechange = function(){
+    //         if(xhr.readyState == 4 && xhr.status == 200){
                
-                if(xhr.responseText == "true"){
-                    console.log("Prénom modifié avec succès !");
-                }else{
-                    console.log("Erreur lors de la modification du prénom!");
-                }
-            }
-        }
-        xhr.send();
-    }
+    //             if(xhr.responseText == "true"){
+    //                 console.log("Prénom modifié avec succès !");
+    //             }else{
+    //                 console.log("Erreur lors de la modification du prénom!");
+    //             }
+    //         }
+    //     }
+    //     xhr.send();
+    // }
 
-    if($("#nom").val() != joueur_default.nom){
-        var xhr = new XMLHttpRequest();
-        xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/nom?email="+$('#email').val()+"&new_nom="+$('#nom').val());
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
+    // if($("#nom").val() != joueur_default.nom){
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/nom?email="+$('#email').val()+"&new_nom="+$('#nom').val());
+    //     xhr.onreadystatechange = function(){
+    //         if(xhr.readyState == 4 && xhr.status == 200){
                                        
-                if(xhr.responseText == "true"){
-                    console.log("Nom modifié avec succès !");
-                }else{
-                    console.log("Erreur lors de la modification du nom !");
-                }
-            }
-        }
-        xhr.send();
-    }
+    //             if(xhr.responseText == "true"){
+    //                 console.log("Nom modifié avec succès !");
+    //             }else{
+    //                 console.log("Erreur lors de la modification du nom !");
+    //             }
+    //         }
+    //     }
+    //     xhr.send();
+    // }
 
-    if($("#email").val() != queryString.get('email')){
-        var xhr = new XMLHttpRequest();
-        xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/email?email="+queryString.get('email')+"&new_email="+$('#email').val());
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
+    // if($("#email").val() != queryString.get('email')){
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/email?email="+queryString.get('email')+"&new_email="+$('#email').val());
+    //     xhr.onreadystatechange = function(){
+    //         if(xhr.readyState == 4 && xhr.status == 200){
                
-                if(xhr.responseText == "true"){
-                    console.log("Email modifié avec succès !");
-                }else{
-                    console.log("Erreur lors de la modification de l'email !");
-                }
-            }
-        }
-        xhr.send();
-    }
-    // TODO : Gérer les modifications de mot de passe.
-    if($("#password").val() != joueur_default.password){
-        var xhr = new XMLHttpRequest();
-        xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/mdp?email="+$('#email').val()+"&new_mdp="+$('#password').val());
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
+    //             if(xhr.responseText == "true"){
+    //                 console.log("Email modifié avec succès !");
+    //             }else{
+    //                 console.log("Erreur lors de la modification de l'email !");
+    //             }
+    //         }
+    //     }
+    //     xhr.send();
+    // }
+    // // TODO : Gérer les modifications de mot de passe.
+    // if($("#password").val() != joueur_default.password){
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/mdp?email="+$('#email').val()+"&new_mdp="+$('#password').val());
+    //     xhr.onreadystatechange = function(){
+    //         if(xhr.readyState == 4 && xhr.status == 200){
                
-                if(xhr.responseText == "true"){
-                    console.log("Mot de passe modifié avec succès !");
-                }else{
-                    console.log("Erreur lors de la modification du mot de passe !");
-                }
-            }
-        }
-        xhr.send();
-    }
+    //             if(xhr.responseText == "true"){
+    //                 console.log("Mot de passe modifié avec succès !");
+    //             }else{
+    //                 console.log("Erreur lors de la modification du mot de passe !");
+    //             }
+    //         }
+    //     }
+    //     xhr.send();
+    // }
 
-    if($("#anniversaire").val() != joueur_default.naissance){
-        var xhr = new XMLHttpRequest();
-        xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/date_naissance?email="+$('#email').val()+"&new_date_naissance="+$('#anniversaire').val());
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
+    // if($("#anniversaire").val() != joueur_default.naissance){
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/date_naissance?email="+$('#email').val()+"&new_date_naissance="+$('#anniversaire').val());
+    //     xhr.onreadystatechange = function(){
+    //         if(xhr.readyState == 4 && xhr.status == 200){
                
-                if(xhr.responseText == "true"){
-                    console.log("Date de naissance modifiée avec succès !");
-                }else{
-                    console.log("Erreur lors de la modification de la date de naissance !");
-                }
-            }
-        }
-        xhr.send();
-    }
+    //             if(xhr.responseText == "true"){
+    //                 console.log("Date de naissance modifiée avec succès !");
+    //             }else{
+    //                 console.log("Erreur lors de la modification de la date de naissance !");
+    //             }
+    //         }
+    //     }
+    //     xhr.send();
+    // }
 
-    if($("#ville").val() != joueur_default.code_insee_ville){
-        var xhr = new XMLHttpRequest();
-        xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/code_insee_ville?email="+$('#email').val()+"&new_code_insee_ville="+$('#ville').val());
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
+    // if($("#ville").val() != joueur_default.code_insee_ville){
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/code_insee_ville?email="+$('#email').val()+"&new_code_insee_ville="+$('#ville').val());
+    //     xhr.onreadystatechange = function(){
+    //         if(xhr.readyState == 4 && xhr.status == 200){
                
-                if(xhr.responseText == "true"){
-                    console.log("Ville modifiée avec succès !");
-                }else{
-                    console.log("Erreur lors de la modification de la ville !");
-                }
-            }
-        }
-        xhr.send();
-    }
+    //             if(xhr.responseText == "true"){
+    //                 console.log("Ville modifiée avec succès !");
+    //             }else{
+    //                 console.log("Erreur lors de la modification de la ville !");
+    //             }
+    //         }
+    //     }
+    //     xhr.send();
+    // }
 
-    if($("#frequence").val() != joueur_default.frequence_sport){
-        var xhr = new XMLHttpRequest();
-        xhr.open("PUT", "http://localhost/Site-FSI/pages/php/request.php/frequence?email="+$('#email').val()+"&new_frequence="+$('#frequence').val());
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
+    // if($("#frequence").val() != joueur_default.frequence_sport){
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open("PUT", "http://localhost/Site-FSI/pages/php/request.php/frequence?email="+$('#email').val()+"&new_frequence="+$('#frequence').val());
+    //     xhr.onreadystatechange = function(){
+    //         if(xhr.readyState == 4 && xhr.status == 200){
                
-                if(xhr.responseText == "true"){
-                    console.log("Fréquence de sport modifiée avec succès !");
-                }else{
-                    console.log("Erreur lors de la modification de la fréquence de sport !");
-                }
-            }
-        }
-        xhr.send();
-    }
+    //             if(xhr.responseText == "true"){
+    //                 console.log("Fréquence de sport modifiée avec succès !");
+    //             }else{
+    //                 console.log("Erreur lors de la modification de la fréquence de sport !");
+    //             }
+    //         }
+    //     }
+    //     xhr.send();
+    // }
 });
 
 // * Permettre de modifier les informations dans le profil.
@@ -221,7 +221,6 @@ function getJoueur(mode = 'use'){
         xhr.onreadystatechange = function(){
             if(xhr.readyState == 4 && xhr.status == 200){
                 console.log(xhr.responseText);
-                console.log(email);
                 var joueur = JSON.parse(xhr.responseText);
                 document.getElementById("image_selected").value = joueur.photo;
                 document.getElementById("prenom").value = joueur.prenom;
