@@ -37,10 +37,8 @@ function verif_connexion(){
         document.getElementById("button2").innerHTML="Mon profil";
         document.getElementById("username").style.display="flex";
 
-        document.getElementById("big_user_image").style.maxWidth="80%";
-        document.getElementsByClassName("user_image")[1].style.maxWidth="80%";
         document.getElementById("big_user_image").src="ressources/femme.png";
-        document.getElementsByClassName("user_image")[1].src="ressources/femme.png";
+        document.getElementById("user_image").src="ressources/femme.png";
         
         document.getElementById("creer").style.display="flex";
         
