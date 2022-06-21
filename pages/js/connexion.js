@@ -39,4 +39,13 @@ $("#connexion").submit((event) => {
 });
 
 
+function goHome(){
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+    if(queryString.get('email') != null){
+        window.location.href = "../../index.html?email="+queryString.get('email');
+    }else{
+        window.location.href = "../../index.html";
+    }
+}
 
