@@ -225,6 +225,7 @@ img{
 }
 
 #inscription{
+    display:none;
     margin:10%;
     margin-top:15%;    
 }
@@ -236,6 +237,7 @@ img{
 }
 
 #cloture{
+    display:none;
     background-color: #FFFFFF80;
     border-radius: 10px;
     margin : 5%;
@@ -270,7 +272,7 @@ img{
 }
 
 #annuler{
-    display:flex;
+    display:none;
     justify-content: flex-start;
 }
 

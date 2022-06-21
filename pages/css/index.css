@@ -58,8 +58,9 @@ img{
 }
 
 
-#user_image{
+.user_image{
     float:right;
+    max-width :5%;
 }
 
 #home{
@@ -246,6 +247,11 @@ img{
 }
 
 #creer{
+    display:none;
+    justify-content: center;
+}
+
+#creer button{
     background-color:#FF9500;
     border-color: #AA5000;
     margin-top : 10%;

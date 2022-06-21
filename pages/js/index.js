@@ -36,8 +36,15 @@ function verif_connexion(){
         document.getElementById("button1").innerHTML="Mes matchs";
         document.getElementById("button2").innerHTML="Mon profil";
         document.getElementById("username").style.display="flex";
-        document.getElementById("user_image").style.maxWidth="80%";
-        document.getElementById("user_image").src="ressources/femme.png"
+
+        document.getElementsByClassName("user_image")[0].style.maxWidth="80%";
+        document.getElementsByClassName("user_image")[1].style.maxWidth="80%";
+        document.getElementsByClassName("user_image")[0].src="ressources/femme.png";
+        document.getElementsByClassName("user_image")[1].src="ressources/femme.png";
+        document.getElementsByClassName("user_image")[1].style.width="3%";
+        
+        
+        document.getElementById("creer").style.display="flex";
         
         document.getElementById("a2").href="pages/html/profil.php";
         document.getElementById("a1").href="pages/html/mesmatchs.php";
