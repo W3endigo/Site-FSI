@@ -1,40 +1,30 @@
 // Création du match
 $("#formulaire").submit((event) => {
+    console.log("submit");
     event.preventDefault();
-    if($("#motDePasse").val() == $("#motDePasse2").val()){
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+$('#email').val()+"&mdp="+$('#motDePasse').val()+"&prenom="+$('#prenom').val()+"&nom="+$('#nom').val()+"&date_naissance="+$('#anniversaire').val()+"&photo="+$('#image_selected').val()+"&code_insee_ville="+$('#ville').val()+"&frequence="+$('#frequence').val());
-        xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://127.0.0.1/Site-FSI/pages/php/request.php/match?titre="+$('#nom').val()+"&horaire="+$('#debut').val()+"&duree="+$('#duree').val()+"&description="+$('#description').val()+"&participant_min="+$('#min').val()+"&participant_max="+$('max').val()+"&prix="+$('#prix').val()+"&adresse="+$('#adresse').val()+"&code_insee_ville="+$('#ville').val()+"&nom_sport="+$('#sport').val()+"&email_organisateur="+queryString.get('email'));
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
                
-                var validite = xhr.responseText;
+            var validite = xhr.responseText;
+            console.log(validite);
                 
-            }
-            if(validite == "true"){
-
-                window.location.href = "http://127.0.0.1/site-FSI/pages/html/profil.html?email="+$('#email').val();
-
-            }else{
-                
-                console.log("probleme avec la requête : " + validite);
-                document.getElementById("email").borderColor="#E30613";
-                document.getElementById("mauvaisEmail").style.marginBottom = "0px";
-                document.getElementById("mauvaisEmail").style.color="#E30613";
-                document.getElementById("mauvaisEmail").style.display="flex";
-
-            }
         }
-    }else{
-        console.log("Mots de passe différents");
-        document.getElementById("motDePasse2").borderColor="#E30613";
-        document.getElementById("mauvaisMdp").style.marginBottom = "0px";
-        document.getElementById("mauvaisMdp").style.color="#E30613";
-        document.getElementById("mauvaisMdp").style.display="flex";
+        if(validite != false){
+
+
+            window.location.href = "http://127.0.0.1/site-FSI/pages/html/match.html?email="+queryString.get('email')+"&id_match="+validite;
+
+        }
+
     }
     xhr.send();
     
-});
+})
 
 // * Cette fonction permet de récupérer le nom des villes via requête AJAX et de les afficher dans un select.
 function getVille(){

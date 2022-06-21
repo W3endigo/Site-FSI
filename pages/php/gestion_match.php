@@ -32,11 +32,26 @@
         }catch (PDOException $exception){
     
             error_log('Erreur lors de la création du match : '.$exception->getMessage());
-            return false;
+            return $exception->getMessage();
     
         }
 
-        return true;
+        try{
+    
+            $request = 'SELECT id_match FROM matchs WHERE email=:email_organisateur ORDER BY id_match DESC LIMIT 1';
+            $statement = $db->prepare($request);
+            $statement->bindParam (':email_organisateur', $email_organisateur, PDO::PARAM_STR, 50);
+            $statement->execute();
+            $result = $statement->fetch();
+        
+        }catch (PDOException $exception){
+
+            error_log('Erreur lors de la récupération de l\'id du match : '.$exception->getMessage());
+            return $exception->getMessage();
+
+        }
+
+        return $result['id_match'];
 
     }
 
