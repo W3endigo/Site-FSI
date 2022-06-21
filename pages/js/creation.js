@@ -1,7 +1,7 @@
-// Création du match
+// Création du match regarde si le min est inférieur au maximum
 $("#formulaire").submit((event) => {
     event.preventDefault();
-    if($("#motDePasse").val() == $("#motDePasse2").val()){
+    if($("#min").val() <= $("#max").val()){
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+$('#email').val()+"&mdp="+$('#motDePasse').val()+"&prenom="+$('#prenom').val()+"&nom="+$('#nom').val()+"&date_naissance="+$('#anniversaire').val()+"&photo="+$('#image_selected').val()+"&code_insee_ville="+$('#ville').val()+"&frequence="+$('#frequence').val());
         xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
@@ -17,20 +17,19 @@ $("#formulaire").submit((event) => {
 
             }else{
                 
-                console.log("probleme avec la requête : " + validite);
-                document.getElementById("email").borderColor="#E30613";
-                document.getElementById("mauvaisEmail").style.marginBottom = "0px";
-                document.getElementById("mauvaisEmail").style.color="#E30613";
-                document.getElementById("mauvaisEmail").style.display="flex";
+                document.getElementById("min").style.borderColor="#E30613";
+                document.getElementById("mauvaisMin").style.marginBottom = "0px";
+                document.getElementById("mauvaisMin").style.color="#E30613";
+                document.getElementById("mauvaisMin").style.display="flex";
+                document.getElementById("mauvaisMin").innerHTML="Erreur dans la DB";
 
             }
         }
     }else{
-        console.log("Mots de passe différents");
-        document.getElementById("motDePasse2").borderColor="#E30613";
-        document.getElementById("mauvaisMdp").style.marginBottom = "0px";
-        document.getElementById("mauvaisMdp").style.color="#E30613";
-        document.getElementById("mauvaisMdp").style.display="flex";
+        document.getElementById("min").borderColor="#E30613";
+        document.getElementById("mauvaisMin").style.marginBottom = "0px";
+        document.getElementById("mauvaisMin").style.color="#E30613";
+        document.getElementById("mauvaisMin").style.display="flex";
     }
     xhr.send();
     

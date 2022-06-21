@@ -60,6 +60,7 @@ img{
 
 #user_image{
     float:right;
+    max-width:3%;
 }
 
 #home{

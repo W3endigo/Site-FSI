@@ -58,9 +58,9 @@ img{
 }
 
 
-.user_image{
+#user_image{
     float:right;
-    max-width :80%;
+    max-width:3%;
 }
 
 #home{

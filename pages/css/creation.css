@@ -60,7 +60,7 @@ img{
 
 #user_image{
     float:right;
-    max-width:6%;
+    max-width:3%;
 }
 
 #home{
@@ -225,7 +225,15 @@ img{
     max-width:100%;
     margin-bottom: 5%;
 }
+#prix{
+    height:1%
+}
 
 #début, #durée {
     height:50%;
+}
+
+#mauvaisMin{
+    display:none;
+    font-family: Poppins-Regular;
 }
