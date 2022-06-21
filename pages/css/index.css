@@ -128,6 +128,7 @@ img{
     font-size:auto;
     transition: all 0.5s; 
     cursor:pointer;
+    width:90%;
 }
 
 
@@ -239,6 +240,11 @@ img{
     justify-content:space-between;
 }
 
+#total{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 #button1{
     background-color : #FFFFFF;
@@ -249,14 +255,11 @@ img{
 #creer{
     display:none;
     justify-content: center;
-}
-
-#creer button{
     background-color:#FF9500;
     border-color: #AA5000;
     margin-top : 10%;
-    width:50%;
 }
+
 
 .button{
     border-radius: 100px;

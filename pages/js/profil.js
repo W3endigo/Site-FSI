@@ -256,6 +256,10 @@ function getJoueur(){
     xhr.send();
 }
 
+
+
+// * Fonction permettant de revenir au menu en restant connecté
+
 function goHome(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);

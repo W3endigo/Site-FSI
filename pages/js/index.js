@@ -51,11 +51,25 @@ function verif_connexion(){
 
 
 
-// * permet de cliquer sur un match
+// * permet de cliquer sur un match pour afficher le contenu visible selon la connexion
+
 
 function ouvrir_match(){
-    window.location.href = "pages/html/match.html";
-}
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+    if(queryString.get('email') != null){
+        window.location.href = "../Site-FSI/pages/html/match.html?email="+queryString.get('email');
+    }else{
+        window.location.href = "../Site-FSI/pages/html/match.html";
+    }
+}  
+
+
+
+
+
+
+// * permet de gérer l'accès à la création d'un match
 
 function goCreate(){
     let paramString = window.location.href.split('?')[1];
@@ -66,3 +80,29 @@ function goCreate(){
         alert("Vous devez être connecté pour créer un match");
     }
 }   
+
+// * permet de rediriger soit vers l'inscription soit vers les matchs du joueur
+
+function goInscriptionMatch(){
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+    if(queryString.get('email') != null){
+        window.location.href = "../Site-FSI/pages/html/mesmatchs.html?email="+queryString.get('email');
+    }else{
+        window.location.href = "../Site-FSI/pages/html/inscription.html";
+    }
+}  
+
+
+
+// * permet de rediriger soit vers la connexion soit vers le profil d'un joueur
+
+function goConnexionProfil(){
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+    if(queryString.get('email') != null){
+        window.location.href = "../Site-FSI/pages/html/profil.html?email="+queryString.get('email');
+    }else{
+        window.location.href = "../Site-FSI/pages/html/connexion.html";
+    }
+}  
