@@ -30,7 +30,7 @@ $("#connexion").submit((event) => {
 
             }else{
                 document.getElementById("email").borderColor="#E30613";
-                document.getElementById("erreur").display="block";
+                document.getElementById("erreur").style.display="block";
             }
 
     }
