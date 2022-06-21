@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(isset($_SESSION['email'])){
+    $email = $_SESSION['email'];
+    echo "<script>console.log('Console: " . $email . "' );</script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -25,18 +29,18 @@ session_start();
   <header>
     </header>
   
-  <body onload ="getVille(); getFrequence(); getJoueur(<?php $email; ?>);">
+  <body onload ="getVille(); getFrequence(); getJoueur(<?php $email ?>);">
       
     <div id="sticky_head">
         <div id="apparait">    
-            <a href="../../index.html">
+            <a href="../../index.php">
             <img src="../../ressources/maison.png" id="home">         
             </a>
             <img src="../../ressources/petit_logo.png" id="petit_logo">
             <img src="../../ressources/deconnecte.png" id="user_image">
         </div>
     </div>   
-    <form id="profil" class="container" action="http://127.0.0.1/site-FSI/pages/html/profil.html?email=test.inconnu@gmail.com">
+    <form id="profil" class="container" action="http://127.0.0.1/site-FSI/pages/html/profil.php" >
         <div class="text-center">
           <img id="form_image" class="text-center" src="../../ressources/homme.png">
           <input id="image_selected" class="form-control" type="hidden" value="../../ressources/homme.png" >

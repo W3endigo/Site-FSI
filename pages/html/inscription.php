@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(isset($_SESSION['email'])){
-    $email = $_SESSION['email'];
+if(isset($_POST['email'])){
+    $email = $_POSTR['email'];
 }
 ?>
 <!DOCTYPE html>

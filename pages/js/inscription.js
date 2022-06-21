@@ -13,7 +13,7 @@ $("#formulaire").submit((event) => {
             }
             if(validite == "true"){
 
-                window.location.href = "http://127.0.0.1/site-FSI/pages/html/profil.php?email=" + $("#email").val();
+                window.location.href = "http://127.0.0.1/site-FSI/pages/html/profil.php?email="+$('#email').val();
 
             }else{
                 
