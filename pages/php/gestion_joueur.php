@@ -64,7 +64,7 @@
   function dbUpdateMdp($db, $email, $new_mdp){
 
       $hashed_mpd = password_hash($new_mdp, PASSWORD_BCRYPT);
-
+      
       try{
 
         $request = 'UPDATE joueur SET mdp=:new_mdp WHERE email=:email';

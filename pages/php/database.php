@@ -31,13 +31,12 @@ function dbConnect(){
   // * \return True si les informations sont correcte, false sinon.
   function dbCheckUser($db, $email, $mdp){
 
-    $hashed_mdp = password_hash($mdp, PASSWORD_BCRYPT);
+    
     try{
 
-      $request = 'SELECT email FROM joueur WHERE email=:email AND mdp=:mdp';
+      $request = 'SELECT mdp FROM joueur WHERE email=:email';
       $statement = $db->prepare($request);
       $statement->bindParam (':email', $email, PDO::PARAM_STR, 50);
-      $statement->bindParam (':mdp', $hashed_mdp, PDO::PARAM_STR, 100);
       $statement->execute();
       $result = $statement->fetch();
 
@@ -48,13 +47,8 @@ function dbConnect(){
 
     }
 
-    if (!$result){
+    return password_verify($mdp, $result['mdp']);
 
-      return false;
-
-    }
-
-    return true;
   }
 
   // *  Vérification de la présence du mail dans la DB

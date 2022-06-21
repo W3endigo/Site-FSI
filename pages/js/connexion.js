@@ -17,20 +17,20 @@ function toggle_mdp() {
 $("#connexion").submit((event) => {
     event.preventDefault();
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/checkuser?email="+$('#email').val()+"&mdp="+$('#password').val());
+    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/checkuser?email="+$('#email').val()+"&mdp="+$('#motDePasse').val());
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
                
-                var validite = xhr.responseText;
-                console.log(validite);
-                
+                var validite = xhr.responseText;                
             }
-            if(validite == "true"){
+            if(validite == 'true'){
 
                 window.location.href = "http://127.0.0.1/site-FSI/pages/html/profil.html?email="+$('#email').val();
 
-            }else{
-                document.getElementById("email").borderColor="#E30613";
+            }
+
+            if(validite == 'false'){
+                document.getElementById("email").style.borderColor="#E30613";
                 document.getElementById("erreur").style.display="block";
             }
 
