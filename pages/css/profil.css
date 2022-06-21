@@ -241,3 +241,12 @@ img{
 #voir{
     width:20%;
 }
+
+#nombre{
+    display :flex;
+    flex-direction: row;
+    justify-content:center;
+    padding-right:20%;
+    align-items: center;
+
+}

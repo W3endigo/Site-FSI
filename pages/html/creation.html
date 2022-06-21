@@ -15,7 +15,7 @@
     <link href="../css/creation.css" rel="stylesheet" type="text/css" />
 
     <!--Liaison avec le fichier script-->
-    <script type="text/javascript" src="../js/creation.js"></script>
+    <script type="text/javascript" src="../js/creation.js" defer></script>
 
   </head>
   <header>
@@ -42,25 +42,28 @@
             <label>Sport</label>
         </div>
         <div>
-            <input id="nom" placeholder="Entrer un nom">
-            <input id="nom" placeholder="Entrer un nom">
+            <input id="nom" placeholder="Entrer un nom" required>
+            <input id="nom" placeholder="Entrer un sport" required>
         </div>
         <div>
             <label>Adresse</label>
             <label>Ville</label>
         </div>
         <div>
-            <input id="adresse" placeholder="Entrer une adresse">
-            <select id="ville">
+            <input id="adresse" placeholder="Entrer une adresse" required>
+            <select id="ville" required>
             <option value="Troughinec" >Troughinec</option></select>
         </div>
         <div>
             <label>Date/Heure</label>
-            <label>Durée</label>
+            <label>Horaires</label>
         </div>
         <div>
-            <input id="date" placeholder="Entrer une date" type="datetime">
-            <input id="durée" type="time">
+            <input id="date" placeholder="Entrer une date" type="date" required>
+            <div>
+                <input id="début" placeholder="Heure début" type="time" required>
+                <input id="fin" placeholder="Heure fin" type="time" required>
+            </div>
         </div>
         <div>
             <label>Participants min-max</label>
@@ -68,14 +71,17 @@
         </div>
         <div>
             <article>
-                <input id="min" type="number">
+                <input id="min" placeholder="min" type="number" min="0" required>
                 à
-                <input id="max" type="number">
+                <input id="max" placeholder="max" type="number" min="0" required>
             </article>
-            <input id="prix" type="number">
+            <input id="prix" placeholder="prix" min="0" type="number">
         </div>
-        <textarea id="description" type="text">
-            <textarea
+        <label>Description</label>
+        <textarea id="description" type="text" required></textarea>
+        
+        <button type="submit" class="btn btn-primary">S'inscrire</button>
+            
     </form>  
     
 
