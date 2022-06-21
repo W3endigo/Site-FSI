@@ -60,6 +60,7 @@ img{
 
 #user_image{
     float:right;
+    max-width:6%;
 }
 
 #home{
@@ -225,6 +226,6 @@ img{
     margin-bottom: 5%;
 }
 
-#début, #fin {
+#début, #durée {
     height:50%;
 }

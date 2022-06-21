@@ -37,12 +37,10 @@ function verif_connexion(){
         document.getElementById("button2").innerHTML="Mon profil";
         document.getElementById("username").style.display="flex";
 
-        document.getElementsByClassName("user_image")[0].style.maxWidth="80%";
+        document.getElementById("big_user_image").style.maxWidth="80%";
         document.getElementsByClassName("user_image")[1].style.maxWidth="80%";
-        document.getElementsByClassName("user_image")[0].src="ressources/femme.png";
+        document.getElementById("big_user_image").src="ressources/femme.png";
         document.getElementsByClassName("user_image")[1].src="ressources/femme.png";
-        document.getElementsByClassName("user_image")[1].style.width="3%";
-        
         
         document.getElementById("creer").style.display="flex";
         

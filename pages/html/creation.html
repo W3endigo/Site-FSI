@@ -21,7 +21,7 @@
   <header>
     </header>
   
-  <body>
+  <body onload="getVille(); getSports()">
       
     <div id="sticky_head">
         <div id="apparait">    
@@ -43,7 +43,9 @@
         </div>
         <div>
             <input id="nom" placeholder="Entrer un nom" required>
-            <input id="nom" placeholder="Entrer un sport" required>
+            <select id="sport" required>
+                <option style="display:none" value="">Choisir un sport</option>
+            </select>
         </div>
         <div>
             <label>Adresse</label>
@@ -52,18 +54,19 @@
         <div>
             <input id="adresse" placeholder="Entrer une adresse" required>
             <select id="ville" required>
-            <option value="Troughinec" >Troughinec</option></select>
+            <option style="display:none" value="">Choisir une ville</option></select>
         </div>
         <div>
-            <label>Date/Heure</label>
-            <label>Horaires</label>
+            <label>Date</label>
+            <label>Début</label>
+            <label>Durée</label>
         </div>
         <div>
             <input id="date" placeholder="Entrer une date" type="date" required>
-            <div>
-                <input id="début" placeholder="Heure début" type="time" required>
-                <input id="fin" placeholder="Heure fin" type="time" required>
-            </div>
+            
+            <input id="début" type="time" required>
+            
+            <input id="durée" type="time" required>
         </div>
         <div>
             <label>Participants min-max</label>
@@ -80,7 +83,7 @@
         <label>Description</label>
         <textarea id="description" type="text" required></textarea>
         
-        <button type="submit" class="btn btn-primary">S'inscrire</button>
+        <button type="submit" class="btn btn-primary">Créer</button>
             
     </form>  
     

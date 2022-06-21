@@ -18,7 +18,7 @@ $("#formulaire").submit((event) => {
 function getVille(){
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/ville");
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/creation.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var villes = JSON.parse(xhr.responseText);
@@ -33,3 +33,25 @@ function getVille(){
     }
     xhr.send();
 }
+
+
+// * Cette fonction permet de récupérer le nom des sports via requête AJAX et de les afficher dans un select.
+function getSports(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/sport");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/creation.html");
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            var sports = JSON.parse(xhr.responseText);
+            var select = document.getElementById("sport");
+            for(var i = 0; i < sports.length; i++){
+                var option = document.createElement("option");
+                option.value = sports[i].nom_sport;
+                option.text = sports[i].nom_sport;
+                select.appendChild(option);
+            }
+        }
+    }
+    xhr.send();
+}
+
