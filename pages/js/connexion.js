@@ -22,6 +22,7 @@ $("#connexion").submit((event) => {
         if(xhr.readyState == 4 && xhr.status == 200){
                
                 var validite = xhr.responseText;
+                console.log(validite);
                 
             }
             if(validite == "true"){
