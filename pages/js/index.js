@@ -60,3 +60,13 @@ function verif_connexion(){
 function ouvrir_match(){
     window.location.href = "pages/html/match.html";
 }
+
+function goCreate(){
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+    if(queryString.get('email') != null){
+        window.location.href = "../Site-FSI/pages/html/creation.html?email="+queryString.get('email');
+    }else{
+        alert("Vous devez être connecté pour créer un match");
+    }
+}   
