@@ -25,7 +25,7 @@
       
     <div id="sticky_head">
         <div id="apparait">    
-            <a href="../../index.html">
+            <a href="../../index.php">
             <img src="../../ressources/maison.png" id="home">         
             </a>
             <img src="../../ressources/petit_logo.png" id="petit_logo">

@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(isset($_SESSION['email'])){
+    $email = $_SESSION['email'];
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -26,7 +32,7 @@
       
     <div id="sticky_head">
         <div id="apparait">    
-            <a href="../../index.html">
+            <a href="../../index.php">
             <img src="../../ressources/maison.png" id="home">         
             </a>
             <img src="../../ressources/petit_logo.png" id="petit_logo">
@@ -36,7 +42,7 @@
       
     <center>  
     <div id="formulaire" class="container">  
- <form id = "Form">
+ <form id = "Form" method="post" >
   <div id="formPicture" class="form-group">
       <div class="container_fluid">
         <label for="prenom">Prenom </label>

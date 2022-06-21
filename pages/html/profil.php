@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -22,7 +25,7 @@
   <header>
     </header>
   
-  <body onload ="getVille(); getFrequence(); getJoueur();">
+  <body onload ="getVille(); getFrequence(); getJoueur(<?php $email; ?>);">
       
     <div id="sticky_head">
         <div id="apparait">    
@@ -33,7 +36,7 @@
             <img src="../../ressources/deconnecte.png" id="user_image">
         </div>
     </div>   
-    <form id="profil" class="container">
+    <form id="profil" class="container" action="http://127.0.0.1/site-FSI/pages/html/profil.html?email=test.inconnu@gmail.com">
         <div class="text-center">
           <img id="form_image" class="text-center" src="../../ressources/homme.png">
           <input id="image_selected" class="form-control" type="hidden" value="../../ressources/homme.png" >

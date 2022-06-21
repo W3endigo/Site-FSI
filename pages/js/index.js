@@ -38,8 +38,8 @@ function verif_connexion(){
         document.getElementById("user_image").style.maxWidth="80%";
         document.getElementById("user_image").src="ressources/femme.png"
         
-        document.getElementById("a2").href="pages/html/profil.html";
-        document.getElementById("a1").href="pages/html/mesmatchs.html";
+        document.getElementById("a2").href="pages/html/profil.php";
+        document.getElementById("a1").href="pages/html/mesmatchs.php";
     }
     
     
