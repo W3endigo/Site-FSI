@@ -3,14 +3,13 @@ $("#profil").submit((event) =>{
     event.preventDefault();
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
-    // TODO Récupérer le mdp déchifré pour pas le modif à chaque requête, voir la modif de primary key (drop), voir la modif de fréquence modif de photo (modifier le src au lieu de l'input)
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+queryString.get('email'));
     xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var joueur_default = JSON.parse(xhr.responseText);
-            if($("#image_selected").val() != joueur_default.photo){
+            if(document.getElementById("form_image").src != joueur_default.photo){
                 var xhr1 = new XMLHttpRequest();
                 xhr1.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/photo?email="+$('#email').val()+"&new_photo="+$('#image_selected').val());
                 xhr1.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
@@ -241,7 +240,7 @@ function getJoueur(){
         if(xhr.readyState == 4 && xhr.status == 200){
             //console.log(xhr.responseText);
             var joueur = JSON.parse(xhr.responseText);
-            document.getElementById("image_selected").value = joueur.photo;
+            document.getElementById("form_image").src = joueur.photo;
             document.getElementById("prenom").value = joueur.prenom;
             document.getElementById("nom").value = joueur.nom;
             document.getElementById("email").value = queryString.get('email');                

@@ -134,7 +134,7 @@ INSERT INTO sport VALUES ('Rugby');
 INSERT INTO sport VALUES ('Quidditch');
 INSERT INTO sport VALUES ('Baseball');
 #------------------------------------------------------------
-# Les mdp sont Joueur0, Joueur1, Joueur2, Joueur3, Joueur4, Joueur5, Joueur6, Joueur7, Joueur8, Joueur9, Joueur10
+# Les mdp sont joueur0, joueur1, joueur2, joueur3, joueur4, joueur5, joueur6, joueur7, joueur8, joueur9, joueur10
 #------------------------------------------------------------
 INSERT INTO Joueur VALUES ('test.inconnu@gmail.com','Test','Inconnu','1990-01-01','$2y$10$ixlwz5g12ZucSrLa83EJBexZBkDMgRDIPjs4wR53CLgCrZWUiGfPy','../../ressources/deconnecte.png',0,22050,'Je ne pratique pas');
 INSERT INTO Joueur VALUES ('lydie.hoarau@gmail.com','Lydie','Hoarau','2004-06-15','$2y$10$XwNHp./dy0AbnYkZOOB21.DdwJVgUU/JaafMQtJNcV7TDZEMJ10vG','../../ressources/femme.png',1,35093,'Plusieurs fois par semaine');
