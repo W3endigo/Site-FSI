@@ -202,16 +202,18 @@ img{
     border-radius :10px;
 }
 
-#connexion div{
-    width:50%;
-}
-
 #connexion_boutons{
     display:flex;
     flex-direction: column;
 }
 #connexion_boutons label{
     margin:10%;
+}
+
+#erreur{
+    font-family : Poppins-Regular;
+    color:#E30613;
+    display:none;
 }
 
 

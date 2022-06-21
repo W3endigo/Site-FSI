@@ -29,13 +29,8 @@ $("#connexion").submit((event) => {
                 window.location.href = "http://127.0.0.1/site-FSI/pages/html/profil.html?email="+$('#email').val();
 
             }else{
-                
-                console.log("mail nom présent dans la DB: " + validite);
                 document.getElementById("email").borderColor="#E30613";
-                document.getElementById("mauvaisEmail").style.marginBottom = "0px";
-                document.getElementById("mauvaisEmail").style.color="#E30613";
-                document.getElementById("mauvaisEmail").style.display="flex";
-
+                document.getElementById("erreur").display="block";
             }
 
     }
