@@ -11,7 +11,7 @@ $("#profil").submit((event) =>{
     // if($("#image_selected").val() != joueur_default.photo){
     //     var xhr = new XMLHttpRequest();
     //     xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/photo?email="+$('#email').val()+"&new_photo="+$('#image_selected').val());
-    //     xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.php");
+    //     xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
     //     xhr.onreadystatechange = function(){
     //         if(xhr.readyState == 4 && xhr.status == 200){
                
@@ -28,7 +28,7 @@ $("#profil").submit((event) =>{
     // if($("#prenom").val() != joueur_default.prenom){
     //     var xhr = new XMLHttpRequest();
     //     xhr.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/prenom?email="+$('#email').val()+"&new_prenom="+$('#prenom').val());
-    //     xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.php");
+    //     xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
     //     xhr.onreadystatechange = function(){
     //         if(xhr.readyState == 4 && xhr.status == 200){
                
@@ -174,7 +174,7 @@ function toggle_image() {
 function getVille(){
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/ville");
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.php");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var villes = JSON.parse(xhr.responseText);
@@ -194,7 +194,7 @@ function getVille(){
 function getFrequence(){
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/frequence");
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.php");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var frequence = JSON.parse(xhr.responseText);
@@ -215,7 +215,7 @@ function getJoueur(mode = 'use'){
     let queryString = new URLSearchParams(paramString);
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+queryString.get('email'));
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.php");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
     console.log(mode);
     if(mode == 'use'){
         xhr.onreadystatechange = function(){
