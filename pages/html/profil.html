@@ -62,8 +62,15 @@
           <option value="">Metre celle de l user</option>
         </select>
         <div class="text-center">
-        <img id="modifieur" src="../../ressources/pen.png" onclick="modifier_profil()">
-        <button class="info_profil" type="submit" disabled> Modifier</button>
+            <label for="motDePasse">Mot de passe</label>
+            <input type="password" class="info_profil" id="motDePasse" value="Bonjour" disabled required>
+            <label onclick="toggle_mdp()" id="voir">
+              VOIR
+            </label>
+          </div>
+        <div class="text-center">
+          <img id="modifieur" src="../../ressources/pen.png" onclick="modifier_profil()">
+          <button class="info_profil" type="submit" disabled> Modifier</button>
         </div>    
     </form>      
     </center>

@@ -1,4 +1,4 @@
-//Faire apparaître le menu de connection
+// * Faire apparaître le menu de connection
 
 function toggle_header() {
 
@@ -10,7 +10,7 @@ function toggle_header() {
     }
 }
 
-//Faire apparaître les îcones du sous-header
+// * Faire apparaître les îcones du sous-header
 
 function toggle_icons(){
     
@@ -22,7 +22,7 @@ function toggle_icons(){
 
 }
 
-//Change l'apparence du site si le joueur est connecté
+// * Change l'apparence du site si le joueur est connecté
 
 function verif_connexion(){
     
@@ -43,4 +43,12 @@ function verif_connexion(){
     }
     
     
+}
+
+
+
+// * permet de cliquer sur un match
+
+function ouvrir_match(){
+    window.location.href = "pages/html/match.html";
 }

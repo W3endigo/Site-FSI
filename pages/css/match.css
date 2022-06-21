@@ -134,7 +134,7 @@ img{
 }
 
 .match:nth-child(odd){
-    background-color:#A7A6A7;
+    background-color:#C7C6C7;
 }
 
 .date{
@@ -184,4 +184,106 @@ img{
     display:flex;
     justify-content :space-around;
     align-items: center;
+}
+
+
+/*---------Match---------*/
+
+
+#description{
+    margin:5%;
+    padding:5%;
+    background-color: #35353590;
+    box-shadow: 20px 20px 10px #353535;
+    border-radius: 10px;
+}
+
+#description img{
+    max-width:30%;
+}
+
+#participants{
+    margin:5%;
+    padding:5%;
+    background-color: #35353550;
+    border: 5px solid #353535;
+}
+#participants div{
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    margin:5%;
+}
+
+#participants img{
+    max-width:20%;
+}
+
+#participants article{
+    display:flex;
+    justify-content: flex-start;
+}
+
+#inscription{
+    margin:10%;
+    margin-top:15%;    
+}
+
+#inscription p{
+    margin-top:1%;
+    background-color: #35353550;
+    color:#E30613;
+}
+
+#cloture{
+    background-color: #FFFFFF80;
+    border-radius: 10px;
+    margin : 5%;
+    padding:2%;
+}
+
+#cloture h4{
+    margin-top:10%;
+}
+
+#score_home{
+    width:30%;
+}
+
+#score_away{
+    width:30%;
+}
+
+#meilleur_joueur{
+    margin-top:3%;
+    text-align: center;
+    width:45%;
+}
+#cloture div{
+    display:flex;
+    justify-content: space-around;
+}
+
+#bouton_cloturer{
+    background-color:#FF9500;
+    border-color:#AA5000;
+}
+
+#annuler{
+    display:flex;
+    justify-content: flex-start;
+}
+
+#annuler div{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-clip: #35353540;
+    box-shadow: 2px 2px 10px #353535;
+    margin-right:35%;
+}
+
+#bouton_annuler{
+    background-color: red;
 }

@@ -126,6 +126,7 @@ img{
     box-shadow: 3px 5px 20px #00000080;
     font-size:auto;
     transition: all 0.5s; 
+    cursor:pointer;
 }
 
 
@@ -134,7 +135,7 @@ img{
 }
 
 .match:nth-child(odd){
-    background-color:#A7A6A7;
+    background-color:#C7C6C7;
 }
 
 .date{
