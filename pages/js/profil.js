@@ -60,21 +60,21 @@ $("#profil").submit((event) =>{
                 xhr3.send();
             }
 
-            if($("#email").val() != queryString.get('email')){
-                var xhr3 = new XMLHttpRequest();
-                xhr3.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/email?email="+queryString.get('email')+"&new_email="+$('#email').val());
-                xhr3.onreadystatechange = function(){
-                    if(xhr3.readyState == 4 && xhr3.status == 200){
+            // if($("#email").val() != queryString.get('email')){
+            //     var xhr3 = new XMLHttpRequest();
+            //     xhr3.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/email?email="+queryString.get('email')+"&new_email="+$('#email').val());
+            //     xhr3.onreadystatechange = function(){
+            //         if(xhr3.readyState == 4 && xhr3.status == 200){
                     
-                        if(xhr3.responseText == "true"){
-                            console.log("Email modifié avec succès !");
-                        }else{
-                            console.log("Erreur lors de la modification de l'email !");
-                        }
-                    }
-                }
-                xhr3.send();
-            }
+            //             if(xhr3.responseText == "true"){
+            //                 console.log("Email modifié avec succès !");
+            //             }else{
+            //                 console.log("Erreur lors de la modification de l'email !");
+            //             }
+            //         }
+            //     }
+            //     xhr3.send();
+            // }
             if($("#motDePasse").val() != ""){
                 var xhr4 = new XMLHttpRequest();
                 xhr4.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/mdp?email="+$('#email').val()+"&new_mdp="+$('#password').val());
@@ -83,12 +83,14 @@ $("#profil").submit((event) =>{
                     
                         if(xhr4.responseText == "true"){
                             console.log("Mot de passe modifié avec succès !");
+                            document.getElementById("motDePasse").value = '';
                         }else{
                             console.log("Erreur lors de la modification du mot de passe !");
                         }
                     }
                 }
                 xhr4.send();
+                
             }
 
             if($("#anniversaire").val() != joueur_default.naissance){
@@ -125,11 +127,11 @@ $("#profil").submit((event) =>{
 
             if($("#frequence").val() != joueur_default.frequence_sport){
                 var xhr7 = new XMLHttpRequest();
-                xhr7.open("PUT", "http://localhost/Site-FSI/pages/php/request.php/frequence?email="+$('#email').val()+"&new_frequence="+$('#frequence').val());
+                xhr7.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/frequence?email="+$('#email').val()+"&new_frequence="+$('#frequence').val());
                 xhr7.onreadystatechange = function(){
                     if(xhr7.readyState == 4 && xhr7.status == 200){
                     
-                        if(xhr7responseText == "true"){
+                        if(xhr7.responseText == "true"){
                             console.log("Fréquence de sport modifiée avec succès !");
                         }else{
                             console.log("Erreur lors de la modification de la fréquence de sport !");
