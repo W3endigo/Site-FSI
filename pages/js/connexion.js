@@ -17,7 +17,7 @@ function toggle_mdp() {
 $("#connexion").submit((event) => {
     event.preventDefault();
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/checkmail?email="+$('#email').val());
+    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/checkuser?email="+$('#email').val()+"&mdp="+$('#password').val());
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
                

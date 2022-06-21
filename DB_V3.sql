@@ -133,18 +133,20 @@ INSERT INTO sport VALUES ('Basketball');
 INSERT INTO sport VALUES ('Rugby');
 INSERT INTO sport VALUES ('Quidditch');
 INSERT INTO sport VALUES ('Baseball');
-
-INSERT INTO Joueur VALUES ('test.inconnu@gmail.com','Test','Inconnu','1990-01-01','9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','../../ressources/deconnecte.png',0,22050,'Je ne pratique pas');
-INSERT INTO Joueur VALUES ('lydie.hoarau@gmail.com','Lydie','Hoarau','2004-06-15','43dceacf94c98a0fbb1bf57592b484fd1d441d7f683ad3071c6f6d345b10821d','../../ressources/femme.png',1,35093,'Plusieurs fois par semaine');
-INSERT INTO Joueur VALUES ('brigitte.boutin@gmail.com','Brigitte','Boutin','1962-06-15','7bda17cb7f9504e7148d8f414e4a8f575bf5a7f78c8db4ae762036d7fc8a76b8','../../ressources/femme.png',2,56247,'Une fois par semaine');
-INSERT INTO Joueur VALUES ('gerald.carre@gmail.com','Gérald','Carre','1993-06-15','555c6d229006b9fcc644b67178da6ac14fcd4db0317f0bab246899622c8dd087','../../ressources/femme.png',2,35238,'Une fois par mois');
-INSERT INTO Joueur VALUES ('gilberte.chevallier@gmail.com','Gilberte','Chevallier','1976-06-15','da2192f0b1663a2bead52a2a5bacef313de8ffce090dbb7564d04541344a1c7b','../../ressources/femme.png',1,29019,'Une fois par an');
-INSERT INTO Joueur VALUES ('florian.dumont@gmail.com','Florian','Dumont','1990-06-15','1f71d7d4930be947354acf79b3283fc5cbcf05f907a93e72672ee162eb5407b8','../../ressources/homme.png',2,29232,'Je ne pratique pas');
-INSERT INTO Joueur VALUES ('cesar.benoist@gmail.com','César','Benoist','1970-06-15','36cf3936afb1e282548880df8e5edb4ff0b41395351ed5367ab98153765aac99','../../ressources/homme.png',1,56121,'Plusieurs fois par semaine');
-INSERT INTO Joueur VALUES ('albert.dumoulin@gmail.com','Albert','Dumoulin','2004-06-15','55dc57f95e14d55900a4123c57d7fd1bb0bfb89b6d548ffedaf60f15010e6211','../../ressources/homme.png',1,56260,'Une fois par semaine');
-INSERT INTO Joueur VALUES ('patoche.sebastrick@gmail.com','Patoche','Sebastrick','1953-06-15','a2efbc036a10cae00273490531294c5f4a22be17d3dc82d7d4bf616566c0fa02','../../ressources/homme.png',0,35239,'Une fois par mois');
-INSERT INTO Joueur VALUES ('pierre.giraud@gmail.com','Pierre','Giraud','1977-06-15','f20f4a366300a09e5f983292963203a8f49a78e249995b77062ce5952bff7721','../../ressources/homme.png',0,22070,'Une fois par an');
-INSERT INTO Joueur VALUES ('silvie.livie@gmail.com','Silvie','Livie','1984-06-15','b47ae3d2231d86ec722219547453e87d8cf5b6379d9275f0e05a5bdc7e8db76d','../../ressources/homme.png',1,22050,'Je ne pratique pas');
+#------------------------------------------------------------
+# Les mdp sont Joueur0, Joueur1, Joueur2, Joueur3, Joueur4, Joueur5, Joueur6, Joueur7, Joueur8, Joueur9, Joueur10
+#------------------------------------------------------------
+INSERT INTO Joueur VALUES ('test.inconnu@gmail.com','Test','Inconnu','1990-01-01','$2y$10$ixlwz5g12ZucSrLa83EJBexZBkDMgRDIPjs4wR53CLgCrZWUiGfPy','../../ressources/deconnecte.png',0,22050,'Je ne pratique pas');
+INSERT INTO Joueur VALUES ('lydie.hoarau@gmail.com','Lydie','Hoarau','2004-06-15','$2y$10$XwNHp./dy0AbnYkZOOB21.DdwJVgUU/JaafMQtJNcV7TDZEMJ10vG','../../ressources/femme.png',1,35093,'Plusieurs fois par semaine');
+INSERT INTO Joueur VALUES ('brigitte.boutin@gmail.com','Brigitte','Boutin','1962-06-15','$2y$10$7BSZYEI/L4F3tBGb75ZBROpkf0Ekg9AzPvOJ4axFKaUNL28LmXr4C','../../ressources/femme.png',2,56247,'Une fois par semaine');
+INSERT INTO Joueur VALUES ('gerald.carre@gmail.com','Gérald','Carre','1993-06-15','$2y$10$ttci6RpZtEEXhxEtxCQQLOGgVa8XTqeLSxCxR9h.limIhybTZhk2.','../../ressources/femme.png',2,35238,'Une fois par mois');
+INSERT INTO Joueur VALUES ('gilberte.chevallier@gmail.com','Gilberte','Chevallier','1976-06-15','$2y$10$9fkWmyKjrtyWGDVpOv128uecllYxBfqtBOmIhMx6bkUgLpmONQNYO','../../ressources/femme.png',1,29019,'Une fois par an');
+INSERT INTO Joueur VALUES ('florian.dumont@gmail.com','Florian','Dumont','1990-06-15','$2y$10$DFFkHiZ9xDzACSHVYHGArOdlcUC2nVbwfPXlj8deZ6ZiUw0bOnYVi','../../ressources/homme.png',2,29232,'Je ne pratique pas');
+INSERT INTO Joueur VALUES ('cesar.benoist@gmail.com','César','Benoist','1970-06-15','$2y$10$qArttVysSZIkQlXaKgFZou9/WzUKUzn57bu5YzG8eCo1GMIynUzpy','../../ressources/homme.png',1,56121,'Plusieurs fois par semaine');
+INSERT INTO Joueur VALUES ('albert.dumoulin@gmail.com','Albert','Dumoulin','2004-06-15','$2y$10$Ub65k0jSHkDsIqHerrlQH.OQYuJvi8zl0A8w6pfnJxDD3sQ.gwHaS','../../ressources/homme.png',1,56260,'Une fois par semaine');
+INSERT INTO Joueur VALUES ('patoche.sebastrick@gmail.com','Patoche','Sebastrick','1953-06-15','$2y$10$Pp/2aYTFeDH0rjwGMEMXY.kkb8HyandLFM3JphNerSXuExSHivZ6K','../../ressources/homme.png',0,35239,'Une fois par mois');
+INSERT INTO Joueur VALUES ('pierre.giraud@gmail.com','Pierre','Giraud','1977-06-15','$2y$10$MsOWquWbYvEX1c9.YzDtcemZjWOoPcjqAN8PyrJrX/SnEhnd6wOBW','../../ressources/homme.png',0,22070,'Une fois par an');
+INSERT INTO Joueur VALUES ('silvie.livie@gmail.com','Silvie','Livie','1984-06-15','$2y$10$cJ9NK8EbOZWdqsmTKT9cc.PHt3GJZTo7Ywnn2itOE2PnUTyo2qpMS','../../ressources/homme.png',1,22050,'Je ne pratique pas');
 
 
 INSERT INTO Matchs(titre, horaire, duree, description, participant_min, participant_max, prix, termine, adresse, score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur) VALUES ('Match de Football Test 1', '2022-06-20 15:30:00', '03:00:00', 'Description du match de Football', 2, 6, 0, 0, 'Rue de la paix', NULL, NULL, 35093, 'Football', 'test.inconnu@gmail.com', 'test.inconnu@gmail.com');
