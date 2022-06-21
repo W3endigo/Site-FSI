@@ -22,7 +22,7 @@
   <header>
     </header>
   
-  <body onload ="getVille(); getFrequence()">
+  <body onload ="getVille(); getFrequence(); getJoueur();">
       
     <div id="sticky_head">
         <div id="apparait">    
@@ -32,7 +32,7 @@
             <img src="../../ressources/petit_logo.png" id="petit_logo">
             <img src="../../ressources/deconnecte.png" id="user_image">
         </div>
-    </div>   
+    </div>
     <form id="profil" class="container">
         <div class="text-center">
           <img id="form_image" class="text-center" src="../../ressources/homme.png">
@@ -42,24 +42,22 @@
         
         
         <div class="d-flex flex-row">
-            <input class="info_profil" id="prenom" value="Prenom"  disabled required>
+            <input class="info_profil" id="prenom" value=""  disabled required>
 
-            <input class="info_profil" id="nom" value="Nom" disabled required>
+            <input class="info_profil" id="nom" value="" disabled required>
         
         </div>
         
-        <input class="info_profil" type="email" aria-describedby="emailHelp" id="Email" value="titoua@n.j"  disabled required>
+        <input class="info_profil" type="email" aria-describedby="emailHelp" id="email" value=""  disabled required>
         
-        <input class="info_profil" type="date" id="anniversaire" value="2002-06-23"  disabled required>
+        <input class="info_profil" type="date" id="anniversaire" value=""  disabled required>
         
         <select class="info_profil" id="ville" disabled required>
-          <option value="">Metre celle de l user</option>
         </select>
         <div class="text-center">
           <small>Condition physique :</small>
         </div>  
         <select class="info_profil" id="frequence" disabled required>
-          <option value="">Metre celle de l user</option>
         </select>
         <div class="text-center">
             <label for="motDePasse">Mot de passe</label>
