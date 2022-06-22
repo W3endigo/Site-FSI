@@ -227,77 +227,77 @@ function getMatch(){
             //console.log(match);
             match.forEach(createDiv);
 
-    switch(queryString.get('type_filtre')){
-        case("ville"):
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyville?code_insee_ville="+queryString.get('value_filtre'));
-            xhr.onreadystatechange = function(){
-                if(xhr.readyState == 4 && xhr.status == 200){
-                    match = JSON.parse(xhr.responseText);
-                    //console.log(match);
-                    match.forEach(createDiv);
+            switch(queryString.get('type_filtre')){
+                case("ville"):
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyville?code_insee_ville="+queryString.get('value_filtre'));
+                    xhr.onreadystatechange = function(){
+                        if(xhr.readyState == 4 && xhr.status == 200){
+                            match = JSON.parse(xhr.responseText);
+                            //console.log(match);
+                            match.forEach(createDiv);
 
+                        
+                        }
+                    }        
+                    xhr.send();
+                    break;
+
+                case("sports"):
+                    
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbysport?nom_sport="+queryString.get('value_filtre'));
+                    xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        match = JSON.parse(xhr.responseText);
+                        console.log(match);
+                        //console.log(match);
+                        match.forEach(createDiv);
+                        }
+                    }        
+                    xhr.send();
+                    break;
                 
-                }
-            }        
-            xhr.send();
-            break;
-
-        case("sports"):
-            
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbysport?nom_sport="+queryString.get('value_filtre'));
-            xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
-                match = JSON.parse(xhr.responseText);
-                console.log(match);
-                //console.log(match);
-                match.forEach(createDiv);
-                }
-            }        
-            xhr.send();
-            break;
-        
-        case("periode"):
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyperiode?periode="+queryString.get('value_filtre'));
-            xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
-                match = JSON.parse(xhr.responseText);
-                //console.log(match);
-                match.forEach(createDiv);
-                }
-            }        
-            xhr.send();
-            break;
-        
-        case("complet"):
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyperiode?periode="+queryString.get('value_filtre'));
-            xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
-                match = JSON.parse(xhr.responseText);
-                //console.log(match);
-                match.forEach(createDiv);
-                }
-            }        
-            xhr.send();
-            break;
-
-        default:
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchs");
-            xhr.onreadystatechange = function(){
-            if(xhr.readyState == 4 && xhr.status == 200){
-                match = JSON.parse(xhr.responseText);
-                //console.log(match);
-                match.forEach(createDiv);
-                }
-            }        
-            xhr.send();
-            break;
-
+                case("periode"):
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyperiode?periode="+queryString.get('value_filtre'));
+                    xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        match = JSON.parse(xhr.responseText);
+                        //console.log(match);
+                        match.forEach(createDiv);
+                        }
+                    }        
+                    xhr.send();
+                    break;
                 
+                case("complet"):
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyperiode?periode="+queryString.get('value_filtre'));
+                    xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        match = JSON.parse(xhr.responseText);
+                        //console.log(match);
+                        match.forEach(createDiv);
+                        }
+                    }        
+                    xhr.send();
+                    break;
+
+                default:
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchs");
+                    xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        match = JSON.parse(xhr.responseText);
+                        //console.log(match);
+                        match.forEach(createDiv);
+                        }
+                    }        
+                    xhr.send();
+                    break;
+            }
+        }       
                 
     }
 }
