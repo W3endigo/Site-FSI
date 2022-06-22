@@ -39,7 +39,7 @@
       
     </header>
   
-  <body onscroll="toggle_icons()" onload="verif_connexion()">
+  <body onscroll="toggle_icons()" onload="verif_connexion() ; getVille()">
     <div id="sticky_head" class="container_fluid sticky">
         <div id="apparait_index">    
             <a href="#up_head"><img src="ressources/maison.png" id="home"></a>         
@@ -71,8 +71,7 @@
 
           <select id="villes" class="valeurs">
             <option value="" style="display:none">Choisir une ville</option>
-            <option value="Vannes">Vannes</option>
-            <option value="Plougastel">Plougastel</option>
+            
         </select>
 
         <select id="sports" class="valeurs">
