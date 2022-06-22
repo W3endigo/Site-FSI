@@ -65,7 +65,6 @@ function getMatch(){
                                     document.getElementById("status").innerHTML = "Refusé";
                                     break;
                                 default:
-                                    console.log('erreur dans la recherche de status');
                                     break;
                             }
                         }
@@ -154,8 +153,7 @@ function createDiv(participant){
             h5.textContent = joueur.prenom+" "+joueur.nom;
             div.appendChild(h5);
             participants_div.appendChild(div);
-            if(participant.status == 0){
-                
+            if(participant.status == 0){}
         }
     }
     xhr1.send();
