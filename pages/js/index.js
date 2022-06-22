@@ -230,7 +230,7 @@ function getMatch(){
     switch(queryString.get('type_filtre')){
         case("ville"):
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyville?code_insee_ville="+queryString.get('value_filtre'));
+            xhr.open("GET", "pages/php/request.php/matchbyville?code_insee_ville="+queryString.get('value_filtre'));
             xhr.onreadystatechange = function(){
                 if(xhr.readyState == 4 && xhr.status == 200){
                     match = JSON.parse(xhr.responseText);
@@ -246,7 +246,7 @@ function getMatch(){
         case("sports"):
             
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbysport?nom_sport="+queryString.get('value_filtre'));
+            xhr.open("GET", "pages/php/request.php/matchbysport?nom_sport="+queryString.get('value_filtre'));
             xhr.onreadystatechange = function(){
             if(xhr.readyState == 4 && xhr.status == 200){
                 match = JSON.parse(xhr.responseText);
@@ -260,7 +260,7 @@ function getMatch(){
         
         case("periode"):
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyperiode?periode="+queryString.get('value_filtre'));
+            xhr.open("GET", "pages/php/request.php/matchbyperiode?periode="+queryString.get('value_filtre'));
             xhr.onreadystatechange = function(){
             if(xhr.readyState == 4 && xhr.status == 200){
                 match = JSON.parse(xhr.responseText);
@@ -273,7 +273,7 @@ function getMatch(){
         
         case("complet"):
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyperiode?periode="+queryString.get('value_filtre'));
+            xhr.open("GET", "pages/php/request.php/matchbyperiode?periode="+queryString.get('value_filtre'));
             xhr.onreadystatechange = function(){
             if(xhr.readyState == 4 && xhr.status == 200){
                 match = JSON.parse(xhr.responseText);
@@ -286,7 +286,7 @@ function getMatch(){
 
         default:
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchs");
+            xhr.open("GET", "pages/php/request.php/matchs");
             xhr.onreadystatechange = function(){
             if(xhr.readyState == 4 && xhr.status == 200){
                 match = JSON.parse(xhr.responseText);
@@ -311,7 +311,7 @@ function createDiv(match){
 
             
             var xhr1 = new XMLHttpRequest();
-            xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/ville");
+            xhr1.open("GET", "pages/php/request.php/ville");
             xhr1.onreadystatechange = function(){
                 if(xhr1.readyState == 4 && xhr1.status == 200){
 
