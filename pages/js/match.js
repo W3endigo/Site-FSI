@@ -33,58 +33,72 @@ function getMatch(){
     xhr.open("GET", "../php/request.php/matchbyid?id_match="+queryString.get('id_match'));
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
-            match = JSON.parse(xhr.responseText);
-            date = new Date(match.horaire);
-            participant_max = match.participant_max;
-
-            document.getElementById("date").innerHTML = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
-            document.getElementById("heure").innerHTML = date.getHours()+":"+date.getMinutes();
-            document.getElementById("titre").innerHTML = match.titre;
-            document.getElementById("adresse").innerHTML = match.adresse;
-            document.getElementById("sport").innerHTML = match.nom_sport;
-
-            if(match.prix != 0){
-                document.getElementById("prix").innerHTML = "Une participation de "+match.prix+"€ vous sera demandé au début du match.";
-            }else{
-                document.getElementById("prix").innerHTML = "Ce match est gratuit !";
-
-            }
-
             var xhr1 = new XMLHttpRequest();
-            xhr1.open("GET", "../php/request.php/participants?id_match="+queryString.get('id_match'));
+            xhr1.open("GET", "../php/request.php/ville");
             xhr1.onreadystatechange = function(){
                 if(xhr1.readyState == 4 && xhr1.status == 200){
-                    participants = JSON.parse(xhr1.responseText);
-                    participant_accepte = 0;
+                    match = JSON.parse(xhr.responseText);
+                    villes = JSON.parse(xhr1.responseText);
 
-                    for(let i = 0; i < participants.length; i++){
-                        if(participants[i].email == queryString.get('email')){
-                            switch(participants[i].status) {
-                                case '0' :
-                                    document.getElementById("status").innerHTML = "En attente";
-                                    break;
-
-                                case '1' :
-                                    document.getElementById("status").innerHTML = "Accepté";
-                                    break;
-
-                                case '2' :
-                                    document.getElementById("status").innerHTML = "Refusé";
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-                        if(participants[i].status == 1){
-                            participant_accepte += 1;
+                    for(var i = 0; i < villes.length; i++){
+                        if(villes[i].code_insee_ville == match.code_insee_ville){
+                            nom_ville = villes[i].nom_ville;
                         }
                     }
 
-                    document.getElementById("participant").innerHTML = participant_accepte+"/"+participant_max;
+                    date = new Date(match.horaire);
+                    participant_max = match.participant_max;
 
+                    document.getElementById("date").innerHTML = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
+                    document.getElementById("heure").innerHTML = date.getHours()+":"+date.getMinutes();
+                    document.getElementById("titre").innerHTML = match.titre;
+                    document.getElementById("adresse").innerHTML = match.adresse+", "+nom_ville;
+                    document.getElementById("sport").innerHTML = match.nom_sport;
+
+                    if(match.prix != 0){
+                        document.getElementById("prix").innerHTML = "Une participation de "+match.prix+"€ vous sera demandé au début du match.";
+                    }else{
+                        document.getElementById("prix").innerHTML = "Ce match est gratuit !";
+
+                    }
+
+                    var xhr2 = new XMLHttpRequest();
+                    xhr2.open("GET", "../php/request.php/participants?id_match="+queryString.get('id_match'));
+                    xhr2.onreadystatechange = function(){
+                        if(xhr2.readyState == 4 && xhr2.status == 200){
+                            participants = JSON.parse(xhr2.responseText);
+                            participant_accepte = 0;
+
+                            for(let i = 0; i < participants.length; i++){
+                                if(participants[i].email == queryString.get('email')){
+                                    switch(participants[i].status) {
+                                        case '0' :
+                                            document.getElementById("status").innerHTML = "En attente";
+                                            break;
+
+                                        case '1' :
+                                            document.getElementById("status").innerHTML = "Accepté";
+                                            break;
+
+                                        case '2' :
+                                            document.getElementById("status").innerHTML = "Refusé";
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                                if(participants[i].status == 1){
+                                    participant_accepte += 1;
+                                }
+                            }
+
+                            document.getElementById("participant").innerHTML = participant_accepte+"/"+participant_max;
+
+                        }
+                    }
+                    xhr2.send();
                 }
             }
-            xhr1.send();
         }
     }
     xhr.send();
