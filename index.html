@@ -39,7 +39,7 @@
       
     </header>
   
-  <body onscroll="toggle_icons()" onload="verif_connexion()">
+  <body onscroll="toggle_icons()" onload="verif_connexion() ; getVille()">
     <div id="sticky_head" class="container_fluid sticky">
         <div id="apparait_index">    
             <a href="#up_head"><img src="ressources/maison.png" id="home"></a>         
@@ -55,8 +55,36 @@
           
           
         <div id="recherche">
-            Filtres
-            <input placeholder="Bonjour">
+
+          <select id="filtres" onchange="if (this.selectedIndex) selectFiltre(this.selectedIndex);" >
+            <option value="" style="display:none">Filtres</option>
+            <option  >Aucun</option>
+            <option  >Ville</option>
+            <option  >Sport</option>
+            <option  >Période</option>
+            <option  >Complet</option>
+          </select>
+
+          <select id="aucun" class="valeurs">
+              <option value="" style="display:none">Aucun filtre sélectionné</option>
+          </select>
+
+          <select id="villes" class="valeurs">
+            <option value="" style="display:none">Choisir une ville</option>
+            
+        </select>
+
+        <select id="sports" class="valeurs">
+          <option value="" style="display:none">Choisir un sport</option>
+          <option value="Céci-Foot">Céci-Foot</option>
+          <option value="Foot">Foot</option>
+      </select>
+
+      <input type="number" id="periode" class="valeurs" min="0" placeholder="Choisir le nombre de jours de la période">
+
+    <select id="complet" class="valeurs">
+      <option value="" style="display:none">Matchs ayant de la place</option>
+  </select>
         </div>  
 
         <div class="match" onclick="ouvrir_match()">

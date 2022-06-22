@@ -106,3 +106,108 @@ function goConnexionProfil(){
         window.location.href = "../Site-FSI/pages/html/connexion.html";
     }
 }  
+
+
+
+// * Cette fonction permet de récupérer le nom des villes via requête AJAX et de les afficher dans un select.
+function getVille(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/ville");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            var villes = JSON.parse(xhr.responseText);
+            var select = document.getElementById("villes");
+            for(var i = 0; i < villes.length; i++){
+                var option = document.createElement("option");
+                option.value = villes[i].code_insee_ville;
+                option.text = villes[i].nom_ville;
+                select.appendChild(option);
+            }
+        }
+    }
+    xhr.send();
+}
+
+
+
+
+
+
+// * permet de naviguer entre les filtres
+
+//
+function selectFiltre(filtre){
+    switch(filtre){
+
+        case(1): // * aucun
+            document.getElementById("aucun").style.display = "block";
+
+            document.getElementById("villes").style.display = "none";
+            document.getElementById("sports").style.display = "none";
+            document.getElementById("periode").style.display = "none";
+            document.getElementById("complet").style.display = "none";
+
+            document.getElementById("villes").selectedIndex = 0;
+            document.getElementById("sports").selectedIndex = 0;
+            document.getElementById("periode").value = 0;
+            document.getElementById("complet").selectedIndex = 0;
+            break;
+
+        case(2): // * villes
+        document.getElementById("villes").style.display = "block";
+
+            document.getElementById("aucun").style.display = "none";
+            document.getElementById("sports").style.display = "none";
+            document.getElementById("periode").style.display = "none";
+            document.getElementById("complet").style.display = "none";
+
+            document.getElementById("aucun").selectedIndex = 0;
+            document.getElementById("sports").selectedIndex = 0;
+            document.getElementById("periode").value = 0;
+            document.getElementById("complet").selectedIndex = 0;
+            break;
+
+        case(3): // * sports
+        document.getElementById("sports").style.display = "block";
+
+            document.getElementById("villes").style.display = "none";
+            document.getElementById("aucun").style.display = "none";
+            document.getElementById("periode").style.display = "none";
+            document.getElementById("complet").style.display = "none";
+
+            document.getElementById("villes").selectedIndex = 0;
+            document.getElementById("aucun").selectedIndex = 0;
+            document.getElementById("periode").value = 0;
+            document.getElementById("complet").selectedIndex = 0;
+            break;
+
+        case(4): // * periode
+        document.getElementById("periode").style.display = "block";
+
+            document.getElementById("villes").style.display = "none";
+            document.getElementById("sports").style.display = "none";
+            document.getElementById("aucun").style.display = "none";
+            document.getElementById("complet").style.display = "none";
+
+            document.getElementById("villes").selectedIndex = 0;
+            document.getElementById("sports").selectedIndex = 0;
+            document.getElementById("aucun").selectedIndex = 0;
+            document.getElementById("complet").selectedIndex = 0;
+            break;
+
+        case(5): // * complet
+        document.getElementById("complet").style.display = "block";
+
+            document.getElementById("villes").style.display = "none";
+            document.getElementById("sports").style.display = "none";
+            document.getElementById("periode").style.display = "none";
+            document.getElementById("aucun").style.display = "none";
+
+            document.getElementById("villes").selectedIndex = 0;
+            document.getElementById("sports").selectedIndex = 0;
+            document.getElementById("periode").value = 0;
+            document.getElementById("aucun").selectedIndex = 0;
+            break;
+    }
+}

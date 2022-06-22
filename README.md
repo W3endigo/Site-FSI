@@ -25,3 +25,8 @@ Type retour selon la requête :
 PUT -> modifier (update)
 POST -> ajouter (INSERT)
 postman.com
+
+
+/!\/!\/!\/!\/!\ A faire /!\/!\/!\/!\
+
+    Quand on aura la VM, checker les IP des requêtes !
