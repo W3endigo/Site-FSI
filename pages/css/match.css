@@ -220,11 +220,6 @@ img{
     max-width:20%;
 }
 
-#participants article{
-    display:flex;
-    justify-content: flex-start;
-}
-
 #inscription{
     display:none;
     margin:10%;
@@ -292,5 +287,6 @@ img{
 }
 
 .petits_boutons{
-    display:flex;
+    display:none;
+    justify-content: flex-start;
 }
