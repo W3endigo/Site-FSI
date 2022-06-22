@@ -106,3 +106,81 @@ function goConnexionProfil(){
         window.location.href = "../Site-FSI/pages/html/connexion.html";
     }
 }  
+
+
+// * permet de naviguer entre les filtres
+
+function selectFiltre(filtre){
+    switch(filtre){
+
+        case(1): // * aucun
+            document.getElementById("aucun").style.display = "block";
+
+            document.getElementById("villes").style.display = "none";
+            document.getElementById("sports").style.display = "none";
+            document.getElementById("periode").style.display = "none";
+            document.getElementById("complet").style.display = "none";
+
+            document.getElementById("villes").selectedIndex = 0;
+            document.getElementById("sports").selectedIndex = 0;
+            document.getElementById("periode").value = 0;
+            document.getElementById("complet").selectedIndex = 0;
+            break;
+
+        case(2): // * villes
+        document.getElementById("villes").style.display = "block";
+
+            document.getElementById("aucun").style.display = "none";
+            document.getElementById("sports").style.display = "none";
+            document.getElementById("periode").style.display = "none";
+            document.getElementById("complet").style.display = "none";
+
+            document.getElementById("aucun").selectedIndex = 0;
+            document.getElementById("sports").selectedIndex = 0;
+            document.getElementById("periode").value = 0;
+            document.getElementById("complet").selectedIndex = 0;
+            break;
+
+        case(3): // * sports
+        document.getElementById("sports").style.display = "block";
+
+            document.getElementById("villes").style.display = "none";
+            document.getElementById("aucun").style.display = "none";
+            document.getElementById("periode").style.display = "none";
+            document.getElementById("complet").style.display = "none";
+
+            document.getElementById("villes").selectedIndex = 0;
+            document.getElementById("aucun").selectedIndex = 0;
+            document.getElementById("periode").value = 0;
+            document.getElementById("complet").selectedIndex = 0;
+            break;
+
+        case(4): // * periode
+        document.getElementById("periode").style.display = "block";
+
+            document.getElementById("villes").style.display = "none";
+            document.getElementById("sports").style.display = "none";
+            document.getElementById("aucun").style.display = "none";
+            document.getElementById("complet").style.display = "none";
+
+            document.getElementById("villes").selectedIndex = 0;
+            document.getElementById("sports").selectedIndex = 0;
+            document.getElementById("aucun").selectedIndex = 0;
+            document.getElementById("complet").selectedIndex = 0;
+            break;
+
+        case(5): // * complet
+        document.getElementById("complet").style.display = "block";
+
+            document.getElementById("villes").style.display = "none";
+            document.getElementById("sports").style.display = "none";
+            document.getElementById("periode").style.display = "none";
+            document.getElementById("aucun").style.display = "none";
+
+            document.getElementById("villes").selectedIndex = 0;
+            document.getElementById("sports").selectedIndex = 0;
+            document.getElementById("periode").value = 0;
+            document.getElementById("aucun").selectedIndex = 0;
+            break;
+    }
+}
