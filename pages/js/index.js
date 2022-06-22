@@ -131,6 +131,8 @@ function getSport(){
 
 // * permet de naviguer entre les filtres
 function selectFiltre(filtre){
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
     switch(filtre){
 
         case(1): // * aucun
@@ -145,6 +147,14 @@ function selectFiltre(filtre){
             document.getElementById("sports").selectedIndex = 0;
             document.getElementById("periode").value = 0;
             document.getElementById("complet").selectedIndex = 1;
+
+            if(queryString.has('email')){
+                window.location.href = "http://127.0.0.1/site-FSI/index.html?email="+queryString.get('email');
+            }else{
+                window.location.href = "http://127.0.0.1/site-FSI/index.html?";
+            }
+
+
             break;
 
         case(2): // * villes
@@ -324,5 +334,40 @@ function chargeJoueur(){
         }
         xhr.send();
     }
+
+}
+
+function setFiltre(type = "", value = ""){
+
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+
+    // if(type == ""){
+
+    //         if(queryString.has('email')){
+    //             window.location.href = "http://127.0.0.1/site-FSI/index.html?email="+queryString.get('email');
+    //         }else{
+    //             window.location.href = "http://127.0.0.1/site-FSI/index.html";
+    //         }
+    // }else{
+    if(type == "periode"){
+            if(queryString.has('email')){
+                window.location.href = "http://127.0.0.1/site-FSI/index.html?email="+queryString.get('email')+"&type_filtre="+type+"&value_filtre="+document.getElementById("periode").value;
+            }else{
+                window.location.href = "http://127.0.0.1/site-FSI/index.html?type_filtre="+type+"&value_filtre="+value;
+            }
+    }else{
+        if(queryString.has('email')){
+            window.location.href = "http://127.0.0.1/site-FSI/index.html?email="+queryString.get('email')+"&type_filtre="+type+"&value_filtre="+value;
+        }else{
+            window.location.href = "http://127.0.0.1/site-FSI/index.html?type_filtre="+type+"&value_filtre="+value;
+        }
+    }
+
+
+
+    //}
+
+
 
 }

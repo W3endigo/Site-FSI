@@ -32,34 +32,6 @@
 
   }
 
-  // * Cette fonction permet de modifier le mail d'un joueur dans la DB.
-  function dbUpdateEmail($db, $email, $new_email){
-
-    if (dbCheckMail($db, $new_email) == false && dbCheckMail($db, $email) == true){
-
-      try{
-
-        $request = 'UPDATE joueur SET email=:new_email WHERE email=:email';
-        $statement = $db->prepare($request);
-        $statement->bindParam (':new_email', $new_email, PDO::PARAM_STR, 50);
-        $statement->bindParam (':email', $email, PDO::PARAM_STR, 50);
-        $statement->execute();
-  
-      }catch (PDOException $exception){
-  
-        error_log('Erreur lors de la modification de l\'email : '.$exception->getMessage());
-        return false;
-  
-      }
-
-      return true;
-
-    }else{
-
-      return false;
-
-    }
-  }
   // * Cette fonction permet de modifier le mot de passe d'un joueur dans la DB.
   function dbUpdateMdp($db, $email, $new_mdp){
 

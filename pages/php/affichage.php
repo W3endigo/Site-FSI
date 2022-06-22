@@ -130,6 +130,7 @@
 
         $result_match = array();
         
+        //* On récupère le nombre de personne validé pour chaque match
         try{
     
             $request = 'SELECT COUNT(email) FROM participe WHERE status=1 GROUP BY id_match ORDER BY id_match';
@@ -145,6 +146,7 @@
 
         }
 
+        //* On récupère le nombre de personne maximun pour chaque match
         try{
     
             $request = 'SELECT participant_max, id_match FROM matchs';
@@ -161,6 +163,7 @@
         }
 
 
+        //* On récupère les id des match complets/incomplets en fonction de ce qui est demandé
         for($i = 0; $i < count($result_participant); $i++){
             if($complet == 1){
                 if($result_participant[$i][0] == $result_participant_max[$i][0]){
