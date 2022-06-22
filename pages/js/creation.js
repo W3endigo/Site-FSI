@@ -5,8 +5,8 @@ $("#formulaire").submit((event) => {
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://127.0.0.1/Site-FSI/pages/php/request.php/match?titre="+$('#nom').val()+"&horaire="+$('#debut').val()+"&duree="+$('#duree').val()+"&description="+$('#description').val()+"&participant_min="+$('#min').val()+"&participant_max="+$('max').val()+"&prix="+$('#prix').val()+"&adresse="+$('#adresse').val()+"&code_insee_ville="+$('#ville').val()+"&nom_sport="+$('#sport').val()+"&email_organisateur="+queryString.get('email'));
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+    xhr.open("POST", "../php/request.php/match?titre="+$('#nom').val()+"&horaire="+$('#debut').val()+"&duree="+$('#duree').val()+"&description="+$('#description').val()+"&participant_min="+$('#min').val()+"&participant_max="+$('max').val()+"&prix="+$('#prix').val()+"&adresse="+$('#adresse').val()+"&code_insee_ville="+$('#ville').val()+"&nom_sport="+$('#sport').val()+"&email_organisateur="+queryString.get('email'));
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
                
@@ -17,7 +17,7 @@ $("#formulaire").submit((event) => {
         if(validite != false){
 
 
-            window.location.href = "http://127.0.0.1/site-FSI/pages/html/match.html?email="+queryString.get('email')+"&id_match="+validite;
+            window.location.href = "../html/match.html?email="+queryString.get('email')+"&id_match="+validite;
 
         }
 
@@ -29,8 +29,8 @@ $("#formulaire").submit((event) => {
 // * Cette fonction permet de récupérer le nom des villes via requête AJAX et de les afficher dans un select.
 function getVille(){
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/ville");
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/creation.html");
+    xhr.open("GET", "../php/request.php/ville");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/creation.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var villes = JSON.parse(xhr.responseText);
@@ -50,8 +50,8 @@ function getVille(){
 // * Cette fonction permet de récupérer le nom des sports via requête AJAX et de les afficher dans un select.
 function getSports(){
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/sport");
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/creation.html");
+    xhr.open("GET", "../php/request.php/sport");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/creation.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var sports = JSON.parse(xhr.responseText);
@@ -81,5 +81,5 @@ function goProfil(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
 
-    window.location.href = "http://127.0.0.1/site-FSI/pages/html/profil.html?email="+queryString.get('email');
+    window.location.href = "../html/profil.html?email="+queryString.get('email');
 }   

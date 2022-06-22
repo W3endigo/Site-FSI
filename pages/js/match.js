@@ -30,7 +30,7 @@ function getMatch(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyid?id_match="+queryString.get('id_match'));
+    xhr.open("GET", "../php/request.php/matchbyid?id_match="+queryString.get('id_match'));
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             match = JSON.parse(xhr.responseText);
@@ -51,7 +51,7 @@ function getMatch(){
             }
 
             var xhr1 = new XMLHttpRequest();
-            xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/participants?id_match="+queryString.get('id_match'));
+            xhr1.open("GET", "../php/request.php/participants?id_match="+queryString.get('id_match'));
             xhr1.onreadystatechange = function(){
                 if(xhr1.readyState == 4 && xhr1.status == 200){
                     participants = JSON.parse(xhr1.responseText);
@@ -97,7 +97,7 @@ function getParticipantsAffichage(){
     let queryString = new URLSearchParams(paramString);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/participants?id_match="+queryString.get('id_match'));
+    xhr.open("GET", "../php/request.php/participants?id_match="+queryString.get('id_match'));
 
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
@@ -117,7 +117,7 @@ function getParticipantsAffichage(){
 function createDiv(participant){
     var participants_div = document.getElementById("participants");
     var xhr1 = new XMLHttpRequest();
-    xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+participant.email);
+    xhr1.open("GET", "../php/request.php/joueur?email="+participant.email);
 
     xhr1.onreadystatechange = function(){
         if(xhr1.readyState == 4 && xhr1.status == 200){
@@ -152,7 +152,7 @@ function getOrganisateur(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyid?id_match="+queryString.get('id_match'));
+    xhr.open("GET", "../php/request.php/matchbyid?id_match="+queryString.get('id_match'));
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             match = JSON.parse(xhr.responseText);
@@ -169,7 +169,7 @@ function getOrganisateur(){
 
 
             var xhr1 = new XMLHttpRequest();
-            xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+match.email);
+            xhr1.open("GET", "../php/request.php/joueur?email="+match.email);
             xhr1.onreadystatechange = function(){
                 if(xhr1.readyState == 4 && xhr1.status == 200){
                     organisateur_fiche = JSON.parse(xhr1.responseText);
@@ -195,7 +195,7 @@ function inscription(){
     let queryString = new URLSearchParams(paramString);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://127.0.0.1/Site-FSI/pages/php/request.php/participant?id_match="+queryString.get('id_match')+"&email="+queryString.get('email'));
+    xhr.open("POST", "../php/request.php/participant?id_match="+queryString.get('id_match')+"&email="+queryString.get('email'));
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             alert("Vous êtes inscrit");
@@ -224,7 +224,7 @@ function getParticipants(){
     let queryString = new URLSearchParams(paramString);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/participants?id_match="+queryString.get('id_match'));
+    xhr.open("GET", "../php/request.php/participants?id_match="+queryString.get('id_match'));
 
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
@@ -248,7 +248,7 @@ function supprimerMatch(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
     var xhr = new XMLHttpRequest();
-    xhr.open("DELETE", "http://127.0.0.1/Site-FSI/pages/php/request.php/match?id_match="+queryString.get('id_match'));
+    xhr.open("DELETE", "../php/request.php/match?id_match="+queryString.get('id_match'));
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             alert("Match supprimé");

@@ -49,9 +49,9 @@ function goMatch(id_match){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
     if(queryString.get('email') != null){
-        window.location.href = "../Site-FSI/pages/html/match.html?email="+queryString.get('email')+"&id_match="+id_match;
+        window.location.href = "../html/match.html?email="+queryString.get('email')+"&id_match="+id_match;
     }else{
-        window.location.href = "../Site-FSI/pages/html/match.html?id_match="+id_match;
+        window.location.href = "../html/match.html?id_match="+id_match;
     }
 }  
 
@@ -60,7 +60,7 @@ function goCreate(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
     if(queryString.get('email') != null){
-        window.location.href = "../Site-FSI/pages/html/creation.html?email="+queryString.get('email');
+        window.location.href = "../html/creation.html?email="+queryString.get('email');
     }else{
         alert("Vous devez être connecté pour créer un match");
     }
@@ -72,9 +72,9 @@ function goInscriptionMatch(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
     if(queryString.get('email') != null){
-        window.location.href = "../Site-FSI/pages/html/mesmatchs.html?email="+queryString.get('email');
+        window.location.href = "../html/mesmatchs.html?email="+queryString.get('email');
     }else{
-        window.location.href = "../Site-FSI/pages/html/inscription.html";
+        window.location.href = "../html/inscription.html";
     }
 }  
 
@@ -83,17 +83,17 @@ function goConnexionProfil(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
     if(queryString.get('email') != null){
-        window.location.href = "../Site-FSI/pages/html/profil.html?email="+queryString.get('email');
+        window.location.href = "../html/profil.html?email="+queryString.get('email');
     }else{
-        window.location.href = "../Site-FSI/pages/html/connexion.html";
+        window.location.href = "../html/connexion.html";
     }
 }
 
 // * Cette fonction permet de récupérer le nom des villes via requête AJAX et de les afficher dans un select.
 function getVille(){
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/ville");
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+    xhr.open("GET", "../php/request.php/ville");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var villes = JSON.parse(xhr.responseText);
@@ -112,8 +112,8 @@ function getVille(){
 // * Cette fonction permet de récupérer le nom des sports via requête AJAX et de les afficher dans un select.
 function getSport(){
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/sport");
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/index.html");
+    xhr.open("GET", "../php/request.php/sport");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "../../index.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var sports = JSON.parse(xhr.responseText);
@@ -146,12 +146,12 @@ function selectFiltre(filtre){
             document.getElementById("villes").selectedIndex = 0;
             document.getElementById("sports").selectedIndex = 0;
             document.getElementById("periode").value = 0;
-            document.getElementById("complet").selectedIndex = 1;
+            document.getElementById("complet").selectedIndex = 0;
 
             if(queryString.has('email')){
-                window.location.href = "http://127.0.0.1/site-FSI/index.html?email="+queryString.get('email');
+                window.location.href = "../../index.html?email="+queryString.get('email');
             }else{
-                window.location.href = "http://127.0.0.1/site-FSI/index.html?";
+                window.location.href = "../../index.html?";
             }
 
 
@@ -168,7 +168,7 @@ function selectFiltre(filtre){
             document.getElementById("aucun").selectedIndex = 0;
             document.getElementById("sports").selectedIndex = 0;
             document.getElementById("periode").value = 0;
-            document.getElementById("complet").selectedIndex = 1;
+            document.getElementById("complet").selectedIndex = 0;
             break;
 
         case(3): // * sports
@@ -182,7 +182,7 @@ function selectFiltre(filtre){
             document.getElementById("villes").selectedIndex = 0;
             document.getElementById("aucun").selectedIndex = 0;
             document.getElementById("periode").value = 0;
-            document.getElementById("complet").selectedIndex = 1;
+            document.getElementById("complet").selectedIndex = 0;
             break;
 
         case(4): // * periode
@@ -196,7 +196,7 @@ function selectFiltre(filtre){
             document.getElementById("villes").selectedIndex = 0;
             document.getElementById("sports").selectedIndex = 0;
             document.getElementById("aucun").selectedIndex = 0;
-            document.getElementById("complet").selectedIndex = 1;
+            document.getElementById("complet").selectedIndex = 0;
             break;
 
         case(5): // * complet
@@ -219,6 +219,13 @@ function selectFiltre(filtre){
 function getMatch(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "../php/request.php/matchs");
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            match = JSON.parse(xhr.responseText);
+            //console.log(match);
+            match.forEach(createDiv);
 
     switch(queryString.get('type_filtre')){
         case("ville"):
@@ -298,7 +305,7 @@ function getMatch(){
 function createDiv(match){
 
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/participants?id_match="+match.id_match);
+    xhr.open("GET", "../php/request.php/participants?id_match="+match.id_match);
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
 
@@ -399,7 +406,7 @@ function chargeJoueur(){
     if(queryString.has('email')){
 
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+queryString.get('email'));
+        xhr.open("GET", "../php/request.php/joueur?email="+queryString.get('email'));
         xhr.onreadystatechange = function(){
             if(xhr.readyState == 4 && xhr.status == 200){
                 joueur = JSON.parse(xhr.responseText);
@@ -422,23 +429,23 @@ function setFiltre(type = "", value = ""){
     // if(type == ""){
 
     //         if(queryString.has('email')){
-    //             window.location.href = "http://127.0.0.1/site-FSI/index.html?email="+queryString.get('email');
+    //             window.location.href = "../../index.html?email="+queryString.get('email');
     //         }else{
-    //             window.location.href = "http://127.0.0.1/site-FSI/index.html";
+    //             window.location.href = "../../index.html";
     //         }
     // }else{
     if(type == "periode"){
             console.log('voila');
             if(queryString.has('email')){
-                window.location.href = "http://127.0.0.1/site-FSI/index.html?email="+queryString.get('email')+"&type_filtre="+type+"&value_filtre="+document.getElementById("periode").value;
+                window.location.href = "../../index.html?email="+queryString.get('email')+"&type_filtre="+type+"&value_filtre="+document.getElementById("periode").value;
             }else{
-                window.location.href = "http://127.0.0.1/site-FSI/index.html?type_filtre="+type+"&value_filtre="+value;
+                window.location.href = "../../index.html?type_filtre="+type+"&value_filtre="+value;
             }
     }else{
         if(queryString.has('email')){
-            window.location.href = "http://127.0.0.1/site-FSI/index.html?email="+queryString.get('email')+"&type_filtre="+type+"&value_filtre="+value;
+            window.location.href = "../../index.html?email="+queryString.get('email')+"&type_filtre="+type+"&value_filtre="+value;
         }else{
-            window.location.href = "http://127.0.0.1/site-FSI/index.html?type_filtre="+type+"&value_filtre="+value;
+            window.location.href = "../../index.html?type_filtre="+type+"&value_filtre="+value;
         }
     }
 }
