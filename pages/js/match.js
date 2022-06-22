@@ -43,6 +43,13 @@ function getMatch(){
             document.getElementById("adresse").innerHTML = match.adresse;
             document.getElementById("sport").innerHTML = match.nom_sport;
 
+            if(match.prix != 0){
+                document.getElementById("prix").innerHTML = "Une participation de "+match.prix+"€ vous sera demandé au début du match.";
+            }else{
+                document.getElementById("prix").innerHTML = "Ce match est gratuit !";
+
+            }
+
             var xhr1 = new XMLHttpRequest();
             xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/participants?id_match="+queryString.get('id_match'));
             xhr1.onreadystatechange = function(){
@@ -120,7 +127,7 @@ function getOrganisateur(){
     xhr.send();
 }
 
-function getParticipants(){
+function getParticipantsAffichage(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
 
@@ -173,6 +180,23 @@ function createDiv(participant){
 
 }
 
+function inscription(){
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://127.0.0.1/Site-FSI/pages/php/request.php/participant?id_match="+queryString.get('id_match')+"&email="+queryString.get('email'));
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            alert("Vous êtes inscrit");
+            window.location.reload();
+        }else{
+            console.log(xhr.responseText);
+        }
+    }
+    xhr.send();
+
+}
 
 // * Fonction permettant de revenir au menu en restant connecté
 function goHome(){
@@ -183,4 +207,29 @@ function goHome(){
     }else{
         window.location.href = "../../index.html";
     }
+}
+
+function getParticipants(){
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/participants?id_match="+queryString.get('id_match'));
+
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            var participants = JSON.parse(xhr.responseText);
+            var select = document.getElementById("meilleur_joueur");
+            for(var i = 0; i < frequence.length; i++){
+                if(participants[i].status == 1){
+                    var option = document.createElement("option");
+                    option.value = participants[i].email;
+                    option.text = participants[i].email;
+                    select.appendChild(option);
+                }
+            }
+
+        }
+    }
+    xhr.send();
 }
