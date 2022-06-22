@@ -248,9 +248,12 @@ function getJoueur(){
             document.getElementById("nom").value = joueur.nom;
             document.getElementById("email").value = queryString.get('email');                
             document.getElementById("anniversaire").value = joueur.naissance;
-            document.getElementById("ville").value = joueur.code_insee_ville;
             document.getElementById("frequence").value = joueur.frequence_sport;
-            //document.getElementById("motDePasse").value = joueur.mdp;
+            document.getElementById("frequence_actuelle").innerHTML = joueur.frequence_sport;
+           // document.getElementById("ville_actuelle").value = joueur.code_insee_ville;
+            document.getElementById("ville").value = joueur.code_insee_ville;
+            //document.getElementById("motDePasse").value = joueur.mdp;              
+
         }
     }
     xhr.send();
@@ -269,6 +272,8 @@ function goHome(){
         window.location.href = "../../index.html";
     }
 }
+
+// * Fonction permettant d'entraver l'accès au profil d'un joueur non connecté
 
 function isConnected(){
     let paramString = window.location.href.split('?')[1];

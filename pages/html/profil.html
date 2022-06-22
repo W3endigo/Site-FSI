@@ -2,9 +2,9 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8"/>
-    <!--Pour rendre le code responsif -->
+    <!-- * Pour rendre le code responsif -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Liaison à Bootstrap et JQuery -->
+    <!-- * Liaison à Bootstrap et JQuery -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -12,10 +12,10 @@
 
     <title>FSI</title>
 
-    <!--Liaison avec le fichier style-->
+    <!-- * Liaison avec le fichier style-->
     <link href="../css/profil.css" rel="stylesheet" type="text/css" />
 
-    <!--Liaison avec le fichier script-->
+    <!-- * Liaison avec le fichier script-->
     <script type="text/javascript" src="../js/profil.js" defer></script>
 
   </head>
@@ -32,6 +32,11 @@
             <img src="../../ressources/deconnecte.png" id="user_image">
         </div>
     </div>
+
+
+
+    <!-- * Formulaire dont les entrées sont placées en disabled-->
+
     <form id="profil" class="container">
         <div class="text-center">
           <img id="form_image" class="text-center" src="">
@@ -52,13 +57,13 @@
         <input class="info_profil" type="date" id="anniversaire" value=""  disabled required>
         
         <select class="info_profil" id="ville" disabled required>
-          <option style="display:none" value="">Choisir une Ville</option>
+          <option  id="ville_actuelle" value=""></option>
         </select>
         <div class="text-center">
           <small>Condition physique :</small>
         </div>  
         <select class="info_profil" id="frequence" disabled required>
-          <option style="display:none" value="">Choisir une forme sportive</option>
+          <option id="frequence_actuelle" value="">Nouvelle forme sportive</option>
         </select>
         <div id="nombre" >
           <img src="../../ressources/match.png">
@@ -75,8 +80,23 @@
           <img id="modifieur" src="../../ressources/pen.png" onclick="modifier_profil()">
           <button class="info_profil" type="submit" id="btn-profil" disabled> Modifier</button>
         </div>    
-    </form>      
-    </center>
+    </form>     
+      
+      <!-- * Note -->
+
+  <div id="note">
+      <div class="container d-flex justify-content-center mt-5">
+
+
+                <h6 class="mb-0">Notez-nous !</h6>
+
+                <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+            </div>
+    </div>   
+  </div>     
+</div>
+
+      
       
   </body>
     
