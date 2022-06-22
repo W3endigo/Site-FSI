@@ -22,7 +22,7 @@
   <header>
     </header>
   
-  <body onload="verif_connexion(); getMatch(); getParticipants(); getOrganisateur(); ">
+  <body onload="verif_connexion(); getMatch(); getParticipantsAffichage(); getOrganisateur(); ">
       
     <div id="sticky_head">
         <div id="apparait">    
@@ -97,8 +97,8 @@
 <!--Bouton et informations d'inscription!-->
       
 <div id="inscription" class="text-center">
-    <button id="button2" type="button" class="btn btn-primary btn-lg">Inscription</button>
-    <p>Une participation de 5€ pourra-t-être demandée sur place.</p>      
+    <button id="button2" type="button" class="btn btn-primary btn-lg" onclick="inscription()">Inscription</button>
+    <p id="prix"></p>      
 </div>
       
       <!--Formulaire de conclusion d'un match, visible uniquement par le créateur!-->
