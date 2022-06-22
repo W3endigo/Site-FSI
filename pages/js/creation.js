@@ -76,3 +76,10 @@ function goHome(){
         window.location.href = "../../index.html";
     }
 }   
+
+function goProfil(){
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+
+    window.location.href = "http://127.0.0.1/site-FSI/pages/html/profil.html?email="+queryString.get('email');
+}   
