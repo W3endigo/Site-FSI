@@ -110,6 +110,10 @@ function getOrganisateur(){
         }
     }        
     xhr.send();
+    if(queryString.get('email') == match.email){
+
+        document.getElementById("petits_boutons").display="block";
+    }
 
 }
 
