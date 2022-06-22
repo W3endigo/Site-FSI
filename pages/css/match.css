@@ -291,6 +291,7 @@ img{
     background-color: red;
 }
 
-#petits_boutons{
+.petits_boutons{
     display:none;
+    background-color: #E30613;
 }

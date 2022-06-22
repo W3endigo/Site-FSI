@@ -95,8 +95,12 @@ function getOrganisateur(){
 
             if(queryString.get('email') == match.email){
 
-                document.getElementById("petits_boutons").display="block";
+                boutons = document.getElementsByClassName("petits_boutons");
+                for(let i = 0; i < boutons.length; i++){
+                    boutons[i].style.display="block";
+                }
             }
+        
 
             var xhr1 = new XMLHttpRequest();
             xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+match.email);
@@ -156,7 +160,12 @@ function createDiv(participant){
             h5.textContent = joueur.prenom+" "+joueur.nom;
             div.appendChild(h5);
             participants_div.appendChild(div);
-            if(participant.status == 0){}
+            if(participant.status == 0){
+                article = document.createElement("article");
+                article.class = "petits_boutons";
+                article.innerHTML = "<button type='button' class='btn btn-success'> <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check2-circle' viewBox='0 0 16 16'>  <path d='M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z'></path><path d='M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z'></path></svg>Accepter</button><button type='button' class='btn btn-outline-danger'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='red' class='bi bi-x' viewBox='0 0 16 16'><path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'></path></svg>Refuser</button>";
+                participants_div.appendChild(article);
+            }
                 
         }
     }
