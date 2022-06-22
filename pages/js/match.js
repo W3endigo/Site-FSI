@@ -159,7 +159,7 @@ function getOrganisateur(){
 
             if(queryString.get('email') == match.email){
                 boutons = document.getElementsByClassName("petits_boutons");
-                alert(boutons.length);
+                //alert(boutons.length);
                 for(let i = 0; i < boutons.length; i++){
                     boutons[i].style.display="flex";
                 }

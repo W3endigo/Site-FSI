@@ -24,8 +24,8 @@
        <center>
            <img id="logo" src="ressources/logo.png">
            <div  onclick="toggle_header()">
-               <img id="big_user_image" src="ressources/deconnecte.png">
-               <p id="username">Nom de l'utilisateur</p>
+               <img id="big_user_image" src="">
+               <p id="username"></p>
            </div>
         </center>       
     </div>
@@ -39,7 +39,7 @@
       
     </header>
   
-  <body onscroll="toggle_icons()" onload="verif_connexion() ; getVille(); getSport()">
+  <body onscroll="toggle_icons()" onload="verif_connexion() ; getVille(); getSport(); getMatch(); chargeJoueur();">
     <div id="sticky_head" class="container_fluid sticky">
         <div id="apparait_index">    
             <a href="#up_head"><img src="ressources/maison.png" id="home"></a>         
@@ -65,54 +65,28 @@
             <option  >Complet</option>
           </select>
 
-          <select id="aucun" class="valeurs">
+          <select id="aucun" class="valeurs" onchange="setFiltre();">
               <option value="" style="display:none">Aucun filtre sélectionné</option>
           </select>
 
-          <select id="villes" class="valeurs">
+          <select id="villes" class="valeurs" onchange="setFiltre('ville',this.selectedIndex);">
             <option value="" style="display:none">Choisir une ville</option>
-            
         </select>
 
-        <select id="sports" class="valeurs">
+        <select id="sports" class="valeurs" onchange="setFiltre('sports',this.selectedIndex);">
           <option value="" style="display:none">Choisir un sport</option>
       </select>
 
-      <input type="number" id="periode" class="valeurs" min="0" placeholder="Choisir le nombre de jours de la période">
+      <input type="number" id="periode" class="valeurs" min="0" placeholder="Choisir le nombre de jours de la période" onchange="setFiltre('periode',this.input);">
 
-    <select id="complet" class="valeurs">
-      <option value="complet" style="display:none">Matchs ayant de la place</option>
+    <select id="complet" class="valeurs" onchange="setFiltre('complet',this.selectedIndex);">
+      <option value="1" style="display:none" id="complet">Matchs ayant de la place</option>
+      <option value="2" style="display:none">Matchs complets</option>
       <option value="" style="display:none">Rien</option>
   </select>
         </div>  
-
-        <div class="match" onclick="ouvrir_match()">
-          <div class="date">
-              <h4>
-                  20/01/22
-              </h4>
-              <h5>
-                18:22
-              </h5>
-                
-            </div>
-            <div class="titre_match">
-                <h1>
-                Foot entre Fous
-                </h1>
-                <h3>Stade Jean Coquelin</h3>
-          </div>
-                <div class="nb_joueurs">
-                    <img src="ressources/utilisateur.png">
-                        <div>
-                            <small>Football</small>
-                            <h4>14/25</h4>
-                        </div>
-                                        
-                </div>
-                
-        </div>  
-          
+      <div id = liste_match>
+      </div>
         <!--Fin des Divs Match!-->  
           
       </div>

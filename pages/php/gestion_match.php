@@ -1,6 +1,6 @@
 <?php
 
-    // * ce fichier permet de créer et de supprimer un match
+    // * ce fichier permet de créer, de supprimer et de mettre à jour un match.
 
     require_once('database.php');
 
@@ -8,6 +8,7 @@
     function dbCreateMatchs($db, $titre, $horaire, $duree, $description, $participant_min, $participant_max, $prix, $adresse, $code_insee_ville, $nom_sport, $email_organisateur){
 
         $email_meilleur_joueur = 'test.inconnu@gmail.com';
+        // * Création du match.
         try{
     
             $request = 'INSERT INTO matchs (titre, horaire, duree, description, participant_min, participant_max, prix, termine, adresse, 
@@ -36,6 +37,7 @@
     
         }
 
+        // * Récupération de l'id du match créé.
         try{
     
             $request = 'SELECT id_match FROM matchs WHERE email=:email_organisateur ORDER BY id_match DESC LIMIT 1';
@@ -58,6 +60,7 @@
     //* cette fonction permet de supprimer un match dans la DB.
     function dbDeleteMatchs($db, $id_match){
 
+        // * Suppression des participant au match que l'on veut supprimer.
         try{
             $request = 'DELETE FROM participe WHERE id_match=:id_match';
             $statement = $db->prepare($request);
@@ -71,6 +74,7 @@
     
         }
 
+        // * Suppression du match.
         try{
 
             $request = 'DELETE FROM matchs WHERE id_match=:id_match';

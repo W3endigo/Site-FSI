@@ -82,6 +82,7 @@ function dbConnect(){
     return true;
   }
 
+// * Récupération du chiffrage du mot de passe.
 function dbGetChiffrage($db, $mdp){
   
   return password_hash($mdp, PASSWORD_BCRYPT);

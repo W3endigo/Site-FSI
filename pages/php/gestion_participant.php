@@ -7,7 +7,7 @@
 
     require_once('database.php');
 
-    //* Cette fonction permet d'ajouter une participant à un match.
+    //* Cette fonction permet d'ajouter un participant à un match.
     function dbAddParticipant($db, $id_match, $email){
 
         try{
@@ -34,6 +34,7 @@
     //* Cette fonction permet de valider une participation à un match et de mettre à jour le nombre de participation du joueur.
     function dbValidateParticipant($db, $id_match, $email){
 
+        // * Mise à jour du status de la participation à un match.
         try{
 
             $request = 'UPDATE participe SET status=1 WHERE id_match=:id_match AND email=:email';
@@ -49,6 +50,7 @@
 
         }
 
+        // * Mise à jour du nombre de participation du joueur.
         try{
 
             $request = 'UPDATE joueur SET nombre_de_matchs=nombre_de_matchs+1 WHERE email=:email';
