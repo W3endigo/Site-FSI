@@ -290,3 +290,7 @@ img{
 #bouton_annuler{
     background-color: red;
 }
+
+#petits_boutons{
+    display:none;
+}

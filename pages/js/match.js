@@ -103,7 +103,6 @@ function getOrganisateur(){
                     document.getElementById("createur").src = organisateur_fiche.photo;
                     document.getElementById("createur_nom").innerHTML = organisateur_fiche.prenom+" "+organisateur_fiche.nom;
                     document.getElementById("createur_email").innerHTML = match.email;         
-        
                 }
             }        
             xhr1.send();
@@ -154,7 +153,7 @@ function createDiv(participant){
             h5.textContent = joueur.prenom+" "+joueur.nom;
             div.appendChild(h5);
             participants_div.appendChild(div);
-            if(participant.status == 0){
+            if(participant.status == 0){}
                 
         }
     }
