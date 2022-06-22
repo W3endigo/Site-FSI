@@ -93,6 +93,11 @@ function getOrganisateur(){
         if(xhr.readyState == 4 && xhr.status == 200){
             match = JSON.parse(xhr.responseText);
 
+            if(queryString.get('email') == match.email){
+
+                document.getElementById("petits_boutons").display="block";
+            }
+
             var xhr1 = new XMLHttpRequest();
             xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+match.email);
             xhr1.onreadystatechange = function(){
@@ -110,11 +115,6 @@ function getOrganisateur(){
         }
     }        
     xhr.send();
-    if(queryString.get('email') == match.email){
-
-        document.getElementById("petits_boutons").display="block";
-    }
-
 }
 
 function getParticipants(){
