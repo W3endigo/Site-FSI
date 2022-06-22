@@ -4,15 +4,15 @@ $("#profil").submit((event) =>{
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+queryString.get('email'));
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+    xhr.open("GET", "../php/request.php/joueur?email="+queryString.get('email'));
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var joueur_default = JSON.parse(xhr.responseText);
             if(document.getElementById("form_image").src != joueur_default.photo){
                 var xhr1 = new XMLHttpRequest();
-                xhr1.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/photo?email="+$('#email').val()+"&new_photo="+$('#image_selected').val());
-                xhr1.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+                xhr1.open("PUT", "../php/request.php/photo?email="+$('#email').val()+"&new_photo="+$('#image_selected').val());
+                xhr1.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
                 xhr1.onreadystatechange = function(){
                     if(xhr1.readyState == 4 && xhr1.status == 200){
                     
@@ -28,8 +28,8 @@ $("#profil").submit((event) =>{
 
             if($("#prenom").val() != joueur_default.prenom){
                 var xhr2 = new XMLHttpRequest();
-                xhr2.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/prenom?email="+$('#email').val()+"&new_prenom="+$('#prenom').val());
-                xhr2.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+                xhr2.open("PUT", "../php/request.php/prenom?email="+$('#email').val()+"&new_prenom="+$('#prenom').val());
+                xhr2.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
                 xhr2.onreadystatechange = function(){
                     if(xhr2.readyState == 4 && xhr2.status == 200){
                     
@@ -45,7 +45,7 @@ $("#profil").submit((event) =>{
 
             if($("#nom").val() != joueur_default.nom){
                 var xhr3 = new XMLHttpRequest();
-                xhr3.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/nom?email="+$('#email').val()+"&new_nom="+$('#nom').val());
+                xhr3.open("PUT", "../php/request.php/nom?email="+$('#email').val()+"&new_nom="+$('#nom').val());
                 xhr3.onreadystatechange = function(){
                     if(xhr3.readyState == 4 && xhr3.status == 200){
                                             
@@ -61,7 +61,7 @@ $("#profil").submit((event) =>{
 
             // if($("#email").val() != queryString.get('email')){
             //     var xhr3 = new XMLHttpRequest();
-            //     xhr3.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/email?email="+queryString.get('email')+"&new_email="+$('#email').val());
+            //     xhr3.open("PUT", "../php/request.php/email?email="+queryString.get('email')+"&new_email="+$('#email').val());
             //     xhr3.onreadystatechange = function(){
             //         if(xhr3.readyState == 4 && xhr3.status == 200){
                     
@@ -77,7 +77,7 @@ $("#profil").submit((event) =>{
             if($("#motDePasse").val() != ""){
                 console.log($("#motDePasse").val());
                 var xhr4 = new XMLHttpRequest();
-                xhr4.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/mdp?email="+$('#email').val()+"&new_mdp="+$('#motDePasse').val());
+                xhr4.open("PUT", "../php/request.php/mdp?email="+$('#email').val()+"&new_mdp="+$('#motDePasse').val());
                 xhr4.onreadystatechange = function(){
                     if(xhr4.readyState == 4 && xhr4.status == 200){
                     
@@ -97,7 +97,7 @@ $("#profil").submit((event) =>{
 
             if($("#anniversaire").val() != joueur_default.naissance){
                 var xhr5 = new XMLHttpRequest();
-                xhr5.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/date_naissance?email="+$('#email').val()+"&new_date_naissance="+$('#anniversaire').val());
+                xhr5.open("PUT", "../php/request.php/date_naissance?email="+$('#email').val()+"&new_date_naissance="+$('#anniversaire').val());
                 xhr5.onreadystatechange = function(){
                     if(xhr5.readyState == 4 && xhr5.status == 200){
                     
@@ -113,7 +113,7 @@ $("#profil").submit((event) =>{
 
             if($("#ville").val() != joueur_default.code_insee_ville){
                 var xhr6 = new XMLHttpRequest();
-                xhr6.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/code_insee_ville?email="+$('#email').val()+"&new_code_insee_ville="+$('#ville').val());
+                xhr6.open("PUT", "../php/request.php/code_insee_ville?email="+$('#email').val()+"&new_code_insee_ville="+$('#ville').val());
                 xhr6.onreadystatechange = function(){
                     if(xhr6.readyState == 4 && xhr6.status == 200){
                     
@@ -129,7 +129,7 @@ $("#profil").submit((event) =>{
 
             if($("#frequence").val() != joueur_default.frequence_sport){
                 var xhr7 = new XMLHttpRequest();
-                xhr7.open("PUT", "http://127.0.0.1/Site-FSI/pages/php/request.php/frequence?email="+$('#email').val()+"&new_frequence="+$('#frequence').val());
+                xhr7.open("PUT", "../php/request.php/frequence?email="+$('#email').val()+"&new_frequence="+$('#frequence').val());
                 xhr7.onreadystatechange = function(){
                     if(xhr7.readyState == 4 && xhr7.status == 200){
                     
@@ -181,8 +181,8 @@ function toggle_image() {
 // * Cette fonction permet de récupérer le nom des villes via requête AJAX et de les afficher dans un select.
 function getVille(){
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/ville");
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+    xhr.open("GET", "../php/request.php/ville");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var villes = JSON.parse(xhr.responseText);
@@ -201,8 +201,8 @@ function getVille(){
 // * Cette fonction permet de récupérer les fréquences via requête AJAX et de les afficher dans un select.
 function getFrequence(){
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/frequence");
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+    xhr.open("GET", "../php/request.php/frequence");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var frequence = JSON.parse(xhr.responseText);
@@ -237,8 +237,8 @@ function getJoueur(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+queryString.get('email'));
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+    xhr.open("GET", "../php/request.php/joueur?email="+queryString.get('email'));
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             //console.log(xhr.responseText);

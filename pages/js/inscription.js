@@ -3,8 +3,8 @@ $("#formulaire").submit((event) => {
     event.preventDefault();
     if($("#motDePasse").val() == $("#motDePasse2").val()){
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+$('#email').val()+"&mdp="+$('#motDePasse').val()+"&prenom="+$('#prenom').val()+"&nom="+$('#nom').val()+"&date_naissance="+$('#anniversaire').val()+"&photo="+$('#image_selected').val()+"&code_insee_ville="+$('#ville').val()+"&frequence="+$('#frequence').val());
-        xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+        xhr.open("POST", "../php/request.php/joueur?email="+$('#email').val()+"&mdp="+$('#motDePasse').val()+"&prenom="+$('#prenom').val()+"&nom="+$('#nom').val()+"&date_naissance="+$('#anniversaire').val()+"&photo="+$('#image_selected').val()+"&code_insee_ville="+$('#ville').val()+"&frequence="+$('#frequence').val());
+        xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
         xhr.onreadystatechange = function(){
             if(xhr.readyState == 4 && xhr.status == 200){
                
@@ -13,7 +13,7 @@ $("#formulaire").submit((event) => {
             }
             if(validite == "true"){
 
-                window.location.href = "http://127.0.0.1/site-FSI/pages/html/profil.html?email="+$('#email').val();
+                window.location.href = "../html/profil.html?email="+$('#email').val();
 
             }else{
                 
@@ -69,8 +69,8 @@ function toggle_mdp() {
 // * Cette fonction permet de récupérer le nom des villes via requête AJAX et de les afficher dans un select.
 function getVille(){
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/ville");
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+    xhr.open("GET", "../php/request.php/ville");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var villes = JSON.parse(xhr.responseText);
@@ -89,8 +89,8 @@ function getVille(){
 // * Cette fonction permet de récupérer les fréquences via requête AJAX et de les afficher dans un select.
 function getFrequence(){
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/frequence");
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/pages/html/inscription.html");
+    xhr.open("GET", "../php/request.php/frequence");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var frequence = JSON.parse(xhr.responseText);
