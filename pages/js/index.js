@@ -130,6 +130,32 @@ function getVille(){
 }
 
 
+// * Cette fonction permet de récupérer le nom des sports via requête AJAX et de les afficher dans un select.
+function getSport(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/sport");
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "http://127.0.0.1/site-FSI/index.html");
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            var sports = JSON.parse(xhr.responseText);
+            var select = document.getElementById("sports");
+            for(var i = 0; i < villes.length; i++){
+                var option = document.createElement("option");
+                option.value = sports[i].nom_sport;
+                option.text = sports[i].nom_sport;
+                select.appendChild(option);
+            }
+        }
+    }
+    xhr.send();
+}
+
+
+
+
+
+
+
 
 
 
@@ -151,7 +177,7 @@ function selectFiltre(filtre){
             document.getElementById("villes").selectedIndex = 0;
             document.getElementById("sports").selectedIndex = 0;
             document.getElementById("periode").value = 0;
-            document.getElementById("complet").selectedIndex = 0;
+            document.getElementById("complet").selectedIndex = 1;
             break;
 
         case(2): // * villes
@@ -165,7 +191,7 @@ function selectFiltre(filtre){
             document.getElementById("aucun").selectedIndex = 0;
             document.getElementById("sports").selectedIndex = 0;
             document.getElementById("periode").value = 0;
-            document.getElementById("complet").selectedIndex = 0;
+            document.getElementById("complet").selectedIndex = 1;
             break;
 
         case(3): // * sports
@@ -179,7 +205,7 @@ function selectFiltre(filtre){
             document.getElementById("villes").selectedIndex = 0;
             document.getElementById("aucun").selectedIndex = 0;
             document.getElementById("periode").value = 0;
-            document.getElementById("complet").selectedIndex = 0;
+            document.getElementById("complet").selectedIndex = 1;
             break;
 
         case(4): // * periode
@@ -193,11 +219,12 @@ function selectFiltre(filtre){
             document.getElementById("villes").selectedIndex = 0;
             document.getElementById("sports").selectedIndex = 0;
             document.getElementById("aucun").selectedIndex = 0;
-            document.getElementById("complet").selectedIndex = 0;
+            document.getElementById("complet").selectedIndex = 1;
             break;
 
         case(5): // * complet
         document.getElementById("complet").style.display = "block";
+        document.getElementById("complet").selectedIndex = 0;
 
             document.getElementById("villes").style.display = "none";
             document.getElementById("sports").style.display = "none";
