@@ -69,15 +69,15 @@
               <option value="" style="display:none"></option>
           </select>
 
-          <select id="villes" class="valeurs" onchange="setFiltre('ville',this.selectedIndex);">
+          <select id="villes" class="valeurs" onchange="setFiltre('ville',this.value);">
             <option value="" style="display:none">Choisir une ville</option>
         </select>
 
-        <select id="sports" class="valeurs" onchange="setFiltre('sports',this.selectedIndex);">
+        <select id="sports" class="valeurs" onchange="setFiltre('sports',this.value);">
           <option value="" style="display:none">Choisir un sport</option>
       </select>
 
-      <input type="number" id="periode" class="valeurs" min="0" placeholder="Choisir le nombre de jours de la période" onchange="setFiltre('periode',this.input);">
+      <input type="number" id="periode" class="valeurs" min="0" value="" placeholder="Choisir le nombre de jours de la période" onchange="setFiltre('periode',this.value);">
 
     <select id="complet" class="valeurs" onchange="setFiltre('complet',this.selectedIndex);">
       <option value="" style="display:none">Rien</option>

@@ -217,6 +217,8 @@ function selectFiltre(filtre){
 }
 
 function getMatch(){
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "pages/php/request.php/matchs");
     xhr.onreadystatechange = function(){
@@ -225,10 +227,79 @@ function getMatch(){
             //console.log(match);
             match.forEach(createDiv);
 
+    switch(queryString.get('type_filtre')){
+        case("ville"):
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyville?code_insee_ville="+queryString.get('value_filtre'));
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    match = JSON.parse(xhr.responseText);
+                    //console.log(match);
+                    match.forEach(createDiv);
+
+                
+                }
+            }        
+            xhr.send();
+            break;
+
+        case("sports"):
+            
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbysport?nom_sport="+queryString.get('value_filtre'));
+            xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                match = JSON.parse(xhr.responseText);
+                console.log(match);
+                //console.log(match);
+                match.forEach(createDiv);
+                }
+            }        
+            xhr.send();
+            break;
         
-        }
-    }        
-    xhr.send();
+        case("periode"):
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyperiode?periode="+queryString.get('value_filtre'));
+            xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                match = JSON.parse(xhr.responseText);
+                //console.log(match);
+                match.forEach(createDiv);
+                }
+            }        
+            xhr.send();
+            break;
+        
+        case("complet"):
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyperiode?periode="+queryString.get('value_filtre'));
+            xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                match = JSON.parse(xhr.responseText);
+                //console.log(match);
+                match.forEach(createDiv);
+                }
+            }        
+            xhr.send();
+            break;
+
+        default:
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchs");
+            xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                match = JSON.parse(xhr.responseText);
+                //console.log(match);
+                match.forEach(createDiv);
+                }
+            }        
+            xhr.send();
+            break;
+
+                
+                
+    }
 }
 
 function createDiv(match){
@@ -238,76 +309,89 @@ function createDiv(match){
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
 
-            participants = JSON.parse(xhr.responseText);
+            
+            var xhr1 = new XMLHttpRequest();
+            xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/ville");
+            xhr1.onreadystatechange = function(){
+                if(xhr1.readyState == 4 && xhr1.status == 200){
 
-            for(var i = 0; i < participants.length; i++){
-                if(participants[i].status == 1){
-                    participant_confirme++;
+                    var participant_confirme = 0;
+                    participant_max = match.participant_max;
+                    date = new Date(match.horaire);
+
+                    participants = JSON.parse(xhr.responseText);
+                    villes = JSON.parse(xhr1.responseText);
+
+                    for(var i = 0; i < participants.length; i++){
+                        if(participants[i].status == 1){
+                            participant_confirme++;
+                            console.log(participant_confirme);
+                        }
+                    }
+
+                    for(var i = 0; i < villes.length; i++){
+                        if(villes[i].code_insee_ville == match.code_insee_ville){
+                            nom_ville = villes[i].nom_ville;
+                        }
+                    }
+
+                    var div_match = document.createElement("div");
+                    div_match.className = "match";
+                    div_match.onclick = function(){goMatch(match.id_match);};
+
+                    var div_date = document.createElement("div");
+                    div_date.className = "date";
+
+                    var h4_date = document.createElement("h4");
+                    h4_date.innerHTML = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
+                    div_date.appendChild(h4_date);
+
+                    var h5_heure = document.createElement("div");
+                    h5_heure.innerHTML = date.getHours()+":"+date.getMinutes();
+                    div_date.appendChild(h5_heure);
+
+                    div_match.appendChild(div_date);
+
+                    var div_titre = document.createElement("div");
+                    div_titre.className = "titre_match";
+
+                    var h1_titre = document.createElement("h1");
+                    h1_titre.innerHTML = match.titre;
+                    div_titre.appendChild(h1_titre);
+
+
+
+                    var h3_adresse = document.createElement("h3");
+                    h3_adresse.innerHTML = match.adresse+", "+nom_ville;
+                    div_titre.appendChild(h3_adresse);
+
+                    div_match.appendChild(div_titre);
+
+                    var div_joueur = document.createElement("div");
+                    div_joueur.className = "nb_joueurs";
+
+                    var img_joueur = document.createElement("img");
+                    img_joueur.src = "ressources/utilisateur.png";
+                    div_joueur.appendChild(img_joueur);
+
+                    var container_div = document.createElement("div");
+
+                    var small_sports = document.createElement("small");
+                    small_sports.innerHTML = match.nom_sport;
+                    container_div.appendChild(small_sports);
+
+                    var h4_participant = document.createElement("h4");
+                    h4_participant.innerHTML = participant_confirme+"/"+match.participant_max;
+                    container_div.appendChild(h4_participant);
+
+                    div_joueur.appendChild(container_div);
+
+                    div_match.appendChild(div_joueur);
+
+                    document.getElementById("liste_match").appendChild(div_match);
                 }
             }
-
-            participant_max = match.participant_max;
-            var participant_confirme = 0;
-            date = new Date(match.horaire);
-
-            var div_match = document.createElement("div");
-            div_match.className = "match";
-            div_match.onclick = function(){goMatch(match.id_match);};
-
-            var div_date = document.createElement("div");
-            div_date.className = "date";
-
-            var h4_date = document.createElement("h4");
-            h4_date.innerHTML = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
-            div_date.appendChild(h4_date);
-
-            var h5_heure = document.createElement("div");
-            h5_heure.innerHTML = date.getHours()+":"+date.getMinutes();
-            div_date.appendChild(h5_heure);
-
-            div_match.appendChild(div_date);
-
-            var div_titre = document.createElement("div");
-            div_titre.className = "titre_match";
-
-            var h1_titre = document.createElement("h1");
-            h1_titre.innerHTML = match.titre;
-            div_titre.appendChild(h1_titre);
-
-            var h3_adresse = document.createElement("h3");
-            h3_adresse.innerHTML = match.adresse;
-            div_titre.appendChild(h3_adresse);
-
-            div_match.appendChild(div_titre);
-
-            var div_joueur = document.createElement("div");
-            div_joueur.className = "nb_joueurs";
-
-            var img_joueur = document.createElement("img");
-            img_joueur.src = "ressources/utilisateur.png";
-            div_joueur.appendChild(img_joueur);
-
-            var container_div = document.createElement("div");
-
-            var small_sports = document.createElement("small");
-            small_sports.innerHTML = match.nom_sport;
-            container_div.appendChild(small_sports);
-
-            var h4_participant = document.createElement("h4");
-            h4_participant.innerHTML = participant_confirme+"/"+match.participant_max;
-            container_div.appendChild(h4_participant);
-
-            div_joueur.appendChild(container_div);
-
-            div_match.appendChild(div_joueur);
-
-            // var sumbmit_button = document.createElement("button");
-            // sumbmit_button.className = "btn btn-primary btn-lg";
-            // sumbmit_button.type = "button";
-            // sumbmit_button.innerHTML = "Voir ce match";
-            // sumbmit_button.onclick = function(){
-
-            document.getElementById("liste_match").appendChild(div_match);
+            xhr1.send();
 
         }
             
@@ -351,6 +435,7 @@ function setFiltre(type = "", value = ""){
     //         }
     // }else{
     if(type == "periode"){
+            console.log('voila');
             if(queryString.has('email')){
                 window.location.href = "index.html?email="+queryString.get('email')+"&type_filtre="+type+"&value_filtre="+document.getElementById("periode").value;
             }else{
@@ -363,11 +448,4 @@ function setFiltre(type = "", value = ""){
             window.location.href = "index.html?type_filtre="+type+"&value_filtre="+value;
         }
     }
-
-
-
-    //}
-
-
-
 }
