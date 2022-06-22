@@ -174,7 +174,7 @@ function selectFiltre(filtre){
             document.getElementById("villes").selectedIndex = 0;
             document.getElementById("sports").selectedIndex = 0;
             document.getElementById("periode").value = 0;
-            document.getElementById("complet").selectedIndex = 1;
+            document.getElementById("complet").selectedIndex = 0;
             break;
 
         case(2): // * villes
@@ -188,7 +188,7 @@ function selectFiltre(filtre){
             document.getElementById("aucun").selectedIndex = 0;
             document.getElementById("sports").selectedIndex = 0;
             document.getElementById("periode").value = 0;
-            document.getElementById("complet").selectedIndex = 1;
+            document.getElementById("complet").selectedIndex = 0;
             break;
 
         case(3): // * sports
@@ -202,7 +202,7 @@ function selectFiltre(filtre){
             document.getElementById("villes").selectedIndex = 0;
             document.getElementById("aucun").selectedIndex = 0;
             document.getElementById("periode").value = 0;
-            document.getElementById("complet").selectedIndex = 1;
+            document.getElementById("complet").selectedIndex = 0;
             break;
 
         case(4): // * periode
@@ -216,7 +216,7 @@ function selectFiltre(filtre){
             document.getElementById("villes").selectedIndex = 0;
             document.getElementById("sports").selectedIndex = 0;
             document.getElementById("aucun").selectedIndex = 0;
-            document.getElementById("complet").selectedIndex = 1;
+            document.getElementById("complet").selectedIndex = 0;
             break;
 
         case(5): // * complet
