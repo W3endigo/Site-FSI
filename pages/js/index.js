@@ -34,8 +34,8 @@ function verif_connexion(){
         document.getElementById("button2").innerHTML="Mon profil";
         document.getElementById("username").style.display="flex";
 
-        document.getElementById("big_user_image").src="ressources/femme.png";
-        document.getElementById("user_image").src="ressources/femme.png";
+        //document.getElementById("big_user_image").src="ressources/femme.png";
+        //document.getElementById("user_image").src="ressources/femme.png";
         
         document.getElementById("creer").style.display="flex";
     }
@@ -213,7 +213,7 @@ function getMatch(){
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             match = JSON.parse(xhr.responseText);
-            console.log(match);
+            //console.log(match);
             match.forEach(createDiv);
 
         
@@ -236,7 +236,6 @@ function createDiv(match){
 
             var div_match = document.createElement("div");
             div_match.className = "match";
-            //div_match.onclick = "goMatch(match.id_match)";
 
             var div_date = document.createElement("div");
             div_date.className = "date";
@@ -291,5 +290,27 @@ function createDiv(match){
             
     }
     xhr.send();
+
+}
+
+function chargeJoueur(){
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+    if(queryString.has('email')){
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+queryString.get('email'));
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                joueur = JSON.parse(xhr.responseText);
+                console.log(joueur);
+                
+                document.getElementById("big_user_image").src = joueur.photo.split('/')[2]+"/"+joueur.photo.split('/')[3];
+                document.getElementById("username").innerHTML = joueur.nom+" "+joueur.prenom;
+
+            }
+        }
+        xhr.send();
+    }
 
 }

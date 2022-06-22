@@ -24,8 +24,8 @@
        <center>
            <img id="logo" src="ressources/logo.png">
            <div  onclick="toggle_header()">
-               <img id="big_user_image" src="ressources/deconnecte.png">
-               <p id="username">Nom de l'utilisateur</p>
+               <img id="big_user_image" src="">
+               <p id="username"></p>
            </div>
         </center>       
     </div>
@@ -39,7 +39,7 @@
       
     </header>
   
-  <body onscroll="toggle_icons()" onload="verif_connexion() ; getVille(); getSport(); getMatch();">
+  <body onscroll="toggle_icons()" onload="verif_connexion() ; getVille(); getSport(); getMatch(); chargeJoueur();">
     <div id="sticky_head" class="container_fluid sticky">
         <div id="apparait_index">    
             <a href="#up_head"><img src="ressources/maison.png" id="home"></a>         
