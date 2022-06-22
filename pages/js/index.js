@@ -41,9 +41,6 @@ function verif_connexion(){
         document.getElementById("user_image").src="ressources/femme.png";
         
         document.getElementById("creer").style.display="flex";
-        
-        document.getElementById("a2").href="pages/html/profil.php";
-        document.getElementById("a1").href="pages/html/mesmatchs.php";
     }
     
     

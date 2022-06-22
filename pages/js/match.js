@@ -233,3 +233,22 @@ function getParticipants(){
     }
     xhr.send();
 }
+
+function supprimerMatch(){
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+    var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", "http://127.0.0.1/Site-FSI/pages/php/request.php/match?id_match="+queryString.get('id_match'));
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            alert("Match supprimé");
+            if(queryString.get('email') != null){
+                window.location.href = "../../index.html?email="+queryString.get('email');
+            }else{
+                window.location.href = "../../index.html";
+            }
+        }
+    }
+    xhr.send();
+}
+
