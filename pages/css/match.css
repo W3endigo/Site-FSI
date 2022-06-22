@@ -292,6 +292,5 @@ img{
 }
 
 .petits_boutons{
-    display:none;
-    background-color: #E30613;
+    display:flex;
 }
