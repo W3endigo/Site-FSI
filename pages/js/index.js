@@ -46,14 +46,13 @@ function verif_connexion(){
 // * permet de cliquer sur un match pour afficher le contenu visible selon la connexion
 function goMatch(id_match){
 
-    alert('alerte');
-    // let paramString = window.location.href.split('?')[1];
-    // let queryString = new URLSearchParams(paramString);
-    // if(queryString.get('email') != null){
-    //     window.location.href = "../Site-FSI/pages/html/match.html?email="+queryString.get('email')+"&id_match="+id_match;
-    // }else{
-    //     window.location.href = "../Site-FSI/pages/html/match.html?id_match="+id_match;
-    // }
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+    if(queryString.get('email') != null){
+        window.location.href = "../Site-FSI/pages/html/match.html?email="+queryString.get('email')+"&id_match="+id_match;
+    }else{
+        window.location.href = "../Site-FSI/pages/html/match.html?id_match="+id_match;
+    }
 }  
 
 // * permet de gérer l'accès à la création d'un match
@@ -224,9 +223,6 @@ function getMatch(){
 
 function createDiv(match){
 
-    date = new Date(match.horaire);
-    participant_max = match.participant_max;
-
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/participants?id_match="+match.id_match);
     xhr.onreadystatechange = function(){
@@ -234,8 +230,19 @@ function createDiv(match){
 
             participants = JSON.parse(xhr.responseText);
 
+            for(var i = 0; i < participants.length; i++){
+                if(participants[i].status == 1){
+                    participant_confirme++;
+                }
+            }
+
+            participant_max = match.participant_max;
+            var participant_confirme = 0;
+            date = new Date(match.horaire);
+
             var div_match = document.createElement("div");
             div_match.className = "match";
+            div_match.onclick = function(){goMatch(match.id_match);};
 
             var div_date = document.createElement("div");
             div_date.className = "date";
@@ -277,12 +284,18 @@ function createDiv(match){
             container_div.appendChild(small_sports);
 
             var h4_participant = document.createElement("h4");
-            h4_participant.innerHTML = JSON.parse(xhr.responseText).length+"/"+match.participant_max;
+            h4_participant.innerHTML = participant_confirme+"/"+match.participant_max;
             container_div.appendChild(h4_participant);
 
             div_joueur.appendChild(container_div);
 
             div_match.appendChild(div_joueur);
+
+            // var sumbmit_button = document.createElement("button");
+            // sumbmit_button.className = "btn btn-primary btn-lg";
+            // sumbmit_button.type = "button";
+            // sumbmit_button.innerHTML = "Voir ce match";
+            // sumbmit_button.onclick = function(){
 
             document.getElementById("liste_match").appendChild(div_match);
 
@@ -303,7 +316,6 @@ function chargeJoueur(){
         xhr.onreadystatechange = function(){
             if(xhr.readyState == 4 && xhr.status == 200){
                 joueur = JSON.parse(xhr.responseText);
-                console.log(joueur);
                 
                 document.getElementById("big_user_image").src = joueur.photo.split('/')[2]+"/"+joueur.photo.split('/')[3];
                 document.getElementById("username").innerHTML = joueur.nom+" "+joueur.prenom;
