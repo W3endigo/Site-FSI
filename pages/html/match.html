@@ -22,7 +22,7 @@
   <header>
     </header>
   
-  <body onload="verif_connexion()">
+  <body onload="verif_connexion(); getMatch(); getOrganisateur(); getParticipants();">
       
     <div id="sticky_head">
         <div id="apparait">    
@@ -37,24 +37,21 @@
 
     <div class="match" onclick="ouvrir_match()">
       <div class="date">
-          <h4>
-              20/01/22
+          <h4 id="date">
           </h4>
-          <h5>
-            18:22
+          <h5 id="heure">
           </h5>
-            
       </div>
       <div class="titre_match">
-          <h1>Foot entre Fous</h1>
-          <h3>Stade Jean Coquelin</h3>
-          <div class="mt-auto p-2"><small>En attente</small></div>
+          <h1 id="titre"></h1>
+          <h3 id="adresse"></h3>
+          <div class="mt-auto p-2"><small id="status"></small></div>
       </div>
           <div class="nb_joueurs">
               <img src="../../ressources/utilisateur.png">
               <div>
-                  <small>Football</small>
-                  <h4>14/25</h4>
+                  <small id="sport"></small>
+                  <h4 id="participant"></h4>
               </div>                         
           </div>
   </div>
@@ -63,27 +60,24 @@
 <!--Description de base du match!-->
 
 <div id="description" class="d-flex text-center align-items-start flex-column">
-  <div class="mb-auto p-2"><h3 id="date">25/05/2025</h3></div>
-  <div class="p-2"><h4 id="temps">18h30 à 19h45</h4></div>
-  <div class="p-2"><h5 id="adresse"></h5>25 rue de la haie, stade Jean Coquelin</div>
-  <div class="p-2 mb-2"><h3 id="sport">FOOTBALL</h3></div>
-  <img id="createur" src="../../ressources/homme.png">
-    <div class="p-2"><h5 id="createur_nom">Jean-David Lopez</h5></div>
-    <div class="p-2"><h5 id="createur_email">pierre.giraud@gmail.com</h5></div>
+  <h3>ORGANISATEUR :</h3>
+  <img id="createur" src="">
+    <div class="p-2"><h5 id="createur_nom"></h5></div>
+    <div class="p-2"><h5 id="createur_email"></h5></div>
 </div>
       
 <!--Présentation des participants!-->
       
 <div id="participants" class="d-flex text-center align-items-start flex-column">
-  <div class="d-flex flex-row">
+  <!-- <div class="d-flex flex-row">
       <img src="../../ressources/homme.png">
       <h5>Jean-David Lopez</h5>
   </div>
   <div class="d-flex flex-row">
       <img src="../../ressources/femme.png">
       <h5>Jeanne-Davida Lopez</h5>
-  </div>
-  <article>
+  </div> -->
+  <!-- <article>
          
     <button type="button" class="btn btn-success">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
@@ -98,7 +92,7 @@
                 </svg>
         Refuser
     </button>
-  </article>    
+  </article>     -->
 </div>      
       
 <!--Bouton et informations d'inscription!-->
