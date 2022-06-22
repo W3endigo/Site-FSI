@@ -1,5 +1,4 @@
 // * Faire apparaître le menu de connection
-
 function toggle_header() {
 
     if(document.getElementById("connection_head").style.display == "block") {
@@ -11,7 +10,6 @@ function toggle_header() {
 }
 
 // * Faire apparaître les îcones du sous-header
-
 function toggle_icons(){
     
         var rect = document.getElementById("header").getBoundingClientRect();
@@ -23,7 +21,6 @@ function toggle_icons(){
 }
 
 // * Change l'apparence du site si le joueur est connecté
-
 function verif_connexion(){
     
     let paramString = window.location.href.split('?')[1];
@@ -46,28 +43,20 @@ function verif_connexion(){
     
 }
 
-
-
 // * permet de cliquer sur un match pour afficher le contenu visible selon la connexion
+function goMatch(id_match){
 
-
-function ouvrir_match(){
-    let paramString = window.location.href.split('?')[1];
-    let queryString = new URLSearchParams(paramString);
-    if(queryString.get('email') != null){
-        window.location.href = "../Site-FSI/pages/html/match.html?email="+queryString.get('email');
-    }else{
-        window.location.href = "../Site-FSI/pages/html/match.html";
-    }
+    alert('alerte');
+    // let paramString = window.location.href.split('?')[1];
+    // let queryString = new URLSearchParams(paramString);
+    // if(queryString.get('email') != null){
+    //     window.location.href = "../Site-FSI/pages/html/match.html?email="+queryString.get('email')+"&id_match="+id_match;
+    // }else{
+    //     window.location.href = "../Site-FSI/pages/html/match.html?id_match="+id_match;
+    // }
 }  
 
-
-
-
-
-
 // * permet de gérer l'accès à la création d'un match
-
 function goCreate(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
@@ -90,10 +79,7 @@ function goInscriptionMatch(){
     }
 }  
 
-
-
 // * permet de rediriger soit vers la connexion soit vers le profil d'un joueur
-
 function goConnexionProfil(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
@@ -102,9 +88,7 @@ function goConnexionProfil(){
     }else{
         window.location.href = "../Site-FSI/pages/html/connexion.html";
     }
-}  
-
-
+}
 
 // * Cette fonction permet de récupérer le nom des villes via requête AJAX et de les afficher dans un select.
 function getVille(){
@@ -126,7 +110,6 @@ function getVille(){
     xhr.send();
 }
 
-
 // * Cette fonction permet de récupérer le nom des sports via requête AJAX et de les afficher dans un select.
 function getSport(){
     var xhr = new XMLHttpRequest();
@@ -136,7 +119,7 @@ function getSport(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var sports = JSON.parse(xhr.responseText);
             var select = document.getElementById("sports");
-            for(var i = 0; i < villes.length; i++){
+            for(var i = 0; i < sports.length; i++){
                 var option = document.createElement("option");
                 option.value = sports[i].nom_sport;
                 option.text = sports[i].nom_sport;
@@ -147,19 +130,7 @@ function getSport(){
     xhr.send();
 }
 
-
-
-
-
-
-
-
-
-
-
 // * permet de naviguer entre les filtres
-
-//
 function selectFiltre(filtre){
     switch(filtre){
 
@@ -234,4 +205,91 @@ function selectFiltre(filtre){
             document.getElementById("aucun").selectedIndex = 0;
             break;
     }
+}
+
+function getMatch(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchs");
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            match = JSON.parse(xhr.responseText);
+            console.log(match);
+            match.forEach(createDiv);
+
+        
+        }
+    }        
+    xhr.send();
+}
+
+function createDiv(match){
+
+    date = new Date(match.horaire);
+    participant_max = match.participant_max;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/participants?id_match="+match.id_match);
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+
+            participants = JSON.parse(xhr.responseText);
+
+            var div_match = document.createElement("div");
+            div_match.className = "match";
+            //div_match.onclick = "goMatch(match.id_match)";
+
+            var div_date = document.createElement("div");
+            div_date.className = "date";
+
+            var h4_date = document.createElement("h4");
+            h4_date.innerHTML = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
+            div_date.appendChild(h4_date);
+
+            var h5_heure = document.createElement("div");
+            h5_heure.innerHTML = date.getHours()+":"+date.getMinutes();
+            div_date.appendChild(h5_heure);
+
+            div_match.appendChild(div_date);
+
+            var div_titre = document.createElement("div");
+            div_titre.className = "titre_match";
+
+            var h1_titre = document.createElement("h1");
+            h1_titre.innerHTML = match.titre;
+            div_titre.appendChild(h1_titre);
+
+            var h3_adresse = document.createElement("h3");
+            h3_adresse.innerHTML = match.adresse;
+            div_titre.appendChild(h3_adresse);
+
+            div_match.appendChild(div_titre);
+
+            var div_joueur = document.createElement("div");
+            div_joueur.className = "nb_joueurs";
+
+            var img_joueur = document.createElement("img");
+            img_joueur.src = "ressources/utilisateur.png";
+            div_joueur.appendChild(img_joueur);
+
+            var container_div = document.createElement("div");
+
+            var small_sports = document.createElement("small");
+            small_sports.innerHTML = match.nom_sport;
+            container_div.appendChild(small_sports);
+
+            var h4_participant = document.createElement("h4");
+            h4_participant.innerHTML = JSON.parse(xhr.responseText).length+"/"+match.participant_max;
+            container_div.appendChild(h4_participant);
+
+            div_joueur.appendChild(container_div);
+
+            div_match.appendChild(div_joueur);
+
+            document.getElementById("liste_match").appendChild(div_match);
+
+        }
+            
+    }
+    xhr.send();
+
 }

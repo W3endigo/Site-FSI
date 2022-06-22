@@ -39,7 +39,7 @@
       
     </header>
   
-  <body onscroll="toggle_icons()" onload="verif_connexion() ; getVille(); getSport()">
+  <body onscroll="toggle_icons()" onload="verif_connexion() ; getVille(); getSport(); getMatch();">
     <div id="sticky_head" class="container_fluid sticky">
         <div id="apparait_index">    
             <a href="#up_head"><img src="ressources/maison.png" id="home"></a>         
@@ -85,34 +85,8 @@
       <option value="" style="display:none">Rien</option>
   </select>
         </div>  
-
-        <div class="match" onclick="ouvrir_match()">
-          <div class="date">
-              <h4>
-                  20/01/22
-              </h4>
-              <h5>
-                18:22
-              </h5>
-                
-            </div>
-            <div class="titre_match">
-                <h1>
-                Foot entre Fous
-                </h1>
-                <h3>Stade Jean Coquelin</h3>
-          </div>
-                <div class="nb_joueurs">
-                    <img src="ressources/utilisateur.png">
-                        <div>
-                            <small>Football</small>
-                            <h4>14/25</h4>
-                        </div>
-                                        
-                </div>
-                
-        </div>  
-          
+      <div id = liste_match>
+      </div>
         <!--Fin des Divs Match!-->  
           
       </div>
