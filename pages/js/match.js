@@ -65,7 +65,6 @@ function getMatch(){
                                     document.getElementById("status").innerHTML = "Refusé";
                                     break;
                                 default:
-                                    console.log('erreur dans la recherche de status');
                                     break;
                             }
                         }
