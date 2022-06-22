@@ -114,13 +114,15 @@
               <h5>Visiteurs</h5>
             </div>
             <div>
-              <input type="number" id="score_home"  required>
+              <input type="number" id="score_home" min="0" required>
                 à
-              <input type="number" id="score_away" required>
+              <input type="number" id="score_away" min="0" required>
             </div>
               
               <h4>Meilleur joueur</h4>
-              <input id="meilleur_joueur" placeholder="Nom et Prénom du meilleur joueur">
+              <select id="meilleur_joueur" required>
+                <option style="display:none" >Email du meilleur joueur</option>
+                </select>
             <br>
             <br>
             <button id="bouton_cloturer" type="button" class="btn btn-primary btn-lg">Cloturer le match</button>
