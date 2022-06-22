@@ -117,41 +117,48 @@ function getOrganisateur(){
 function getParticipants(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
+
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/participants?id_match="+queryString.get('id_match'));
+
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             participants = JSON.parse(xhr.responseText);
-            console.log(participants);
-            var participants_div = document.getElementById("participants");
-                for(var i = 0; i < participants.length; i++){
-                    var xhr1 = new XMLHttpRequest();
-                    console.log(i);
-                    xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+participants[i].email);
-                    xhr1.onreadystatechange = function(){
-                        if(xhr1.readyState == 4 && xhr1.status == 200){
-                            joueur = JSON.parse(xhr1.responseText);
-                            console.log(joueur);
-
-                            var div = document.createElement("div");
-                            div.class = "d-flex flex-row";
-
-                            var img = document.createElement("img");
-                            img.src = joueur.photo;
-                            div.appendChild(img);
-
-                            var h5 = document.createElement("h5");
-                            h5.textContent = joueur.prenom+" "+joueur.nom;
-                            div.appendChild(h5);
-                            participants_div.appendChild(div);
-                        }
-                    }
-                    xhr1.send();
-                }
+            //for(var i = 0; i < participants.length; i++){
+            participants.forEach(createDiv);
 
         }
+
     }
     xhr.send();
+}
+
+
+function createDiv(participant){
+    var participants_div = document.getElementById("participants");
+    var xhr1 = new XMLHttpRequest();
+    xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/joueur?email="+participant.email);
+
+    xhr1.onreadystatechange = function(){
+        if(xhr1.readyState == 4 && xhr1.status == 200){
+            joueur = JSON.parse(xhr1.responseText);
+
+            var div = document.createElement("div");
+            div.class = "d-flex flex-row";
+
+            var img = document.createElement("img");
+            img.src = joueur.photo;
+            div.appendChild(img);
+
+            var h5 = document.createElement("h5");
+            h5.textContent = joueur.prenom+" "+joueur.nom;
+            div.appendChild(h5);
+            participants_div.appendChild(div);
+            if(participant.status == 0){
+                
+        }
+    }
+    xhr1.send();
 
 }
 
