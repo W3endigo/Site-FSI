@@ -43,6 +43,8 @@ function getMatch(){
                 if(xhr1.readyState == 4 && xhr1.status == 200){
                     match = JSON.parse(xhr.responseText);
                     villes = JSON.parse(xhr1.responseText);
+                    console.log(match);
+                    console.log(villes);
 
                     for(var i = 0; i < villes.length; i++){
                         if(villes[i].code_insee_ville == match.code_insee_ville){
@@ -103,6 +105,7 @@ function getMatch(){
                     xhr2.send();
                 }
             }
+            xhr1.send();
         }
     }
     xhr.send();
@@ -127,7 +130,7 @@ function getParticipantsAffichage(){
             for(let i = 0; i < participants.length; i++){
                 createDiv(participants[i],organisateur);
             }
-            console.log(participants);
+            //console.log(participants);
 
         }
 
@@ -179,14 +182,13 @@ function getOrganisateur(){
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             match = JSON.parse(xhr.responseText);
+            console.log(match);
 
             if(queryString.get('email') == match.email){
                 organisateur = true;
-                alert("Vous êtes l'organisateur du match !");   
+                console.log("Vous êtes l'organisateur du match !");   
             }
-            }
-
-
+            
             var xhr1 = new XMLHttpRequest();
             xhr1.open("GET", "../php/request.php/joueur?email="+match.email);
             xhr1.onreadystatechange = function(){
@@ -201,9 +203,8 @@ function getOrganisateur(){
             xhr1.send();
 
         }
-    
+    }
     xhr.send();
-    alert(organisateur);
     return organisateur;
 
 }

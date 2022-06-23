@@ -2,29 +2,37 @@
 
 // * Formulaire permettant la création d'un match
 $("#formulaire").submit((event) => {
-    console.log("submit");
+    //console.log("submit");
     event.preventDefault();
-    let paramString = window.location.href.split('?')[1];
-    let queryString = new URLSearchParams(paramString);
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "../php/request.php/match?titre="+$('#nom').val()+"&horaire="+$('#debut').val()+"&duree="+$('#duree').val()+"&description="+$('#description').val()+"&participant_min="+$('#min').val()+"&participant_max="+$('max').val()+"&prix="+$('#prix').val()+"&adresse="+$('#adresse').val()+"&code_insee_ville="+$('#ville').val()+"&nom_sport="+$('#sport').val()+"&email_organisateur="+queryString.get('email'));
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState == 4 && xhr.status == 200){
-               
-            var validite = xhr.responseText;
-            console.log(validite);
+
+    if($("#min").val() > $("#max").val()){
+        alert("Le nombre de participants minimum doit être inférieur ou égal au nombre maximum.");
+    }else{
+        datetime = $('#date').val()+" "+$('#debut').val()+":00";
+        let paramString = window.location.href.split('?')[1];
+        let queryString = new URLSearchParams(paramString);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "../php/request.php/match?titre="+$('#nom').val()+"&horaire="+datetime+"&duree="+$('#duree').val()+"&description="+$('#description').val()+"&participant_min="+$('#min').val()+"&participant_max="+$('#max').val()+"&prix="+$('#prix').val()+"&adresse="+$('#adresse').val()+"&code_insee_ville="+$('#ville').val()+"&nom_sport="+$('#sport').val()+"&email_organisateur="+queryString.get('email'));
+        xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
                 
+                //console.log($('#max').val());
+                var validite = xhr.responseText;
+                //console.log(validite);
+                //console.log($('#date').val()+" "+$('#debut').val());
+                    
+            }
+            if(validite != false){ 
+
+
+                window.location.href = "../html/match.html?email="+queryString.get('email')+"&id_match="+validite.substring(1, validite.length-1);
+
+            }
+
         }
-        if(validite != false){ 
-
-
-            window.location.href = "../html/match.html?email="+queryString.get('email')+"&id_match="+validite;
-
-        }
-
+        xhr.send();
     }
-    xhr.send();
     
 })
 
