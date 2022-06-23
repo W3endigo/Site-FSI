@@ -330,7 +330,7 @@ function getJoueur(){
 
 
 
-// * Fonction permettant de revenir au menu en restant connecté
+// * Fonction permettant de revenir au menu en restant connecté (si on est connecté).
 function goHome(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
