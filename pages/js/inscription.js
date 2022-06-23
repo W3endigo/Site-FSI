@@ -42,7 +42,7 @@ $("#formulaire").submit((event) => {
     xhr.send();
 });
 
-// ! Fonction qui permet de récupérer les images via requête AJAX et de les afficher dans un select.
+// * Fonction qui permet de passer d'une image de profil à une autre.
 function toggle_image() {   
     
     if(document.getElementById("image_selected").value == "../../ressources/homme.png"){
