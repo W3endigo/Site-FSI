@@ -1,3 +1,12 @@
+
+// * Fonction pour remonter au menu
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+
+
 // * Faire apparaître le menu de connection
 function toggle_header() {
 
@@ -32,11 +41,6 @@ function verif_connexion(){
         document.getElementById("button1").style.borderWidth="0px";
         document.getElementById("button1").innerHTML="Mes matchs";
         document.getElementById("button2").innerHTML="Mon profil";
-        //document.getElementById("username").style.display="flex";
-
-        //document.getElementById("big_user_image").src="ressources/femme.png";
-        //document.getElementById("user_image").src="ressources/femme.png";
-        
         document.getElementById("creer").style.display="flex";
     }
     
@@ -399,7 +403,9 @@ function chargeJoueur(){
             if(xhr.readyState == 4 && xhr.status == 200){
                 joueur = JSON.parse(xhr.responseText);
                 
+                // * Comme le fichier se trouve dans le dossier principal, il faut retirer le début du chemin qui est stocké dans joueur.photo
                 document.getElementById("big_user_image").src = joueur.photo.split('/')[2]+"/"+joueur.photo.split('/')[3];
+                document.getElementById("user_image").src = joueur.photo.split('/')[2]+"/"+joueur.photo.split('/')[3];
                 document.getElementById("username").innerHTML = joueur.nom+" "+joueur.prenom;
 
             }

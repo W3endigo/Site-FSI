@@ -121,6 +121,10 @@ function getOrganisateur(){
         if(xhr.readyState == 4 && xhr.status == 200){
             match = JSON.parse(xhr.responseText);
 
+            // * On affiche la photo de l'utilisateur actuel tout en haut à droite
+            console.log(queryString.get('email'));
+            document.getElementById("user_image").src = queryString.get('email').photo;
+
             var xhr1 = new XMLHttpRequest();
             xhr1.open("GET", "../php/request.php/joueur?email="+match.email);
             xhr1.onreadystatechange = function(){
@@ -163,10 +167,8 @@ function getParticipantsAffichage(){
 
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
-
             participants = JSON.parse(xhr.responseText);
             participants.forEach(createDiv); // * On crée les divs pour chaque participant
-            console.log(participants); 
             getOrganisateur(); // * On affiche maintenant les informations liées à l'organisateur
 
         }
@@ -196,13 +198,6 @@ function createDiv(participant){
             h5.textContent = joueur.prenom+" "+joueur.nom;
             div.appendChild(h5);
             participants_div.appendChild(div);
-            if(participant.status == 0){ // * Si le participant n'a pas encore accepté le match on affiche un bouton pour l'accepter ou le refuser
-                article = document.createElement("article");
-                article.className = "petits_boutons";
-                article.innerHTML = "<button type='button' class='btn btn-success'> <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check2-circle' viewBox='0 0 16 16'>  <path d='M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z'></path><path d='M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z'></path></svg>Accepter</button><button type='button' class='btn btn-outline-danger'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='red' class='bi bi-x' viewBox='0 0 16 16'><path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'></path></svg>Refuser</button>";
-                participants_div.appendChild(article);
-            }
-
         }
     }
     xhr1.send();

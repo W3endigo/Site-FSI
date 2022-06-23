@@ -253,6 +253,14 @@ img{
 
 }
 
+#div_deco{
+    margin-top:10%;
+}
+
+#bouton_deconnecter{
+    background-color: #E30613;
+}
+
 
 /*  * Boite de notation */
 
