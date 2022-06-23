@@ -254,7 +254,7 @@ function getJoueur(){
             document.getElementById("email").value = queryString.get('email');                
             document.getElementById("anniversaire").value = joueur.naissance;
             document.getElementById("frequence").value = joueur.frequence_sport;
-            document.getElementById("frequence_actuelle").innerHTML = joueur.frequence_sport;
+            //document.getElementById("frequence_actuelle").innerHTML = joueur.frequence_sport;
            // document.getElementById("ville_actuelle").value = joueur.code_insee_ville;
             document.getElementById("ville").value = joueur.code_insee_ville;
             //document.getElementById("motDePasse").value = joueur.mdp;    

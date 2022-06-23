@@ -17,6 +17,7 @@ $("#connexion").submit((event) => {
     event.preventDefault();
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "../php/request.php/checkuser?email="+$('#email').val()+"&mdp="+$('#motDePasse').val());
+    console.log('bonsoir');
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
                

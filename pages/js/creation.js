@@ -4,7 +4,6 @@
 $("#formulaire").submit((event) => {
     //console.log("submit");
     event.preventDefault();
-
     if($("#min").val() > $("#max").val()){
         alert("Le nombre de participants minimum doit être inférieur ou égal au nombre maximum.");
     }else{
@@ -19,7 +18,7 @@ $("#formulaire").submit((event) => {
                 
                 //console.log($('#max').val());
                 var validite = xhr.responseText;
-                //console.log(validite);
+                console.log(validite);
                 //console.log($('#date').val()+" "+$('#debut').val());
                     
             }
