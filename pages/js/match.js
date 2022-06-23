@@ -291,24 +291,3 @@ function cloturerMatch(){
     }
     xhr.send();
 }
-
-
-
- // * Cette fonction permet de récupérer les informations du joueur afin d'afficher sa photo de profil en haut de la page
- function getJoueur(){
-    let paramString = window.location.href.split('?')[1];
-    let queryString = new URLSearchParams(paramString);
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "../php/request.php/joueur?email="+queryString.get('email'));
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState == 4 && xhr.status == 200){
-            //console.log(xhr.responseText);
-            var joueur = JSON.parse(xhr.responseText);
-            console.log(joueur.photo);
-            document.getElementById("user_image").src = joueur.photo;          
-
-        }
-    }
-    xhr.send();
-}
