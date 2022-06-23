@@ -13,7 +13,7 @@
         try{
 
             $request = 'INSERT INTO participe (id_match, email, status)
-                                                 VALUES (:id_match, :email, 0)';
+                                                 VALUES (:id_match, :email, 1)';
             $statement = $db->prepare($request);
             $statement->bindParam (':id_match', $id_match, PDO::PARAM_STR, 50);
             $statement->bindParam (':email', $email, PDO::PARAM_STR, 50);
