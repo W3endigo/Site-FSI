@@ -280,7 +280,8 @@ function cloturerMatch(){
         if(xhr.readyState == 4 && xhr.status == 200){
 
             if(JSON.parse(xhr.responseText) == true){
-                console.log("Match cloturé");
+                console.log("Match cloturé");   
+                window.location.reload();
             }else{
                 console.log("Erreur lors de la cloture du match");
                 console.log(JSON.parse(xhr.responseText));
