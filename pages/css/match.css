@@ -119,6 +119,7 @@ img{
 
 #couronne{
     max-width: 30%;
+    display: none;
 }
 
 .match{
