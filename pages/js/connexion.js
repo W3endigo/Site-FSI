@@ -32,7 +32,6 @@ $("#connexion").submit((event) => {
                 document.getElementById("email").style.borderColor="#E30613";
                 document.getElementById("erreur").style.display="block";
             }
-
     }
     xhr.send();
 });

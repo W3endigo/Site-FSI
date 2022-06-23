@@ -145,6 +145,7 @@ $("#profil").submit((event) =>{
         }
     }
     xhr.send();
+    alert("profil modifié avec succès !");
 });
 
 // * Permettre de modifier les informations dans le profil.
