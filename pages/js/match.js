@@ -57,6 +57,7 @@ function getMatch(){
                     document.getElementById("titre").innerHTML = match.titre;
                     document.getElementById("adresse").innerHTML = match.adresse+", "+nom_ville;
                     document.getElementById("sport").innerHTML = match.nom_sport;
+                    document.getElementById("description_match").innerHTML = match.description;
 
                     if(match.prix != 0){
                         document.getElementById("prix").innerHTML = "Une participation de "+match.prix+"€ vous sera demandé au début du match.";
