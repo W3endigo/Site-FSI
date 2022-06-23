@@ -1,7 +1,8 @@
 // * Afficher mot de passe
 function toggle_mdp() {
     
-    if(document.getElementById("motDePasse").type == "password"){ // * Si le type est password, on le change en text
+    // * Si le type est password, on le change en text
+    if(document.getElementById("motDePasse").type == "password"){ 
         document.getElementById("motDePasse").type="text";
         document.getElementById("voir").style.color = "#2196F3";
     }
@@ -15,25 +16,25 @@ function toggle_mdp() {
 // * Une fois le formulaire soumis, on vérifie la validité des informations
 $("#connexion").submit((event) => {
     event.preventDefault();
+    // * Préparation de la requête.
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "../php/request.php/checkuser?email="+$('#email').val()+"&mdp="+$('#motDePasse').val());
-    console.log('bonsoir');
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
                
                 var validite = xhr.responseText;
-                console.log(validite);              
             }
-            if(validite == 'true'){ //* Si la connexion est valide, on redirige vers la page d'accueil 
+            if(validite == 'true'){ //* Si la connexion est valide, on redirige vers la page d'accueil. 
                 window.location.href = "../html/profil.html?email="+$('#email').val();
 
             }
 
-            if(validite == 'false'){ //* Si la connexion est invalide, on affiche un message d'erreur
+            if(validite == 'false'){ //* Si la connexion est invalide, on affiche un message d'erreur.
                 document.getElementById("email").style.borderColor="#E30613";
                 document.getElementById("erreur").style.display="block";
             }
     }
+    // * Envoi de la requête.
     xhr.send();
 });
 
