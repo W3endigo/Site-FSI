@@ -15,7 +15,7 @@ USE db_fsi;
 # Table: Ville_Bretonne
 #------------------------------------------------------------
 
-CREATE TABLE Ville_Bretonne(
+CREATE TABLE ville_bretonne(
         code_insee_ville Int NOT NULL ,
         nom_ville        Varchar (30) NOT NULL
 	,CONSTRAINT Ville_Bretonne_PK PRIMARY KEY (code_insee_ville)
