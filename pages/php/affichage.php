@@ -40,9 +40,7 @@
 
         try{
 
-            $request = 'SELECT titre, horaire, duree, description, participant_min, participant_max, prix, termine, adresse, 
-                                score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur 
-                        FROM matchs WHERE id_match=:id_match';
+            $request = 'SELECT * FROM matchs WHERE id_match=:id_match';
             $statement = $db->prepare($request);
             $statement->bindParam (':id_match', $id_match, PDO::PARAM_STR, 50);
             $statement->execute();
@@ -130,54 +128,33 @@
 
         $result_match = array();
         
-        //* On récupère le nombre de personne validé pour chaque match
+        // * On récupère le compte des participant par match, le nombre de participant max par max et l'id du match.
         try{
     
-            $request = 'SELECT COUNT(email) FROM participe WHERE status=1 GROUP BY id_match ORDER BY id_match';
+            $request = 'SELECT COUNT(participe.email), matchs.participant_max, matchs.id_match FROM participe JOIN matchs ON participe.id_match=matchs.id_match GROUP BY id_match';
             $statement = $db->prepare($request);
-            $statement->bindParam (':complet', $complet, PDO::PARAM_STR, 50);
             $statement->execute();
-            $result_participant = $statement->fetchAll();
-
-        }catch (PDOException $exception){
-
-            error_log('Erreur lors de la récupération des participants par matchs : '.$exception->getMessage());
-            return false;
-
-        }
-
-        //return $result_participant[0];
-
-        //* On récupère le nombre de personne maximun pour chaque match
-        try{
-    
-            $request = 'SELECT participant_max, id_match FROM matchs';
-            $statement = $db->prepare($request);
-            $statement->bindParam (':complet', $complet, PDO::PARAM_STR, 50);
-            $statement->execute();
-            $result_participant_max = $statement->fetchAll();
+            $tab_match_et_participant = $statement->fetchAll();
 
         }catch (PDOException $exception){
 
             error_log('Erreur lors de la récupération des id de matchs : '.$exception->getMessage());
-            return false;
+            return $exception->getMessage();
 
         }
 
-        return $result_participant_max[0];
+        //return $tab_match_et_participant;
 
-        
-
-        //* On récupère les id des match complets/incomplets en fonction de ce qui est demandé
-        for($i = 0; $i < count($result_participant); $i++){
-            echo($result_participant[$i][0]+" "+$result_participant_max[$i][0]+"<br>");
+        for($i = 0; $i < count($tab_match_et_participant); $i++){
             if($complet == 1){
-                if($result_participant[$i][0] == $result_participant_max[$i][0]){
-                    array_push($result_match, dbGetMatchById($db, $result_participant_max[$i][1]));
+                //* Si le nombre de participant au match correspond au nombre de participant max, on ajoute le match dans le tableau.
+                if($tab_match_et_participant[$i][0] == $tab_match_et_participant[$i][1]){
+                    array_push($result_match, dbGetMatchById($db, $tab_match_et_participant[$i][2]));
                 }
             }else{
-                if($result_participant[$i][0] != $result_participant_max[$i][0]){
-                    array_push($result_match, dbGetMatchById($db, $result_participant_max[$i][1]));
+                //* Si le nombre de participant au match ne correspond pas au nombre de participant max, on ajoute le match dans le tableau.
+                if($tab_match_et_participant[$i][0] != $tab_match_et_participant[$i][1]){
+                    array_push($result_match, dbGetMatchById($db, $tab_match_et_participant[$i][2]));
                 } 
             }
 

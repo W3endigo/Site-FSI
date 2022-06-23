@@ -272,7 +272,7 @@ function getMatch(){
             xhr1.onreadystatechange = function(){
                 if(xhr1.readyState == 4 && xhr1.status == 200){
                     match = JSON.parse(xhr1.responseText);
-                    //console.log(match);
+                    console.log(match);
                     match.forEach(createDiv);
                 }
             }        
@@ -317,7 +317,7 @@ function createDiv(match){
                     for(var i = 0; i < participants.length; i++){
                         if(participants[i].status == 1){
                             participant_confirme++;
-                            console.log(participant_confirme);
+                            //console.log(participant_confirme);
                         }
                     }
 
