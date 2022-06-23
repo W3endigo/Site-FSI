@@ -32,7 +32,7 @@ function verif_connexion(){
         document.getElementById("button1").style.borderWidth="0px";
         document.getElementById("button1").innerHTML="Mes matchs";
         document.getElementById("button2").innerHTML="Mon profil";
-        document.getElementById("username").style.display="flex";
+        //document.getElementById("username").style.display="flex";
 
         //document.getElementById("big_user_image").src="ressources/femme.png";
         //document.getElementById("user_image").src="ressources/femme.png";
@@ -219,86 +219,74 @@ function selectFiltre(filtre){
 function getMatch(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "pages/php/request.php/matchs");
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState == 4 && xhr.status == 200){
-            match = JSON.parse(xhr.responseText);
-            //console.log(match);
-            match.forEach(createDiv);
+    switch(queryString.get('type_filtre')){
+        case("ville"):
+            var xhr1 = new XMLHttpRequest();
+            xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyville?code_insee_ville="+queryString.get('value_filtre'));
+            xhr1.onreadystatechange = function(){
+                if(xhr1.readyState == 4 && xhr1.status == 200){
+                    match = JSON.parse(xhr1.responseText);
+                    //console.log(match);
+                    match.forEach(createDiv);
+                }
+            }        
+            xhr1.send();
+            break;
 
-            switch(queryString.get('type_filtre')){
-                case("ville"):
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyville?code_insee_ville="+queryString.get('value_filtre'));
-                    xhr.onreadystatechange = function(){
-                        if(xhr.readyState == 4 && xhr.status == 200){
-                            match = JSON.parse(xhr.responseText);
-                            //console.log(match);
-                            match.forEach(createDiv);
-
-                        
-                        }
-                    }        
-                    xhr.send();
-                    break;
-
-                case("sports"):
+        case("sports"):
                     
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbysport?nom_sport="+queryString.get('value_filtre'));
-                    xhr.onreadystatechange = function(){
-                    if(xhr.readyState == 4 && xhr.status == 200){
-                        match = JSON.parse(xhr.responseText);
-                        console.log(match);
-                        //console.log(match);
-                        match.forEach(createDiv);
-                        }
-                    }        
-                    xhr.send();
-                    break;
+            var xhr1 = new XMLHttpRequest();
+            xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbysport?nom_sport="+queryString.get('value_filtre'));
+            xhr1.onreadystatechange = function(){
+                if(xhr1.readyState == 4 && xhr1.status == 200){
+                    match = JSON.parse(xhr1.responseText);
+                    //console.log(match);
+                    match.forEach(createDiv);
+                }
+            }        
+            xhr1.send();
+            break;
                 
-                case("periode"):
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyperiode?periode="+queryString.get('value_filtre'));
-                    xhr.onreadystatechange = function(){
-                    if(xhr.readyState == 4 && xhr.status == 200){
-                        match = JSON.parse(xhr.responseText);
-                        //console.log(match);
-                        match.forEach(createDiv);
-                        }
-                    }        
-                    xhr.send();
-                    break;
+        case("periode"):
+                    
+            var xhr1 = new XMLHttpRequest();
+            xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyperiode?periode="+queryString.get('value_filtre'));
+               xhr1.onreadystatechange = function(){
+                if(xhr1.readyState == 4 && xhr1.status == 200){
+                    match = JSON.parse(xhr1.responseText);
+                    console.log(match);
+                    match.forEach(createDiv);
+                }
+            }        
+            xhr1.send();
+            break;
                 
-                case("complet"):
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyperiode?periode="+queryString.get('value_filtre'));
-                    xhr.onreadystatechange = function(){
-                    if(xhr.readyState == 4 && xhr.status == 200){
-                        match = JSON.parse(xhr.responseText);
-                        //console.log(match);
-                        match.forEach(createDiv);
-                        }
-                    }        
-                    xhr.send();
-                    break;
+        case("complet"):
 
-                default:
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchs");
-                    xhr.onreadystatechange = function(){
-                    if(xhr.readyState == 4 && xhr.status == 200){
-                        match = JSON.parse(xhr.responseText);
-                        //console.log(match);
-                        match.forEach(createDiv);
-                        }
-                    }        
-                    xhr.send();
-                    break;
-            }
-        }       
-                
+            var xhr1 = new XMLHttpRequest();
+            xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyperiode?periode="+queryString.get('value_filtre'));
+            xhr1.onreadystatechange = function(){
+                if(xhr1.readyState == 4 && xhr1.status == 200){
+                    match = JSON.parse(xhr1.responseText);
+                    //console.log(match);
+                    match.forEach(createDiv);
+                }
+            }        
+            xhr1.send();
+            break;
+
+        default:
+            var xhr1 = new XMLHttpRequest();
+            xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchs");
+            xhr1.onreadystatechange = function(){
+                if(xhr1.readyState == 4 && xhr1.status == 200){
+                    match = JSON.parse(xhr1.responseText);
+                    //console.log(match);
+                    match.forEach(createDiv);
+                }
+            }        
+            xhr1.send();
+            break;
     }
 }
 
@@ -417,6 +405,9 @@ function chargeJoueur(){
             }
         }
         xhr.send();
+    }else{
+        document.getElementById("big_user_image").src = "ressources/deconnecte.png";
+        document.getElementById("username").innerHTML = "Déconnecté";
     }
 
 }
