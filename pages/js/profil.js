@@ -59,13 +59,17 @@ $("#profil").submit((event) =>{
                 xhr2.send();
             }
 
+            // * Si la photo de profil a été modifiée, on la modifie dans la base de données.
             if($("#image_selected").val() != joueur_default.photo){
+
+                // * Préparation de la requête AJAX pour modifier la photo de profil.
                 var xhr2 = new XMLHttpRequest();
                 xhr2.open("PUT", "../php/request.php/photo?email="+$('#email').val()+"&new_photo="+$('#image_selected').val());
                 xhr2.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
                 xhr2.onreadystatechange = function(){
                     if(xhr2.readyState == 4 && xhr2.status == 200){
                     
+                        // * Retour dans la console de l'état de la requête.
                         if(xhr2.responseText == "true"){
                             console.log("Photo modifiée avec succès !");
                         }else{
@@ -73,9 +77,11 @@ $("#profil").submit((event) =>{
                         }
                     }
                 }
+                // * Envoie de la requête AJAX.
                 xhr2.send();
             }
 
+            // * Si le nom de famille a été modifié, on le modifie dans la base de données.
             if($("#nom").val() != joueur_default.nom){
 
                 // * Préparation de la requête AJAX pour modifier le nom.
