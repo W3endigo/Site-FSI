@@ -154,8 +154,8 @@ function getOrganisateur(){
                 document.getElementById("annuler").style.display="flex";
                 document.getElementById("cloture").style.display="block";
             }
-
-            if(queryString.get('email') == match.email && match.termine == 1){
+            // * Si le joueur est l'organisateur, on affiche la couronne.
+            if(queryString.get('email') == match.email){
                 document.getElementById("couronne").style.display="block";
             }
 

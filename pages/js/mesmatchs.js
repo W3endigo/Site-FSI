@@ -80,6 +80,7 @@ function getMatch(){
 
 // * Fonction qui permet de créer les divs des matchs pour les afficher.
 function createDiv(match1){
+    console.log(match1);
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
 
