@@ -1,3 +1,12 @@
+
+// * Fonction pour remonter au menu
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+
+
 // * Faire apparaître le menu de connection
 function toggle_header() {
 

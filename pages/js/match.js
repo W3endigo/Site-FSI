@@ -121,6 +121,10 @@ function getOrganisateur(){
         if(xhr.readyState == 4 && xhr.status == 200){
             match = JSON.parse(xhr.responseText);
 
+            // * On affiche la photo de l'utilisateur actuel tout en haut à droite
+            console.log(queryString.get('email'));
+            document.getElementById("user_image").src = queryString.get('email').photo;
+
             var xhr1 = new XMLHttpRequest();
             xhr1.open("GET", "../php/request.php/joueur?email="+match.email);
             xhr1.onreadystatechange = function(){
