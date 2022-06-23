@@ -1,4 +1,4 @@
-/*Importation de la police*/
+/* * Importation de la police*/
 
 @font-face { font-family: Poppins-Regular; src: url('../../ressources/font/Poppins-Regular.ttf'); } 
 @font-face { font-family: Poppins-Black; src: url('../../ressources/font/Poppins-Black.ttf'); } 
@@ -7,13 +7,14 @@
 /*---------Commun---------*/
 
 
-/*Le comportement du scrolling est ici défini en smooth pour un meilleur rendu*/
+/* * Le comportement du scrolling est ici défini en smooth pour un meilleur rendu*/
 html {
     scroll-behavior: smooth;
     width : 100%;
     height : 100%;
 }
 
+/* * Une image est placée en guise de fond d'écran. La Police Poppins est utilisée */
 body{
     background-image : url("../../ressources/background.jpeg");
     background-repeat: no-repeat;

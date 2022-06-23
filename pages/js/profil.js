@@ -192,7 +192,7 @@ $("#profil").submit((event) =>{
     alert("profil modifié avec succès !");
 });
 
-// ! Permettre de modifier les informations dans le profil.
+// * Fonction permettant de lever ou poser la sécurité. Si la sécurité est posée, l'utilisateur ne peut pas modifier son profil.
 function modifier_profil(){
     
     var elements = document.getElementsByClassName("info_profil");
@@ -212,14 +212,14 @@ function modifier_profil(){
     }
 }
 
-// ! Permettre de modifier les informations dans le profil.
+// * Permettre à l'utilisateur de modifier sa photo de profil.
 function toggle_image() {   
 
-    if(document.getElementById("image_selected").value == "../../ressources/homme.png"){
+    if(document.getElementById("image_selected").value == "../../ressources/homme.png"){// * Si l'utilisateur possède l'image d'homme, il change pour celle de la femme.
         document.getElementById("form_image").src = "../../ressources/femme.png";
         document.getElementById("image_selected").value = "../../ressources/femme.png";
     }
-    else{
+    else{ // * Si l'utilisateur possède l'image de la femme, il change pour celle de l'homme.
         document.getElementById("form_image").src = "../../ressources/homme.png";
         document.getElementById("image_selected").value = "../../ressources/homme.png";
     }
