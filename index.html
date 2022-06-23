@@ -79,10 +79,10 @@
 
       <input type="number" id="periode" class="valeurs" min="0" value="" placeholder="Choisir le nombre de jours de la période" onchange="setFiltre('periode',this.value);">
 
-    <select id="complet" class="valeurs" onchange="setFiltre('complet',this.selectedIndex);">
+    <select id="complet" class="valeurs" onchange="setFiltre('complet',this.value);">
       <option value="" style="display:none">Rien</option>
       <option value="0" id="complet">Matchs ayant de la place</option>
-      <option value="1">Matchs complets</option>
+      <option value="1" id="complet">Matchs complets</option>
   </select>
         </div>  
       <div id = liste_match>
