@@ -1,4 +1,6 @@
-// Création du match regarde si le min est inférieur au maximum
+
+
+// * Formulaire permettant la création d'un match
 $("#formulaire").submit((event) => {
     console.log("submit");
     event.preventDefault();
@@ -14,7 +16,7 @@ $("#formulaire").submit((event) => {
             console.log(validite);
                 
         }
-        if(validite != false){
+        if(validite != false){ 
 
 
             window.location.href = "../html/match.html?email="+queryString.get('email')+"&id_match="+validite;

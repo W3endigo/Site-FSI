@@ -259,6 +259,8 @@ img{
 #note{
     background-color : #FFFFFF50;
     max-width : 30%;
+    display:flex;
+    
 }
 
 .rating {
@@ -272,12 +274,10 @@ img{
 }
 
 .rating>label {
-    position: relative;
-    width: 1em;
     font-size: 30px;
     font-weight: 300;
     color: #FFD600;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .rating>label::before {

@@ -155,6 +155,7 @@ function modifier_profil(){
     if(elements[0].disabled == true){
         document.getElementById("changer").style.display = "block";
         document.getElementById("modifieur").src="../../ressources/greypen.png";
+        alert(' ! Attention ! \n Vous pouvez maintenant modifier votre profil !');
         for(var x =0; x < elements.length; x++)
             elements[x].disabled=false;
     }
@@ -233,6 +234,8 @@ function toggle_mdp() {
     }
     
 }
+
+ // * Cette fonction permet de récupérer les informations du joueur via requête AJAX et de les afficher dans le profil.
 function getJoueur(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
@@ -244,6 +247,7 @@ function getJoueur(){
             //console.log(xhr.responseText);
             var joueur = JSON.parse(xhr.responseText);
             document.getElementById("form_image").src = joueur.photo;
+            document.getElementById("user_image").src = joueur.photo;
             document.getElementById("prenom").value = joueur.prenom;
             document.getElementById("nom").value = joueur.nom;
             document.getElementById("email").value = queryString.get('email');                
@@ -282,4 +286,12 @@ function isConnected(){
     if(queryString.get('email') == null || queryString.get('email') == ""){
         window.location.href = "../../index.html";
     }
+}
+
+
+
+
+// * Remercie l'utilisateur de sa note
+function merci(){
+    alert("Merci pour votre note !");
 }
