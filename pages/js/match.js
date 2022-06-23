@@ -40,6 +40,8 @@ function getMatch(){
                 if(xhr1.readyState == 4 && xhr1.status == 200){
                     match = JSON.parse(xhr.responseText);
                     villes = JSON.parse(xhr1.responseText);
+                    console.log(match);
+                    console.log(villes);
 
                     for(var i = 0; i < villes.length; i++){
                         if(villes[i].code_insee_ville == match.code_insee_ville){
@@ -99,8 +101,8 @@ function getMatch(){
                     }
                     xhr2.send();
                 }
-                xhr1.send();
-            } 
+            }
+            xhr1.send();
         }
     }
     xhr.send();
@@ -248,7 +250,7 @@ function getParticipants(){
         if(xhr.readyState == 4 && xhr.status == 200){
             var participants = JSON.parse(xhr.responseText);
             var select = document.getElementById("meilleur_joueur");
-            for(var i = 0; i < frequence.length; i++){
+            for(var i = 0; i < participants.length; i++){
                 if(participants[i].status == 1){
                     var option = document.createElement("option");
                     option.value = participants[i].email;
@@ -280,3 +282,22 @@ function supprimerMatch(){
     xhr.send();
 }
 
+function cloturerMatch(){
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+    var xhr = new XMLHttpRequest();
+    xhr.open("PUT", "../php/request.php/match?id_match="+queryString.get('id_match')+"&score_home="+$("#score_home").val()+"&score_away="+$("#score_away").val()+"&email_joueur="+$("#meilleur_joueur").val());
+       xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+
+            if(JSON.parse(xhr.responseText) == true){
+                console.log("Match cloturé");
+            }else{
+                console.log("Erreur lors de la cloture du match");
+                console.log(JSON.parse(xhr.responseText));
+            }
+
+        }
+    }
+    xhr.send();
+}

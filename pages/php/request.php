@@ -229,15 +229,15 @@
       switch ($requestRessource){
 
         // * Si l'on a besoin de modifier un email de joueur.
-        case 'email':
-          if(isset($_GET['email']) && isset($_GET['new_email'])){
-            $data = dbUpdateEmail($db, $_GET['email'], $_GET['new_email']);
-          }else{
-            header('HTTP/1.1 400 Bad Request');
-            echo json_encode('email ou new_email manquant');
-            exit;
-          }
-          break;
+        // case 'email':
+        //   if(isset($_GET['email']) && isset($_GET['new_email'])){
+        //     $data = dbUpdateEmail($db, $_GET['email'], $_GET['new_email']);
+          // }else{
+          //   header('HTTP/1.1 400 Bad Request');
+          //   echo json_encode('email ou new_email manquant');
+          //   exit;
+          // }
+          // break;
 
         // * Si l'on a besoin de modifier un mot de passe de joueur.
         case 'mdp':
