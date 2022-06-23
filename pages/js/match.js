@@ -153,6 +153,9 @@ function getOrganisateur(){
             if(queryString.get('email') == match.email && match.termine == 0){
                 document.getElementById("annuler").style.display="flex";
                 document.getElementById("cloture").style.display="block";
+            }
+
+            if(queryString.get('email') == match.email && match.termine == 1){
                 document.getElementById("couronne").style.display="block";
             }
 

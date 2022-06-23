@@ -364,8 +364,9 @@ function getMatch(){
     }
 }
 
-// * Fonction qui permet de créer les divs des matchs pour les afficher.
+// * Fonction qui permet de créer les divs des matchs qui ne sont pas terminés pour les afficher.
 function createDiv(match){
+    if(match.termine != 1){
 
     // * Préparation de la requête AJAX pour récupérer les informations des participants du match.
     var xhr = new XMLHttpRequest();
@@ -493,7 +494,8 @@ function createDiv(match){
     // * Envoi de la requête AJAX.
     xhr.send();
 
-}
+    }
+} 
 
 // * Fonction qui permet de mettre la photo de profil du joueur ainsi que sont nom et prénom en haut de la page
 function chargeJoueur(){
