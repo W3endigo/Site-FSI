@@ -40,9 +40,7 @@
 
         try{
 
-            $request = 'SELECT titre, horaire, duree, description, participant_min, participant_max, prix, termine, adresse, 
-                                score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur 
-                        FROM matchs WHERE id_match=:id_match';
+            $request = 'SELECT * FROM matchs WHERE id_match=:id_match';
             $statement = $db->prepare($request);
             $statement->bindParam (':id_match', $id_match, PDO::PARAM_STR, 50);
             $statement->execute();
