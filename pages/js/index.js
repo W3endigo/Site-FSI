@@ -299,7 +299,7 @@ function createDiv(match){
 
             
             var xhr1 = new XMLHttpRequest();
-            xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/ville");
+            xhr1.open("GET", "pages/php/request.php/ville");
             xhr1.onreadystatechange = function(){
                 if(xhr1.readyState == 4 && xhr1.status == 200){
 
