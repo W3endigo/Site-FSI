@@ -29,8 +29,7 @@ $("#formulaire").submit((event) => {
 
             // * Si la requête AJAX a réussi, on redirige vers la page du match créé.
             if(validite != false){ 
-
-                window.location.href = "../html/match.html?email="+queryString.get('email')+"&id_match="+validite.substring(1, validite.length-1);
+                window.location.href = "../html/match.html?email="+queryString.get('email')+"&id_match="+validite;
 
             }
 
@@ -94,6 +93,29 @@ function getSports(){
     // * Envoi de la requête AJAX.
     xhr.send();
 }
+
+// * Cette fonction permet de récupérer les informations du joueur via requête AJAX et de les afficher dans le profil.
+function getJoueur(){
+
+    // * Préparation à la récupération des données de l'URL.
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "../php/request.php/joueur?email="+queryString.get('email'));
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+
+            var joueur = JSON.parse(xhr.responseText);
+            document.getElementById("user_image").src = joueur.photo;        
+        }
+    }
+    // * Envoi de la requête.
+    xhr.send();
+}
+
+
 
 // * Fonction permettant de revenir au menu en restant connecté (si on est connecté).
 function goHome(){

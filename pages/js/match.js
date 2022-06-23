@@ -153,6 +153,7 @@ function getOrganisateur(){
             if(queryString.get('email') == match.email && match.termine == 0){
                 document.getElementById("annuler").style.display="flex";
                 document.getElementById("cloture").style.display="block";
+                document.getElementById("couronne").style.display="block";
             }
 
             if(match.termine == 1){ // * Si le matche est terminé, les inscriptions sont closes

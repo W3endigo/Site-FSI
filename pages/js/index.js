@@ -420,6 +420,17 @@ function createDiv(match){
                     h5_heure.innerHTML = date.getHours()+":"+date.getMinutes();
                     div_date.appendChild(h5_heure);
 
+                    // * Création de l'image indiquant la propriété ou non du match, on vérifie d'abord si le joueur est créateur.
+                    let paramString = window.location.href.split('?')[1];
+                    let queryString = new URLSearchParams(paramString);
+                    if(queryString.get('email') != null && queryString.get('email') == match.email){
+                        var couronne = document.createElement("img");
+                        couronne.className = "couronne";
+                        couronne.src = "ressources/couronne.png";
+                        div_date.appendChild(couronne);
+                    }
+
+
                     // * Ajout de la div contenant la date et l'heure du match dans la div contenant les informations du match.
                     div_match.appendChild(div_date);
 
