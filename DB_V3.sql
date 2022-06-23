@@ -161,22 +161,22 @@ INSERT INTO participe(id_match, email, status) VALUES (1, 'gerald.carre@gmail.co
 INSERT INTO participe(id_match, email, status) VALUES (1, 'gilberte.chevallier@gmail.com', 1);
 INSERT INTO participe(id_match, email, status) VALUES (1, 'florian.dumont@gmail.com', 1);
 INSERT INTO participe(id_match, email, status) VALUES (1, 'cesar.benoist@gmail.com', 1);
-INSERT INTO participe(id_match, email, status) VALUES (2, 'lydie.hoarau@gmail.com', 0);
+INSERT INTO participe(id_match, email, status) VALUES (2, 'lydie.hoarau@gmail.com', 1);
 INSERT INTO participe(id_match, email, status) VALUES (2, 'brigitte.boutin@gmail.com', 1);
-INSERT INTO participe(id_match, email, status) VALUES (3, 'lydie.hoarau@gmail.com', 0);
-INSERT INTO participe(id_match, email, status) VALUES (3, 'brigitte.boutin@gmail.com', 0);
+INSERT INTO participe(id_match, email, status) VALUES (3, 'lydie.hoarau@gmail.com', 1);
+INSERT INTO participe(id_match, email, status) VALUES (3, 'brigitte.boutin@gmail.com', 1);
 INSERT INTO participe(id_match, email, status) VALUES (3, 'gerald.carre@gmail.com', 1);
-INSERT INTO participe(id_match, email, status) VALUES (4, 'lydie.hoarau@gmail.com', 0);
-INSERT INTO participe(id_match, email, status) VALUES (4, 'gerald.carre@gmail.com', 0);
+INSERT INTO participe(id_match, email, status) VALUES (4, 'lydie.hoarau@gmail.com', 1);
+INSERT INTO participe(id_match, email, status) VALUES (4, 'gerald.carre@gmail.com', 1);
 INSERT INTO participe(id_match, email, status) VALUES (4, 'florian.dumont@gmail.com', 1);
 INSERT INTO participe(id_match, email, status) VALUES (4, 'albert.dumoulin@gmail.com', 1);
 INSERT INTO participe(id_match, email, status) VALUES (4, 'silvie.livie@gmail.com', 1);
-INSERT INTO participe(id_match, email, status) VALUES (5, 'lydie.hoarau@gmail.com', 0);
-INSERT INTO participe(id_match, email, status) VALUES (5, 'gerald.carre@gmail.com', 0);
-INSERT INTO participe(id_match, email, status) VALUES (5, 'gilberte.chevallier@gmail.com', 0);
-INSERT INTO participe(id_match, email, status) VALUES (5, 'florian.dumont@gmail.com', 0);
-INSERT INTO participe(id_match, email, status) VALUES (5, 'patoche.sebastrick@gmail.com', 0);
-INSERT INTO participe(id_match, email, status) VALUES (5, 'silvie.livie@gmail.com', 0);
+INSERT INTO participe(id_match, email, status) VALUES (5, 'lydie.hoarau@gmail.com', 1);
+INSERT INTO participe(id_match, email, status) VALUES (5, 'gerald.carre@gmail.com', 1);
+INSERT INTO participe(id_match, email, status) VALUES (5, 'gilberte.chevallier@gmail.com', 1);
+INSERT INTO participe(id_match, email, status) VALUES (5, 'florian.dumont@gmail.com', 1);
+INSERT INTO participe(id_match, email, status) VALUES (5, 'patoche.sebastrick@gmail.com', 1);
+INSERT INTO participe(id_match, email, status) VALUES (5, 'silvie.livie@gmail.com', 1);
  
 
 

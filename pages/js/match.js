@@ -167,7 +167,6 @@ function getParticipantsAffichage(){
             participants = JSON.parse(xhr.responseText);
             participants.forEach(createDiv); // * On crée les divs pour chaque participant
             console.log(participants); 
-            alert("On a tout les participants");
             getOrganisateur(); // * On affiche maintenant les informations liées à l'organisateur
 
         }

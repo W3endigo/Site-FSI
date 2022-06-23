@@ -146,6 +146,8 @@
 
         }
 
+        //return $result_participant[0];
+
         //* On récupère le nombre de personne maximun pour chaque match
         try{
     
@@ -162,9 +164,13 @@
 
         }
 
+        return $result_participant_max[0];
+
+        
 
         //* On récupère les id des match complets/incomplets en fonction de ce qui est demandé
         for($i = 0; $i < count($result_participant); $i++){
+            echo($result_participant[$i][0]+" "+$result_participant_max[$i][0]+"<br>");
             if($complet == 1){
                 if($result_participant[$i][0] == $result_participant_max[$i][0]){
                     array_push($result_match, dbGetMatchById($db, $result_participant_max[$i][1]));

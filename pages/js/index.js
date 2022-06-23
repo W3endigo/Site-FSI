@@ -264,7 +264,7 @@ function getMatch(){
         case("complet"):
 
             var xhr1 = new XMLHttpRequest();
-            xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbyperiode?periode="+queryString.get('value_filtre'));
+            xhr1.open("GET", "http://127.0.0.1/Site-FSI/pages/php/request.php/matchbycomplet?complet="+queryString.get('value_filtre'));
             xhr1.onreadystatechange = function(){
                 if(xhr1.readyState == 4 && xhr1.status == 200){
                     match = JSON.parse(xhr1.responseText);
@@ -417,14 +417,6 @@ function setFiltre(type = "", value = ""){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
 
-    // if(type == ""){
-
-    //         if(queryString.has('email')){
-    //             window.location.href = "index.html?email="+queryString.get('email');
-    //         }else{
-    //             window.location.href = "index.html";
-    //         }
-    // }else{
     if(type == "periode"){
             console.log('voila');
             if(queryString.has('email')){
