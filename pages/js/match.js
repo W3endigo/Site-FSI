@@ -1,3 +1,5 @@
+validité = 1;
+
 // * Une fois la checkbox validée, le créateur peut annuler le match
 
 function activer_annuler() {
@@ -73,8 +75,12 @@ function getMatch(){
                                             break;
                                     }
                                 }
-                                if(participants[i].status == 1){
+                                if(participants[i].status == 1 && participant_accepte +1 < participant_max){
                                     participant_accepte += 1;
+                                }
+                                else{
+                                    participant_accepte += 1;
+                                    validité = 0;
                                 }
                             }
 
@@ -89,7 +95,6 @@ function getMatch(){
         }
     }
     xhr.send();
-
 }
 
 
@@ -123,8 +128,8 @@ function getOrganisateur(){
                 document.getElementById("cloture").style.display="block";
             }
 
-            if(queryString.get('email') != null && match.termine == 0){
-                document.getElementById("inscription").style.display="block";
+            if(match.termine == 1){ // * Si le matche est terminé, les inscriptions sont closes
+                document.getElementById("inscription").style.display="none";
             }
         }
     }
@@ -144,7 +149,20 @@ function getParticipantsAffichage(){
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
             participants = JSON.parse(xhr.responseText);
-            participants.forEach(createDiv); // * On crée les divs pour chaque participant
+            participants.forEach(createDiv);// * On crée les divs pour chaque participant
+
+            // * On récupère le mail de l'utilisateur dans l'url pour ensuite vérifier s'il est connecté et s'il est inscrit à ce match
+            let paramString = window.location.href.split('?')[1];
+            let queryString = new URLSearchParams(paramString);
+            
+            for(let i = 0; i < participants.length; i++){
+                if(participants[i].email == queryString.get('email')){ // * L'utilisateur est inscrit
+                    document.getElementById("inscription").style.display="none";
+                }
+                else if(queryString.get('email') != null){ // * L'utilisateur est connecté
+                    document.getElementById("inscription").style.display="block";
+                }
+            }
             getOrganisateur(); // * On affiche maintenant les informations liées à l'organisateur
 
         }
@@ -186,17 +204,20 @@ function inscription(){
     let queryString = new URLSearchParams(paramString);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "../php/request.php/participant?id_match="+queryString.get('id_match')+"&email="+queryString.get('email'));
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState == 4 && xhr.status == 200){
+    if(validité == 1){
+         xhr.open("POST", "../php/request.php/participant?id_match="+queryString.get('id_match')+"&email="+queryString.get('email'));
+         xhr.onreadystatechange = function(){
+         if(xhr.readyState == 4 && xhr.status == 200){
             alert("Vous êtes inscrit");
             window.location.reload();
         }else{
             console.log(xhr.responseText);
         }
+        }
+        xhr.send();
     }
-    xhr.send();
-
+    else
+        alert("Match complet !!");
 }
 
 // * Fonction permettant de revenir au menu en restant connecté
