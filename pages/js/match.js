@@ -121,10 +121,6 @@ function getOrganisateur(){
         if(xhr.readyState == 4 && xhr.status == 200){
             match = JSON.parse(xhr.responseText);
 
-            // * On affiche la photo de l'utilisateur actuel tout en haut à droite
-            console.log(queryString.get('email'));
-            document.getElementById("user_image").src = queryString.get('email').photo;
-
             var xhr1 = new XMLHttpRequest();
             xhr1.open("GET", "../php/request.php/joueur?email="+match.email);
             xhr1.onreadystatechange = function(){
@@ -141,11 +137,9 @@ function getOrganisateur(){
 
             // * On vérifie si l'utilisateur est l'organisateur du match
             if(queryString.get('email') == match.email){
-                console.log("passe true");
                 document.getElementById("annuler").style.display="flex";
                 document.getElementById("cloture").style.display="block";
                 boutons = document.getElementsByClassName("petits_boutons");
-                console.log(boutons);
                 for(let i = 0; i < boutons.length; i++)
                     boutons[i].style.display="block";
             
@@ -291,6 +285,27 @@ function cloturerMatch(){
                 console.log("Erreur lors de la cloture du match");
                 console.log(JSON.parse(xhr.responseText));
             }
+
+        }
+    }
+    xhr.send();
+}
+
+
+
+ // * Cette fonction permet de récupérer les informations du joueur afin d'afficher sa photo de profil en haut de la page
+ function getJoueur(){
+    let paramString = window.location.href.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "../php/request.php/joueur?email="+queryString.get('email'));
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            //console.log(xhr.responseText);
+            var joueur = JSON.parse(xhr.responseText);
+            console.log(joueur.photo);
+            document.getElementById("user_image").src = joueur.photo;          
 
         }
     }
