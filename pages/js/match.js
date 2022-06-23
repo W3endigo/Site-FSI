@@ -52,6 +52,39 @@ function getMatch(){
                     document.getElementById("sport").innerHTML = match.nom_sport;
                     document.getElementById("description_match").innerHTML = match.description;
 
+                    // * Création de la h5 qui précisera si le match est terminé
+                    if(match.termine == 1){
+                        var h5_terminer = document.createElement("h5");
+                        h5_terminer.innerHTML = "Terminé";
+                        h5_terminer.className = "terminer";
+                        document.getElementsByClassName("titre_match")[0].appendChild(h5_terminer);
+                    }
+
+                    // * Affichage et remplissage de la div d'informations de fin.
+                    if(match.termine == 1){
+                        document.getElementById("fin").style.display="flex";
+                        document.getElementById("score_home").inner_html=match.score_home;
+                        document.getElementById("score_away").inner_html=match.score_away;
+                        
+                        // * Création de la requête AJAX pour récupérer le nom du meilleur joueur.
+                        var xhrj = new XMLHttpRequest();
+                        xhrj.open("GET", "../php/request.php/joueur?email="+match.email_Joueur);
+                        xhrj.onreadystatechange = function(){
+
+                        if(xhrj.readyState == 4 && xhrj.status == 200){
+
+                         // * Récupération des données.
+                        meilleur_joueur = JSON.parse(xhrj.responseText);
+
+                         // * Affichage des informations du meilleur joueur.
+                        document.getElementById("best_joueur").innerHTML = meilleur_joueur.prenom+" "+meilleur_joueur.nom;
+                        }
+                    }
+                    // * Envoi de la requête AJAX.
+                    xhrj.send();
+                    }
+
+
                     // * Gestion de l'affichage du prix en fontion de ce dernier.
                     if(match.prix != 0){
                         document.getElementById("prix").innerHTML = "Une participation de "+match.prix+"€ vous sera demandé au début du match.";

@@ -139,8 +139,8 @@ function createDiv(match1){
                             h4_date.innerHTML = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
                             div_date.appendChild(h4_date);
 
-                            // * Création du h5 qui contiendra l'heure du match.
-                            var h5_heure = document.createElement("div");
+                            // * Création du h5 qui contiendra l'heure du match
+                            var h5_heure = document.createElement("h5");
                             h5_heure.innerHTML = date.getHours()+":"+date.getMinutes();
                             div_date.appendChild(h5_heure);
 
@@ -169,6 +169,15 @@ function createDiv(match1){
                             var h3_adresse = document.createElement("h3");
                             h3_adresse.innerHTML = match.adresse+", "+nom_ville;
                             div_titre.appendChild(h3_adresse);
+
+
+                            // * Création de la h5 qui précisera si le match est terminé
+                            if(match.termine == 1){
+                                var h5_terminer = document.createElement("h5");
+                                h5_terminer.innerHTML = "Terminé";
+                                h5_terminer.className = "terminer";
+                                div_titre.appendChild(h5_terminer);
+                            }
 
                             // * Ajout de la div contenant le titre et l'adresse du match dans la div contenant les informations du match.
                             div_match.appendChild(div_titre);

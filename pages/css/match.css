@@ -197,6 +197,11 @@ img{
     align-items: center;
 }
 
+.terminer{
+    color:#2196F3;
+    margin-right : 100%;
+}
+
 
 /*---------Match---------*/
 
@@ -302,7 +307,35 @@ img{
     background-color: red;
 }
 
+#fin{
+    background-color:#353535;
+    border: 10px solid #FFFFFF50;
+    color:#FFFFFF;
+    padding:1%;
+    margin:3%;
+    display : none;
+    flex-direction: column;
+    align-items: center;
+}
 
+
+#scores{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    width:50%;
+}
+
+#scores div{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#score_away, #score_home, #best_joueur{
+    color:#FF9500;
+}
 
 .petits_boutons{
     display:none;

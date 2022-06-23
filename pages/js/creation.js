@@ -5,8 +5,8 @@ $("#formulaire").submit((event) => {
     event.preventDefault();
 
     // * On vérifie que le nombre minimum de joueurs soit bien infériuer au nombre maximum de joueurs.
-    if( parseFloat($("#min").val()) > parseFloat($("#max").val())){
-        alert("min" + $("#min").val() + "max" + $("#max").val());   
+    if( parseFloat($("#min").val()) < parseFloat($("#max").val())){
+        alert("Le minimum doit être inférieur au maximum.");
     }else{
 
         // * Formattage de la date
