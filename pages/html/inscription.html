@@ -21,7 +21,7 @@
   </head>
   <header>
     </header>
-  
+  <!-- Le body charge les villes et les fréquences pour remplir les selecteurs.!-->
   <body onload ="getVille(); getFrequence()">
       
     <div id="sticky_head">
@@ -35,6 +35,7 @@
     </div>
       
     <center>  
+       <!-- Début du formulaire, tous les champs sont obligatoires.!-->
     <div id="formulaire" class="container">  
  <form id = "Form" method="post" >
   <div id="formPicture" class="form-group">
@@ -79,15 +80,15 @@
     <div class="form-group col-md-6">
       <label for="confirmMotDePasse">Confirmer mot de passe</label>
       <input type="password" class="form-control" id="motDePasse2" required>
-      <small id="mauvaisMdp" class="form-text" style="display:none">
-          Les mots de passe ne correspondent pas.
+      <small id="mauvaisMdp" class="form-text" style="display:none"> <!-- N'apparaît que si les mots de passe ne sont pas les mêmes.!-->
+          Les mots de passe ne correspondent pas. 
       </small>
         
     </div>
   </div>
       
   <div class="form-group col-md-6">
-    <label onclick="toggle_mdp()" id="voir">
+    <label onclick="toggle_mdp()" id="voir">  <!-- Permet d'afficher les mots de passe.!-->
         VOIR
     </label>
   </div>
@@ -105,7 +106,8 @@
      </div>      
       
  </form>
-</div>      
+</div>  
+<!-- Fin du formulaire.!-->    
 </center> 
       
   </body>

@@ -21,7 +21,7 @@
   </head>
   <header>
     </header>
-  
+  <!-- Au chargement, le body récupère les informations du match, celles des participants de ce match et celles du créateur avant de les afficher.!-->
   <body onload="getMatch(); getParticipantsAffichage(); getParticipants()">
       
     <div id="sticky_head">
@@ -41,6 +41,7 @@
           </h4>
           <h5 id="heure">
           </h5>
+          <img id="couronne" src="../../ressources/couronne.png">
       </div>
       <div class="titre_match">
           <h1 id="titre"></h1>
@@ -74,7 +75,7 @@
 
 </div>      
       
-<!--Bouton et informations d'inscription!-->
+<!--Bouton et informations d'inscription, visibles uniquement par les utilisateurs connectés!-->
       
 <div id="inscription" class="text-center">
     <button id="button2" type="button" class="btn btn-primary btn-lg" onclick="inscription()">Inscription</button>

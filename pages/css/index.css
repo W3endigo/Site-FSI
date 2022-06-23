@@ -120,6 +120,10 @@ img{
     display : block;
 }
 
+#createur{
+    max-width: 30%;
+}
+
 .valeurs{
     display: none;
     margin:1%;

@@ -38,22 +38,22 @@
     </div>
       
     </header>
-  
+  <!--Lors du scroll, le body vérifie si l'entête du haut est complétement disparu. Dans ce cas il affiche les petites icones sur l'entête sticky -->
   <body onscroll="toggle_icons()" onload="verif_connexion() ; getVille(); getSport(); getMatch(); chargeJoueur();">
     <div id="sticky_head" class="container_fluid sticky">
         <div id="apparait_index">    
-            <img onclick="topFunction()" src="ressources/maison.png" id="home">         
+            <img onclick="topFunction()" src="ressources/maison.png" id="home"> <!--Bouton pour revenir en haut de la page -->         
             <img src="ressources/petit_logo.png" id="petit_logo">
             <img src="ressources/deconnecte.png" id="user_image">
         </div>
     </div>
       
-      
+      <!--Ce bouton n'apparaît que si l'utilisateur est connecté -->
       <div id="total" class="container-fluid text-center">
           <button id="creer" onclick="goCreate()" type="button" class="btn btn-primary btn-lg">Créer un match</button>
           
           
-          
+          <!--Filtre pour effectuer une recherche de match -->
         <div id="recherche">
 
           <select id="filtres" onchange="if (this.selectedIndex) selectFiltre(this.selectedIndex);" >
@@ -85,15 +85,17 @@
       <option value="1" id="complet">Matchs complets</option>
   </select>
         </div>  
+
+       <!--Début des Divs Match-->
       <div id = liste_match>
       </div>
-        <!--Fin des Divs Match!-->  
+        <!--Fin des Divs Match-->  
           
       </div>
 
   </body>
   <footer>
-    
+      <!--Footer menant à nos divers réseaux -->
       <h1>Nous rejoindre :</h1>
       
       <div id="reseaux">

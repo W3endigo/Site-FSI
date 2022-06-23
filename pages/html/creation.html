@@ -20,7 +20,7 @@
   </head>
   <header>
     </header>
-  
+  <!-- Le body charge les villes et les sports pour remplir les selecteurs.!-->
   <body onload="getVille(); getSports()">
       
     <div id="sticky_head">
@@ -32,7 +32,7 @@
     </div>  
 
       
-      
+      <!-- Début du formulaire.!-->
     <form id="formulaire" class="text-center">
       
         <div>
@@ -42,7 +42,7 @@
         <div>
             <input id="nom" placeholder="Entrer un nom" required>
             <select id="sport" required>
-                <option style="display:none" value="">Choisir un sport</option>
+                <option style="display:none" value="">Choisir un sport</option> <!-- Cette disposition permet de placer un choix vide et invisible par défaut.!-->
             </select>
         </div>
         <div>
@@ -85,7 +85,7 @@
     <small id="mauvaisMin">Le minimum ne peut-être supérieur au maximum</small>
             
     </form>  
-    
+    <!-- Fin du formulaire.!-->
 
 
       

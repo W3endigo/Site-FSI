@@ -21,7 +21,7 @@
     function dbGetMatchHome($db){
 
         try{
-            $request = 'SELECT * FROM matchs ORDER BY horaire ASC';
+            $request = 'SELECT * FROM matchs WHERE horaire >= NOW() ORDER BY horaire ASC';
             $statement = $db->prepare($request);
             $statement->execute();
             $result = $statement->fetchAll();
@@ -40,7 +40,7 @@
 
         try{
 
-            $request = 'SELECT * FROM matchs WHERE id_match=:id_match';
+            $request = 'SELECT * FROM matchs WHERE id_match=:id_match AND horaire >= NOW()';
             $statement = $db->prepare($request);
             $statement->bindParam (':id_match', $id_match, PDO::PARAM_STR, 50);
             $statement->execute();

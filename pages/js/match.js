@@ -1,3 +1,4 @@
+// * Variable globale permettant de juger de la validité du match
 validité = 1;
 
 // * Une fois la checkbox validée, le créateur peut annuler le match
@@ -163,6 +164,12 @@ function getParticipantsAffichage(){
                     document.getElementById("inscription").style.display="block";
                 }
             }
+            
+            if(participants.length == 0){
+                document.getElementById("inscription").style.display="block"; // * Si il n'y a personne inscrit, on affiche le bouton d'inscription, l'utilisateur n'y est forcément pas inscrit.
+            }
+
+
             getOrganisateur(); // * On affiche maintenant les informations liées à l'organisateur
 
         }
