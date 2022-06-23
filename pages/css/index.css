@@ -128,8 +128,6 @@ img{
 
 .match{
     background-color: #FFFFFF;
-    margin-right: 10%;
-    margin-left: 10%;
     margin-bottom: 10%;
     margin-top: 10%;
     display:flex;    
@@ -138,7 +136,7 @@ img{
     font-size:auto;
     transition: all 0.5s; 
     cursor:pointer;
-    width:90%;
+    width:100%;
 }
 
 
@@ -151,11 +149,15 @@ img{
 }
 
 .date{
-    max-width:10%;
+    max-width:20%;
     border-right-width: thin;
     border-right-color: black;
     border-right-style: solid;
     padding :1%;
+    display : flex;
+    flex-direction : column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
@@ -171,6 +173,7 @@ img{
 }
 
 .titre_match{
+    padding-left:5%;
     text-align: center;
     display:flex;
     flex-direction:column;
@@ -183,7 +186,7 @@ img{
 .nb_joueurs{
     display:flex;
     flex-direction:column;
-    max-width : 10%;
+    max-width : 20%;
 }
 .nb_joueurs img{
     max-height: 50%;
@@ -269,6 +272,12 @@ img{
     background-color:#FF9500;
     border-color: #AA5000;
     margin-top : 10%;
+}
+
+#liste_match{
+    margin : 0;
+    width : 80%;
+    height : 80%;
 }
 
 

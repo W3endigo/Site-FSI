@@ -20,10 +20,10 @@ $("#connexion").submit((event) => {
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
                
-                var validite = xhr.responseText;                
+                var validite = xhr.responseText;
+                console.log(validite);              
             }
-            if(validite == 'true'){ //* Si la connexion est valide, on redirige vers la page d'accueil
-
+            if(validite == 'true'){ //* Si la connexion est valide, on redirige vers la page d'accueil 
                 window.location.href = "../html/profil.html?email="+$('#email').val();
 
             }

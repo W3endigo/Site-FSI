@@ -140,12 +140,16 @@ img{
 }
 
 .date{
-    max-width:10%;
+    max-width:15%;
     border-right-width: thin;
     border-right-color: black;
     border-right-style: solid;
     padding :1%;
     text-align: center;
+    display : flex;
+    flex-direction : column;
+    align-items: center;
+    justify-content: center;
 }
 
 .date h4{
@@ -172,7 +176,7 @@ img{
 .nb_joueurs{
     display:flex;
     flex-direction:column;
-    max-width : 10%;
+    max-width : 15%;
 }
 .nb_joueurs img{
     max-height: 50%;

@@ -47,7 +47,7 @@ function dbConnect(){
 
     }
 
-    return password_verify($mdp, $result['mdp']);
+    return password_verify($mdp, $result);
 
   }
 
