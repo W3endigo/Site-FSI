@@ -26,6 +26,10 @@ function verif_connexion(){
 
 }
 
+
+
+
+
 function getMatch(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
@@ -115,11 +119,15 @@ function getParticipantsAffichage(){
 
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
+            let organisateur = getOrganisateur();
+
+
             participants = JSON.parse(xhr.responseText);
             //for(var i = 0; i < participants.length; i++){
-            participants.forEach(createDiv);
+            for(let i = 0; i < participants.length; i++){
+                createDiv(participants[i],organisateur);
+            }
             console.log(participants);
-            getOrganisateur();
 
         }
 
@@ -128,7 +136,7 @@ function getParticipantsAffichage(){
 }
 
 
-function createDiv(participant){
+function createDiv(participant, organisateur){
     var participants_div = document.getElementById("participants");
     var xhr1 = new XMLHttpRequest();
     xhr1.open("GET", "../php/request.php/joueur?email="+participant.email);
@@ -148,7 +156,7 @@ function createDiv(participant){
             h5.textContent = joueur.prenom+" "+joueur.nom;
             div.appendChild(h5);
             participants_div.appendChild(div);
-            if(participant.status == 0){
+            if(participant.status == 0 && organisateur == true){
                 article = document.createElement("article");
                 article.className = "petits_boutons";
                 article.innerHTML = "<button type='button' class='btn btn-success'> <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check2-circle' viewBox='0 0 16 16'>  <path d='M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z'></path><path d='M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z'></path></svg>Accepter</button><button type='button' class='btn btn-outline-danger'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='red' class='bi bi-x' viewBox='0 0 16 16'><path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'></path></svg>Refuser</button>";
@@ -163,6 +171,7 @@ function createDiv(participant){
 
 
 function getOrganisateur(){
+    var organisateur = false;
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
     var xhr = new XMLHttpRequest();
@@ -172,12 +181,8 @@ function getOrganisateur(){
             match = JSON.parse(xhr.responseText);
 
             if(queryString.get('email') == match.email){
-                boutons = document.getElementsByClassName("petits_boutons");
-                //alert(boutons.length);
-                for(let i = 0; i < boutons.length; i++){
-                    boutons[i].style.display="flex";
-                }
-                console.log(boutons);
+                organisateur = true;
+                alert("Vous êtes l'organisateur du match !");   
             }
             }
 
@@ -198,6 +203,9 @@ function getOrganisateur(){
         }
     
     xhr.send();
+    alert(organisateur);
+    return organisateur;
+
 }
 
 

@@ -227,7 +227,7 @@ img{
     justify-content: space-between;
 }
 #up_head p{
-    display:none;
+    display:flex;
     color :#FFFFFF;
 }
 
