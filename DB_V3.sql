@@ -137,16 +137,16 @@ INSERT INTO sport VALUES ('Baseball');
 # Les mdp sont joueur0, joueur1, joueur2, joueur3, joueur4, joueur5, joueur6, joueur7, joueur8, joueur9, joueur10
 #------------------------------------------------------------
 INSERT INTO Joueur VALUES ('test.inconnu@gmail.com','Test','Inconnu','1990-01-01','$2y$10$ixlwz5g12ZucSrLa83EJBexZBkDMgRDIPjs4wR53CLgCrZWUiGfPy','../../ressources/deconnecte.png',0,22050,'Je ne pratique pas');
-INSERT INTO Joueur VALUES ('lydie.hoarau@gmail.com','Lydie','Hoarau','2004-06-15','$2y$10$XwNHp./dy0AbnYkZOOB21.DdwJVgUU/JaafMQtJNcV7TDZEMJ10vG','../../ressources/femme.png',1,35093,'Plusieurs fois par semaine');
-INSERT INTO Joueur VALUES ('brigitte.boutin@gmail.com','Brigitte','Boutin','1962-06-15','$2y$10$7BSZYEI/L4F3tBGb75ZBROpkf0Ekg9AzPvOJ4axFKaUNL28LmXr4C','../../ressources/femme.png',2,56247,'Une fois par semaine');
-INSERT INTO Joueur VALUES ('gerald.carre@gmail.com','Gérald','Carre','1993-06-15','$2y$10$ttci6RpZtEEXhxEtxCQQLOGgVa8XTqeLSxCxR9h.limIhybTZhk2.','../../ressources/femme.png',2,35238,'Une fois par mois');
-INSERT INTO Joueur VALUES ('gilberte.chevallier@gmail.com','Gilberte','Chevallier','1976-06-15','$2y$10$9fkWmyKjrtyWGDVpOv128uecllYxBfqtBOmIhMx6bkUgLpmONQNYO','../../ressources/femme.png',1,29019,'Une fois par an');
-INSERT INTO Joueur VALUES ('florian.dumont@gmail.com','Florian','Dumont','1990-06-15','$2y$10$DFFkHiZ9xDzACSHVYHGArOdlcUC2nVbwfPXlj8deZ6ZiUw0bOnYVi','../../ressources/homme.png',2,29232,'Je ne pratique pas');
+INSERT INTO Joueur VALUES ('lydie.hoarau@gmail.com','Lydie','Hoarau','2004-06-15','$2y$10$XwNHp./dy0AbnYkZOOB21.DdwJVgUU/JaafMQtJNcV7TDZEMJ10vG','../../ressources/femme.png',5,35093,'Plusieurs fois par semaine');
+INSERT INTO Joueur VALUES ('brigitte.boutin@gmail.com','Brigitte','Boutin','1962-06-15','$2y$10$7BSZYEI/L4F3tBGb75ZBROpkf0Ekg9AzPvOJ4axFKaUNL28LmXr4C','../../ressources/femme.png',3,56247,'Une fois par semaine');
+INSERT INTO Joueur VALUES ('gerald.carre@gmail.com','Gérald','Carre','1993-06-15','$2y$10$ttci6RpZtEEXhxEtxCQQLOGgVa8XTqeLSxCxR9h.limIhybTZhk2.','../../ressources/femme.png',4,35238,'Une fois par mois');
+INSERT INTO Joueur VALUES ('gilberte.chevallier@gmail.com','Gilberte','Chevallier','1976-06-15','$2y$10$9fkWmyKjrtyWGDVpOv128uecllYxBfqtBOmIhMx6bkUgLpmONQNYO','../../ressources/femme.png',2,29019,'Une fois par an');
+INSERT INTO Joueur VALUES ('florian.dumont@gmail.com','Florian','Dumont','1990-06-15','$2y$10$DFFkHiZ9xDzACSHVYHGArOdlcUC2nVbwfPXlj8deZ6ZiUw0bOnYVi','../../ressources/homme.png',3,29232,'Je ne pratique pas');
 INSERT INTO Joueur VALUES ('cesar.benoist@gmail.com','César','Benoist','1970-06-15','$2y$10$qArttVysSZIkQlXaKgFZou9/WzUKUzn57bu5YzG8eCo1GMIynUzpy','../../ressources/homme.png',1,56121,'Plusieurs fois par semaine');
 INSERT INTO Joueur VALUES ('albert.dumoulin@gmail.com','Albert','Dumoulin','2004-06-15','$2y$10$Ub65k0jSHkDsIqHerrlQH.OQYuJvi8zl0A8w6pfnJxDD3sQ.gwHaS','../../ressources/homme.png',1,56260,'Une fois par semaine');
-INSERT INTO Joueur VALUES ('patoche.sebastrick@gmail.com','Patoche','Sebastrick','1953-06-15','$2y$10$Pp/2aYTFeDH0rjwGMEMXY.kkb8HyandLFM3JphNerSXuExSHivZ6K','../../ressources/homme.png',0,35239,'Une fois par mois');
+INSERT INTO Joueur VALUES ('patoche.sebastrick@gmail.com','Patoche','Sebastrick','1953-06-15','$2y$10$Pp/2aYTFeDH0rjwGMEMXY.kkb8HyandLFM3JphNerSXuExSHivZ6K','../../ressources/homme.png',1,35239,'Une fois par mois');
 INSERT INTO Joueur VALUES ('pierre.giraud@gmail.com','Pierre','Giraud','1977-06-15','$2y$10$MsOWquWbYvEX1c9.YzDtcemZjWOoPcjqAN8PyrJrX/SnEhnd6wOBW','../../ressources/homme.png',0,22070,'Une fois par an');
-INSERT INTO Joueur VALUES ('silvie.livie@gmail.com','Silvie','Livie','1984-06-15','$2y$10$cJ9NK8EbOZWdqsmTKT9cc.PHt3GJZTo7Ywnn2itOE2PnUTyo2qpMS','../../ressources/homme.png',1,22050,'Je ne pratique pas');
+INSERT INTO Joueur VALUES ('silvie.livie@gmail.com','Silvie','Livie','1984-06-15','$2y$10$cJ9NK8EbOZWdqsmTKT9cc.PHt3GJZTo7Ywnn2itOE2PnUTyo2qpMS','../../ressources/homme.png',2,22050,'Je ne pratique pas');
 
 
 INSERT INTO Matchs(titre, horaire, duree, description, participant_min, participant_max, prix, termine, adresse, score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur) VALUES ('Match de Football Test 1', '2022-06-20 15:30:00', '03:00:00', 'Description du match de Football', 2, 6, 0, 0, 'Rue de la paix', NULL, NULL, 35093, 'Football', 'test.inconnu@gmail.com', 'test.inconnu@gmail.com');

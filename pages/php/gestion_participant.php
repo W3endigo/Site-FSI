@@ -26,7 +26,23 @@
 
         }
 
+        try{
+
+            $request = 'UPDATE joueur SET nombre_de_matchs=nombre_de_matchs+1 WHERE email=:email';
+            $statement = $db->prepare($request);
+            $statement->bindParam (':email', $email, PDO::PARAM_STR, 50);
+            $statement->execute();
+
+        }catch (PDOException $exception){
+
+            error_log('Erreur lors de la validation du participant : '.$exception->getMessage());
+            return false;
+
+        }
+
         return true;
+
+
 
 
     }

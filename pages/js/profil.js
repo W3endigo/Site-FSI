@@ -258,7 +258,8 @@ function getJoueur(){
            // document.getElementById("ville_actuelle").value = joueur.code_insee_ville;
             document.getElementById("ville").value = joueur.code_insee_ville;
             //document.getElementById("motDePasse").value = joueur.mdp;    
-            document.getElementById("nb_match").innerHTML=joueur.nombre_de_matchs;          
+            document.getElementById("nb_match").innerHTML=joueur.nombre_de_matchs;
+            console.log(joueur.nombre_de_matchs);          
 
         }
     }
