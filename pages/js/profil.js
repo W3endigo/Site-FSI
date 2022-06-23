@@ -288,10 +288,16 @@ function isConnected(){
     }
 }
 
-
-
-
 // * Remercie l'utilisateur de sa note
 function merci(){
     alert("Merci pour votre note !");
 }
+
+function deconnexion(){
+    window.location.href = "../../index.html";
+}
+
+
+// TODO /var/www/projet
+// TODO SFTP
+// TODO sudo cp -r /home/user1/projet/x /var/www/projet
