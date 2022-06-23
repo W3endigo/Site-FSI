@@ -213,6 +213,12 @@ img{
     max-width:30%;
 }
 
+
+#description_match{
+    background-color:#FFFFFF80;
+    border-radius: 10px;
+}
+
 #participants{
     margin:5%;
     padding:5%;
@@ -295,6 +301,8 @@ img{
 #bouton_annuler{
     background-color: red;
 }
+
+
 
 .petits_boutons{
     display:none;
