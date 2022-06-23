@@ -22,7 +22,7 @@
   <header>
     </header>
   
-  <body onload="verif_connexion(); getMatch(); getParticipantsAffichage()">
+  <body onload="verif_connexion(); getMatch(); getParticipantsAffichage(); getParticipants()">
       
     <div id="sticky_head">
         <div id="apparait">    
@@ -104,7 +104,7 @@
                 </select>
             <br>
             <br>
-            <button id="bouton_cloturer" type="button" class="btn btn-primary btn-lg">Cloturer le match</button>
+            <button id="bouton_cloturer" type="button" class="btn btn-primary btn-lg" onclick="cloturerMatch();">Cloturer le match</button>
           </form>
           
       </div>
