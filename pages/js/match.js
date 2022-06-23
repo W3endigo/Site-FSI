@@ -9,24 +9,6 @@ function activer_annuler() {
 }
 
 
-
-// * Modifie la page selon la connexion
-function verif_connexion(){
-
-    let paramString = window.location.href.split('?')[1];
-    let queryString = new URLSearchParams(paramString);
-
-    if(queryString.get('email') != null){
-        document.getElementById("inscription").style.display="block";
-    }
-
-
-}
-
-
-
-
-
 function getMatch(){
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
@@ -136,13 +118,13 @@ function getOrganisateur(){
 
 
             // * On vérifie si l'utilisateur est l'organisateur du match
-            if(queryString.get('email') == match.email){
+            if(queryString.get('email') == match.email && match.termine == 0){
                 document.getElementById("annuler").style.display="flex";
                 document.getElementById("cloture").style.display="block";
-                boutons = document.getElementsByClassName("petits_boutons");
-                for(let i = 0; i < boutons.length; i++)
-                    boutons[i].style.display="block";
-            
+            }
+
+            if(queryString.get('email') != null && match.termine == 0){
+                document.getElementById("inscription").style.display="block";
             }
         }
     }
@@ -280,10 +262,10 @@ function cloturerMatch(){
         if(xhr.readyState == 4 && xhr.status == 200){
 
             if(JSON.parse(xhr.responseText) == true){
-                console.log("Match cloturé");   
+                alert("Match cloturé");   
                 window.location.reload();
             }else{
-                console.log("Erreur lors de la cloture du match");
+                alert("Erreur lors de la cloture du match");
                 console.log(JSON.parse(xhr.responseText));
             }
 

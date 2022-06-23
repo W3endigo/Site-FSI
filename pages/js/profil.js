@@ -59,7 +59,23 @@ $("#profil").submit((event) =>{
                 xhr2.send();
             }
 
-            // * Si le nom a été modifié, on le modifie dans la base de données.
+            if($("#image_selected").val() != joueur_default.photo){
+                var xhr2 = new XMLHttpRequest();
+                xhr2.open("PUT", "../php/request.php/photo?email="+$('#email').val()+"&new_photo="+$('#image_selected').val());
+                xhr2.setRequestHeader("Access-Control-Allow-Origin", "../html/inscription.html");
+                xhr2.onreadystatechange = function(){
+                    if(xhr2.readyState == 4 && xhr2.status == 200){
+                    
+                        if(xhr2.responseText == "true"){
+                            console.log("Photo modifiée avec succès !");
+                        }else{
+                            console.log("Erreur lors de la modification de la photo!");
+                        }
+                    }
+                }
+                xhr2.send();
+            }
+
             if($("#nom").val() != joueur_default.nom){
 
                 // * Préparation de la requête AJAX pour modifier le nom.
