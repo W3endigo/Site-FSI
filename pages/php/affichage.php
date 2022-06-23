@@ -62,7 +62,7 @@
 
         try{
 
-            $request = 'SELECT * FROM matchs WHERE code_insee_ville=:code_insee_ville';
+            $request = 'SELECT * FROM matchs WHERE code_insee_ville=:code_insee_ville AND horaire >= NOW()';
             $statement = $db->prepare($request);
             $statement->bindParam (':code_insee_ville', $code_insee_ville, PDO::PARAM_STR, 50);
             $statement->execute();
@@ -84,7 +84,7 @@
 
         try{
 
-            $request = 'SELECT * FROM matchs WHERE nom_sport=:nom_sport';
+            $request = 'SELECT * FROM matchs WHERE nom_sport=:nom_sport AND horaire >= NOW()';
             $statement = $db->prepare($request);
             $statement->bindParam (':nom_sport', $nom_sport, PDO::PARAM_STR, 50);
             $statement->execute();
