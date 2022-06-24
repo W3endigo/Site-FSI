@@ -60,13 +60,41 @@ function getMatch(){
                 if(xhr.readyState == 4 && xhr.status == 200){
 
                     // * Récupération des données et envoie à la fonction qui permet d'afficher les matchs.
-                    match = JSON.parse(xhr1.responseText);
+                    matchs = JSON.parse(xhr1.responseText);
                     organise = JSON.parse(xhr.responseText);
+                    console.log("organise" + organise);
 
-                    for(let i = 0; i < organise.length; i++){
-                            match.push(organise[i]);
+
+
+                    let redondance;
+
+
+                    // * création d'un tableau qui contiendra les matchs où le joueur est participant en évitant la redondance.
+                    match=[];
+                    match.push(matchs[0]);
+                    for(let i = 1; i < matchs.length; i++){
+                        redondance = 0;
+                        for(let y = 0; y < match.length; y++){
+                          if(match[y].id_match == matchs[i].id_match)
+                            redondance = 1;
+                        }
+                        if(redondance == 0)
+                          match.push(matchs[i]);
                     }
-                    
+                    // * remplissage de ce tableau qui contiendra les matchs où le joueur est organisateur en évitant la redondance.
+                    for(let i = 0; i < organise.length; i++){
+                        redondance = 0;
+                        for(let y = 0; y < match.length; y++){
+                          if(match[y].id_match == organise[i].id_match)
+                            redondance = 1;
+                        }
+                        if(redondance == 0)
+                          match.push(organise[i]);
+                    }
+
+
+
+
                     match.forEach(createDiv);
                 }
             }
@@ -74,12 +102,13 @@ function getMatch(){
             xhr.send();
         }
     }
-    // * Envoie de la requête AJAX.  
+    // * Envoi de la requête AJAX.  
     xhr1.send();
 }
 
 // * Fonction qui permet de créer les divs des matchs pour les afficher.
 function createDiv(match1){
+    console.log(match1);
     let paramString = window.location.href.split('?')[1];
     let queryString = new URLSearchParams(paramString);
 
@@ -138,8 +167,8 @@ function createDiv(match1){
                             h4_date.innerHTML = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
                             div_date.appendChild(h4_date);
 
-                            // * Création du h5 qui contiendra l'heure du match.
-                            var h5_heure = document.createElement("div");
+                            // * Création du h5 qui contiendra l'heure du match
+                            var h5_heure = document.createElement("h5");
                             h5_heure.innerHTML = date.getHours()+":"+date.getMinutes();
                             div_date.appendChild(h5_heure);
 
@@ -168,6 +197,15 @@ function createDiv(match1){
                             var h3_adresse = document.createElement("h3");
                             h3_adresse.innerHTML = match.adresse+", "+nom_ville;
                             div_titre.appendChild(h3_adresse);
+
+
+                            // * Création de la h5 qui précisera si le match est terminé
+                            if(match.termine == 1){
+                                var h5_terminer = document.createElement("h5");
+                                h5_terminer.innerHTML = "Terminé";
+                                h5_terminer.className = "terminer";
+                                div_titre.appendChild(h5_terminer);
+                            }
 
                             // * Ajout de la div contenant le titre et l'adresse du match dans la div contenant les informations du match.
                             div_match.appendChild(div_titre);

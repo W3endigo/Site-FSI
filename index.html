@@ -39,7 +39,7 @@
       
     </header>
   <!--Lors du scroll, le body vérifie si l'entête du haut est complétement disparu. Dans ce cas il affiche les petites icones sur l'entête sticky -->
-  <body onscroll="toggle_icons()" onload="verif_connexion() ; getVille(); getSport(); getMatch(); chargeJoueur();">
+  <body onscroll="toggle_icons()" onload="verif_connexion() ; getVille(); getSport(); getMatch(); chargeJoueur()">
     <div id="sticky_head" class="container_fluid sticky">
         <div id="apparait_index">    
             <img onclick="topFunction()" src="ressources/maison.png" id="home"> <!--Bouton pour revenir en haut de la page -->         
@@ -80,7 +80,7 @@
       <input type="number" id="periode" class="valeurs" min="0" value="" placeholder="Choisir le nombre de jours de la période" onchange="setFiltre('periode',this.value);">
 
     <select id="complet" class="valeurs" onchange="setFiltre('complet',this.value);">
-      <option value="" style="display:none">Rien</option>
+      <option value="" style="display:none">Choisissez un filtre</option>
       <option value="0" id="complet">Matchs ayant de la place</option>
       <option value="1" id="complet">Matchs complets</option>
   </select>
