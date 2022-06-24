@@ -40,7 +40,7 @@
 
         try{
 
-            $request = 'SELECT * FROM matchs WHERE id_match=:id_match AND horaire >= NOW()';
+            $request = 'SELECT * FROM matchs WHERE id_match=:id_match';
             $statement = $db->prepare($request);
             $statement->bindParam (':id_match', $id_match, PDO::PARAM_STR, 50);
             $statement->execute();
