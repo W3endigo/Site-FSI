@@ -62,39 +62,28 @@ function getMatch(){
                     // * Récupération des données et envoie à la fonction qui permet d'afficher les matchs.
                     matchs = JSON.parse(xhr1.responseText);
                     organise = JSON.parse(xhr.responseText);
-                    console.log("organise" + organise);
 
-
-
-                    let redondance;
-
-
-                    // * création d'un tableau qui contiendra les matchs où le joueur est participant en évitant la redondance.
-                    match=[];
-                    match.push(matchs[0]);
-                    for(let i = 1; i < matchs.length; i++){
-                        redondance = 0;
-                        for(let y = 0; y < match.length; y++){
-                          if(match[y].id_match == matchs[i].id_match)
-                            redondance = 1;
+                    match = [];
+                    if(matchs.length > 0){
+                        for(let i = 0; i < matchs.length; i++){
+                            let redondance = false;
+                            for(let j = 0; j < organise.length; j++){
+                                if(matchs[i].id_match == organise[j].id_match){
+                                    redondance = true;
+                                }
+                            }
+                            if(!redondance){
+                                match.push(matchs[i]);
+                                redondance = false;
+                            }
                         }
-                        if(redondance == 0)
-                          match.push(matchs[i]);
-                    }
-                    // * remplissage de ce tableau qui contiendra les matchs où le joueur est organisateur en évitant la redondance.
-                    for(let i = 0; i < organise.length; i++){
-                        redondance = 0;
-                        for(let y = 0; y < match.length; y++){
-                          if(match[y].id_match == organise[i].id_match)
-                            redondance = 1;
+                        for(let i = 0; i < organise.length; i++){
+                            match.push(organise[i]);
                         }
-                        if(redondance == 0)
-                          match.push(organise[i]);
+
+                    }else{
+                        match = organise;
                     }
-
-
-
-
                     match.forEach(createDiv);
                 }
             }
