@@ -29,7 +29,7 @@ $("#formulaire").submit((event) => {
 
             // * Si la requête AJAX a réussi, on redirige vers la page du match créé.
             if(validite != false){ 
-                window.location.href = "../html/match.html?email="+queryString.get('email')+"&id_match="+validite;
+                window.location.href = "../html/match.html?email="+queryString.get('email')+"&id_match="+validite.substring(1, validite.length-1);
 
             }
 

@@ -12,7 +12,7 @@
         try{
     
             $request = 'INSERT INTO matchs (titre, horaire, duree, description, participant_min, participant_max, prix, termine, adresse, 
-                                            score_home, score_away, code_insee_ville, nom_sport, email, email_Joueur)
+                                            score_home, score_away, code_insee_ville, nom_sport, email, email_joueur)
                         VALUES (:titre, :horaire, :duree, :description, :participant_min, :participant_max, :prix, false, :adresse,
                                             NULL, NULL, :code_insee_ville, :nom_sport, :email_organisateur, :email_meilleur_joueur)';
             $statement = $db->prepare($request);
@@ -99,7 +99,7 @@
         $termine = true;
         try{
     
-            $request = 'UPDATE matchs SET score_home=:score_home, score_away=:score_away, email_Joueur=:email_joueur, termine=:termine WHERE id_match=:id_match';
+            $request = 'UPDATE matchs SET score_home=:score_home, score_away=:score_away, email_joueur=:email_joueur, termine=:termine WHERE id_match=:id_match';
             $statement = $db->prepare($request);
             $statement->bindParam (':id_match', $id_match, PDO::PARAM_STR, 50);
             $statement->bindParam (':score_home', $score_home, PDO::PARAM_STR, 50);

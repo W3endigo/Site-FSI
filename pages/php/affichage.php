@@ -278,7 +278,7 @@
 
         try{
 
-            $request = 'SELECT * FROM Ville_Bretonne';
+            $request = 'SELECT * FROM ville_bretonne';
             $statement = $db->prepare($request);
             $statement->execute();
             $result = $statement->fetchAll();
