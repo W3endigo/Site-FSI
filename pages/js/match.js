@@ -63,8 +63,8 @@ function getMatch(){
                     // * Affichage et remplissage de la div d'informations de fin.
                     if(match.termine == 1){
                         document.getElementById("fin").style.display="flex";
-                        document.getElementById("score_home").inner_html=match.score_home;
-                        document.getElementById("score_away").inner_html=match.score_away;
+                        document.getElementById("score_1").innerHTML = match.score_home;
+                        document.getElementById("score_2").innerHTML=match.score_away;
                         
                         // * Création de la requête AJAX pour récupérer le nom du meilleur joueur.
                         var xhrj = new XMLHttpRequest();
@@ -232,8 +232,8 @@ function getParticipantsAffichage(){
                 }
             }
             
-            if(participants.length == 0){
-                document.getElementById("inscription").style.display="block"; // * Si il n'y a personne inscrit, on affiche le bouton d'inscription, l'utilisateur n'y est forcément pas inscrit.
+            if(participants.length == 0 && queryString.get('email') != null ){
+                document.getElementById("inscription").style.display="block"; // * Si il n'y a personne inscrit et que l'utilisateur est connecté, on affiche le bouton d'inscription, l'utilisateur n'y est forcément pas inscrit.
             }
 
 
@@ -443,8 +443,7 @@ function chargeJoueur(){
 
     // * Si le joueur n'est pas connecté, on affiche une image de profil par défaut.
     }else{
-        document.getElementById("user_image").src = "ressources/deconnecte.png";
-        document.getElementById("username").innerHTML = "Déconnecté";
+        document.getElementById("user_image").src = "../../ressources/deconnecte.png";
     }
 
 }

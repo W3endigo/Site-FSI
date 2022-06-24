@@ -333,7 +333,7 @@ img{
     align-items: center;
 }
 
-#score_away, #score_home, #best_joueur{
+#score_1, #score_2, #best_joueur{
     color:#FF9500;
 }
 

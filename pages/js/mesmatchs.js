@@ -60,13 +60,41 @@ function getMatch(){
                 if(xhr.readyState == 4 && xhr.status == 200){
 
                     // * Récupération des données et envoie à la fonction qui permet d'afficher les matchs.
-                    match = JSON.parse(xhr1.responseText);
+                    matchs = JSON.parse(xhr1.responseText);
                     organise = JSON.parse(xhr.responseText);
+                    console.log("organise" + organise);
 
-                    for(let i = 0; i < organise.length; i++){
-                            match.push(organise[i]);
+
+
+                    let redondance;
+
+
+                    // * création d'un tableau qui contiendra les matchs où le joueur est participant en évitant la redondance.
+                    match=[];
+                    match.push(matchs[0]);
+                    for(let i = 1; i < matchs.length; i++){
+                        redondance = 0;
+                        for(let y = 0; y < match.length; y++){
+                          if(match[y].id_match == matchs[i].id_match)
+                            redondance = 1;
+                        }
+                        if(redondance == 0)
+                          match.push(matchs[i]);
                     }
-                    
+                    // * remplissage de ce tableau qui contiendra les matchs où le joueur est organisateur en évitant la redondance.
+                    for(let i = 0; i < organise.length; i++){
+                        redondance = 0;
+                        for(let y = 0; y < match.length; y++){
+                          if(match[y].id_match == organise[i].id_match)
+                            redondance = 1;
+                        }
+                        if(redondance == 0)
+                          match.push(organise[i]);
+                    }
+
+
+
+
                     match.forEach(createDiv);
                 }
             }
@@ -74,7 +102,7 @@ function getMatch(){
             xhr.send();
         }
     }
-    // * Envoie de la requête AJAX.  
+    // * Envoi de la requête AJAX.  
     xhr1.send();
 }
 
