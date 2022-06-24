@@ -8,7 +8,6 @@
     function dbCreateMatchs($db, $titre, $horaire, $duree, $description, $participant_min, $participant_max, $prix, $adresse, $code_insee_ville, $nom_sport, $email_organisateur){
 
         $email_meilleur_joueur = 'test.inconnu@gmail.com';
-        //echo $horaire;
         // * Création du match.
         try{
     
