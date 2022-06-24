@@ -52,10 +52,11 @@ Vous avez choisi d'utiliser notre produit pour votre organisation de matchs et n
 
 ## Puis créez la base de données :
 
-` SOURCE /var/www/html/Site-FSI/DB_V3.sql`
+` SOURCE /var/www/html/Site-FSI/BDD/CREATION_DB.sql`
 
+## Et insérez les données de test sans resortir de la base de donnée :
 
-
+` SOURCE /var/www/html/Site-FSI/BDD/CREATION_DB.sql`
 # Et voilà, votre site est prêt à l'utilisation ! N'oubliez pas de lancer votre serveur apache s'il ne l'est pas déjà.
 
 ` sudo service apache2 restart`
@@ -65,7 +66,8 @@ Vous avez choisi d'utiliser notre produit pour votre organisation de matchs et n
     email  : test.inconnu@gmail.com   
     mot de passe : joueur0
 
-
+    email : lydie.hoarau@gmail.com
+    mot de passe : joueur1
 
 # Une question ? Un problème ? Contactez-nous sur nos réseaux !
 
