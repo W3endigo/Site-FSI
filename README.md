@@ -60,7 +60,7 @@ Vous avez choisi d'utiliser notre produit pour votre organisation de matchs et n
 
 ` sudo service apache2 restart`
 
-# Identifiant d'un utilisateur déjà inscrit pour tester les fonctionnalité du site :
+# Identifiants d'un utilisateur déjà inscrit pour tester les fonctionnalités du site :
     
     email  : test.inconnu@gmail.com   
     mot de passe : joueur0
