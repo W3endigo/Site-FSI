@@ -314,6 +314,7 @@ function getJoueur(){
 
             document.getElementById("form_image").src = joueur.photo;
             document.getElementById("user_image").src = joueur.photo;
+            document.getElementById("image_selected").value = joueur.photo;
             document.getElementById("prenom").value = joueur.prenom;
             document.getElementById("nom").value = joueur.nom;
             document.getElementById("email").value = queryString.get('email');                
