@@ -18,7 +18,7 @@ USE db_fsi;
 CREATE TABLE ville_bretonne(
         code_insee_ville Int NOT NULL ,
         nom_ville        Varchar (30) NOT NULL
-	,CONSTRAINT Ville_Bretonne_PK PRIMARY KEY (code_insee_ville)
+	,CONSTRAINT ville_bretonne_PK PRIMARY KEY (code_insee_ville)
 )ENGINE=InnoDB;
 
 
@@ -48,7 +48,7 @@ CREATE TABLE Joueur(
         frequence_sport  Varchar (50) NOT NULL
 	,CONSTRAINT Joueur_PK PRIMARY KEY (email)
 
-	,CONSTRAINT Joueur_Ville_Bretonne_FK FOREIGN KEY (code_insee_ville) REFERENCES Ville_Bretonne(code_insee_ville)
+	,CONSTRAINT Joueur_ville_bretonne_FK FOREIGN KEY (code_insee_ville) REFERENCES ville_bretonne(code_insee_ville)
 	,CONSTRAINT Joueur_condition_physique0_FK FOREIGN KEY (frequence_sport) REFERENCES condition_physique(frequence_sport)
 )ENGINE=InnoDB;
 
@@ -86,7 +86,7 @@ CREATE TABLE Matchs(
         email_Joueur     Varchar (50) NOT NULL
 	,CONSTRAINT Matchs_PK PRIMARY KEY (id_match)
 
-	,CONSTRAINT Matchs_Ville_Bretonne_FK FOREIGN KEY (code_insee_ville) REFERENCES Ville_Bretonne(code_insee_ville)
+	,CONSTRAINT Matchs_ville_bretonne_FK FOREIGN KEY (code_insee_ville) REFERENCES ville_bretonne(code_insee_ville)
 	,CONSTRAINT Matchs_sport0_FK FOREIGN KEY (nom_sport) REFERENCES sport(nom_sport)
 	,CONSTRAINT Matchs_Joueur1_FK FOREIGN KEY (email) REFERENCES Joueur(email)
 	,CONSTRAINT Matchs_Joueur2_FK FOREIGN KEY (email_Joueur) REFERENCES Joueur(email)
