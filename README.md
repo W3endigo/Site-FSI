@@ -2,8 +2,10 @@
 
 Vous avez choisi d'utiliser notre produit pour votre organisation de matchs et nous vous en remercions.
 
-# Votre nom d'utilisateur : test.inconnu@gmail.com   
-# Votre mot de passe : joueur0
+# Identifiant d'un utilisateur déjà inscrit pour tester les fonctionnalité du site :
+    
+    email  : test.inconnu@gmail.com   
+    mot de passe : joueur0
 
 # **Attention ! Veuillez vérifier que votre machine virtuelle possède les installations suivantes :**
 • Apache 2
