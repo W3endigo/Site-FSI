@@ -2,9 +2,6 @@
 
 Vous avez choisi d'utiliser notre produit pour votre organisation de matchs et nous vous en remercions.
 
-# Votre nom d'utilisateur : test.inconnu@gmail.com   
-# Votre mot de passe : joueur0
-
 # **Attention ! Veuillez vérifier que votre machine virtuelle possède les installations suivantes :**
 • Apache 2
 • PHP 7.4
@@ -62,6 +59,12 @@ Vous avez choisi d'utiliser notre produit pour votre organisation de matchs et n
 # Et voilà, votre site est prêt à l'utilisation ! N'oubliez pas de lancer votre serveur apache s'il ne l'est pas déjà.
 
 ` sudo service apache2 restart`
+
+# Identifiants d'un utilisateur déjà inscrit pour tester les fonctionnalités du site :
+    
+    email  : test.inconnu@gmail.com   
+    mot de passe : joueur0
+
 
 
 # Une question ? Un problème ? Contactez-nous sur nos réseaux !
